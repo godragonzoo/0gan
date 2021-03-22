@@ -194,4 +194,15 @@ public class AdminController {
 		return mav;
 	}
 
+	/**
+	 * 관리자 에러페이지 by 박권익
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/admin_error.do")
+	public ModelAndView error() {
+		ModelAndView mav = new ModelAndView("/admin/admin_error");
+		return mav;
+	}
+
 }

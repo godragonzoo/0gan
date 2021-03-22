@@ -2,6 +2,8 @@ package com.gan.vo;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +20,6 @@ public class AdmQueVo {
 	private String adm_que_file;
 	private Timestamp adm_que_date;
 	private String adm_que_check;
+	private MultipartFile uploadFile;
+
 }

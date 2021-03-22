@@ -2,6 +2,8 @@ package com.gan.vo;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,4 +18,5 @@ public class EventVo {
 	private String event_file;
 	private Timestamp event_start;
 	private Timestamp event_end;
+	private MultipartFile uploadFile;
 }

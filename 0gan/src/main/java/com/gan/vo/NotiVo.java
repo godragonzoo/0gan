@@ -2,6 +2,8 @@ package com.gan.vo;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,4 +17,5 @@ public class NotiVo {
 	private String noti_content;
 	private String noti_file;
 	private Timestamp noti_date;
+	private MultipartFile uploadFile;
 }

@@ -1,5 +1,7 @@
 package com.gan.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,4 +15,5 @@ public class FaqVo {
 	private String faq_content;
 	private String faq_category;
 	private String faq_file;
+	private MultipartFile uploadFile;
 }
