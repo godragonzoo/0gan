@@ -22,9 +22,8 @@
 
 <!-- Bootstrap core CSS -->
 <link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 
-<!-- Custom styles for this template -->
-<link href="/resources/css/shop-homepage.css" rel="stylesheet">
 
 
 <meta charset="utf-8">
@@ -35,32 +34,53 @@
 <title>main.jsp</title>
 <style type="text/css">
 
-#header{ margin: 0px auto; position:relative; width: 90%; height: 300px;  border: solid 1px gray;}
-#container{margin: 0px auto; position: absolute; width: 90%; height: 1000px; border: solid 1px gray;}
+#header{ margin: 0px auto; position:relative; width: 90%; height: 150px;  border: solid 1px gray; display: flex; }
+#container{margin: 0px auto;  width: 90%; height: 1000px; border: solid 1px gray; box-sizing: border-box; }
 .logo {
 	position: absolute;
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	border: solid 1px gray;
+	
 }
 .img-fluid{
 	width: 100%;	height: 300px;
 }
-.searchNav{
-	bottom: 0;
-	margin-left: 100px;
+.search-wrap{
+	display: table;
+	table-layout: fixed;
 	position: absolute;
-	width: 80%;
+	width: 80%;  
+	left: 200px;
+/* 	left: 50%;
+	transform: translate(-50%); */
+	margin: auto;
+	bottom: 0px;
 	border: solid 1px gray;
+	vertical-align: middle;
+	box-sizing: border-box;
+	max-width: 100%;
 }
-
-.bestPlace, .recomPlace{
-	margin: 50px;
-
-	border: solid 1px gray;
+.search{
+	display: table-cell;
+	padding: 5 35px;
+	height: 35px;
+	font-size: 14px;
+	box-sizing: content-box;/* 테두리 미포함크기 */
+	vertical-align: middle;/* 세로 정렬 */
+	border: 4px solid #4E73DF;
 }
-
-
+.bestList{
+margin: 0px auto; border: solid 1px gray; 
+}
+.best1{
+	display: inline-block; margin: 0px 40px;
+width: 300px;	height: 300px; border:1px solid lime;
+}
+.footer{
+	bottom: 0px;
+	right: 0px;
+}
 
 .nav{
 	width: 150px;
@@ -138,19 +158,17 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="header">
-	<img class="logo" src="/resources/img/daum.png">
-			
+	<div class="logo ">
+		<img class="logo" src="/resources/img/logo.png" >
+	</div>
 		<div  id="menuIcon" style="position:absolute; right:0px;">
-			<a class="nav-link" href="#">
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-  			<path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
-			</svg>
-			</a>
+			<i class="far fa-user fa-2x"></i>
+			<i class="fas fa-bars fa-2x"></i>
 		</div>
 		
 		<!-- Modal -->
-  <div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog">
+  		<div class="modal fade" id="myModal2" role="dialog">
+    	<div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -171,26 +189,19 @@ $(document).ready(function(){
   </div>
   
   
-	<div class="searchNav row">
-		<div class="select-wrap "><select class="form-control custom-select nav" required="">
-			<option value="공간선택">공간선택</option><option value="공유오피스/코워킹스페이스/샵인샵">공유오피스/코워킹스페이스/샵인샵</option><option value="공유주방">공유주방</option><option value="연습실/합주실/녹음실">연습실/합주실/녹음실</option><option value="파티룸/모임공간/브라이덜샤워">파티룸/모임공간/브라이덜샤워</option><option value="회의실/강당/세미나실/비즈니스공간">회의실/강당/세미나실/비즈니스공간</option><option value="스터디룸/스터디카페">스터디룸/스터디카페</option><option value="공유하우스">공유하우스</option><option value="촬영스튜디오대여">촬영스튜디오대여</option>
-			</select></div>
-		
-			<div class="row" >
-				<input class="nav" type="text" id="startDate" placeholder="체크인"> 
-				<input class="nav" type="text" id="endDate" placeholder="체크아웃">  
-			</div>
-		
-			<input  class="nav" type="text" placeholder="인원" >
-		
-		<button  class="nav" >검색</button>
+	<div class="search-wrap ">
+		<input class="search" type="text" id="searchWord" placeholder="공간선택"> 
+		<input class="search" type="text" id="startDate" placeholder="체크인"> 
+		<input class="search" type="text" id="endDate" placeholder="체크아웃">
+		<input class="search" type="text" placeholder="인원" >
+		<button class="search">검색</button>
 	</div> 
 </div>      
 
 	
 <div id="container">
-	<div class="row" style="background-color: gray;"><!-- 이벤트 배너 -->
-		<div class="col">
+	<div class="row" ><!-- 이벤트 배너 -->
+		<div class="col" style="text-align: center;"><h3>기획 및 테마 배너 이미지</h3>
 		
 			
 <!-- 메인 슬라이드 이미지 -->
@@ -225,16 +236,16 @@ $(document).ready(function(){
 		</div>
 	</div><!-- 이벤트 배너 -->
 	
-	<div class="row"><!-- best공간 -->
-		<div class="bestPlace" style="width: 80%;">
-		
-			<div id="slideBest" class="carousel slide" data-ride="carousel" data-interval="false">
-				<div class="carousel-inner">
-					<div class="carousel-item active row">
-						<div class="best1 col" style="width: 300px;	height: 300px; background-color: lime;">
+	<div class="row" ><!-- best공간 -->
+
+	<div id="slideBest" class="carousel slideBest" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active bestList"><h3 style="text-align: center;">최고의 공간</h3>
+
+						<div class="best1 " >
 							<div class="row">
 								<div class="col">
-									<a href="#"><img class="bestImg" src="/resources/img/bibimbab.png" alt="" style="	width: 150px;	height: 150px;"></a>
+									<a href="#"><img class="img" src="/resources/img/island.png" alt="" style="	width: 150px;	height: 150px;"></a>
 								</div>
 								
 								<div class="col">
@@ -253,10 +264,10 @@ $(document).ready(function(){
 								<h4>introduce</h4>
 							</div>
 						</div>
-						<div class="best1 col" style="width: 300px;	height: 300px; background-color: maroon;;">
+						<div class="best1 col" >
 							<div class="row">
 								<div class="col">
-									<a href="#"><img class="bestImg" src="/resources/img/bibimbab.png" alt="" style="	width: 150px;	height: 150px;"></a>
+									<a href="#"><img class="img" src="/resources/img/lamp.png" alt="" style="	width: 150px;	height: 150px;"></a>
 								</div>
 								
 								<div class="col">
@@ -275,13 +286,10 @@ $(document).ready(function(){
 								<h4>introduce</h4>
 							</div>
 						</div>
-					</div>
-					
-					<div class="carousel-item row">
-						<div class="best1 col" style="width: 300px;	height: 300px;">
+						<div class="best1 " >
 							<div class="row">
 								<div class="col">
-									<a href="#"><img class="bestImg" src="/resources/img/bibimbab.png" alt="" style="	width: 150px;	height: 150px;"></a>
+									<a href="#"><img class="img" src="/resources/img/nature.png" alt="" style="	width: 150px;	height: 150px;"></a>
 								</div>
 								
 								<div class="col">
@@ -300,176 +308,244 @@ $(document).ready(function(){
 								<h4>introduce</h4>
 							</div>
 						</div>
-						<div class="best2 col" style="width: 300px;	height: 300px;">
-							<div class="row">
-								<div class="col">
-									<a href="#"><img class="bestImg" src="/resources/img/lamp.png" alt="" style="	width: 150px;	height: 150px;"></a>
-								</div>
-								
-								<div class="col">
-									<div class="row">
-										<div class="card-body">장소 이름</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 위치</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 평점</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<h4>introduce</h4>
-							</div>
-						</div>
-					</div>
-					
-					<div class="carousel-item ">
-						<div class="best3" style="	width: 300px;	height: 300px;">
-							<div class="row">
-								<div class="col">
-									<a href="#"><img class="bestImg" src="/resources/img/nature.png" alt="" style="	width: 150px;	height: 150px;"></a>
-								</div>
-								
-								<div class="col">
-									<div class="row">
-										<div class="card-body">장소 이름</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 위치</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 평점</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<h4>introduce</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<a class="carousel-control-prev" href="#slideBest"	role="button" data-slide="prev"> 
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span> 
-					<span	class="sr-only">Previous</span>
-				</a> 
-				<a class="carousel-control-next"	href="#slideBest" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-				
-			</div><!-- slide -->
+			</div>
 			
-		</div>
-				
+			<div class="carousel-item">
+			<div class="best1 " >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/island.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+						<div class="best1 " >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/temple.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+						<div class="best1 " >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/temple.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+	<a class="carousel-control-prev" href="#slideBest" data-slide="prev"> 
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span> 
+		<span	class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next" href="#slideBest" data-slide="next"> 
+		<span	class="carousel-control-next-icon" aria-hidden="true"></span>
+	</a>
+	</div>				
 	</div><!-- best공간 -->
 	
-	<div class="row"><!-- 추천공간 -->
-		<div class="recomPlace">
+
+	<div id="slideRe" class="carousel slideRe" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active ReList"> <h3 style="text-align: center;">금주의 추천 공간</h3>
 		
-			<div id="slideRecom" class="carousel slide" data-ride="carousel" data-interval="false">
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="recom1" style="	width: 300px;	height: 300px;">
-							<div class="row">
-								<div class="col">
-									<a href="#"><img class="recomImg" src="/resources/img/bibimbab.png" alt="" style="	width: 150px;	height: 150px;"></a>
-								</div>
-								
-								<div class="col">
-									<div class="row">
-										<div class="card-body">장소 이름</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 위치</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 평점</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<h4>introduce</h4>
-							</div>
-						</div>
-					</div>
-					
-					<div class="carousel-item ">
-						<div class="recom2" style="	width: 300px;	height: 300px;">
-							<div class="row">
-								<div class="col">
-									<a href="#"><img class="recomImg" src="/resources/img/lamp.png" alt="" style="	width: 150px;	height: 150px;"></a>
-								</div>
-								
-								<div class="col">
-									<div class="row">
-										<div class="card-body">장소 이름</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 위치</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 평점</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<h4>introduce</h4>
-							</div>
-						</div>
-					</div>
-					
-					<div class="carousel-item ">
-						<div class="recom3" style="	width: 300px;	height: 300px;">
-							<div class="row">
-								<div class="col">
-									<a href="#"><img class="recomImg" src="/resources/img/nature.png" alt="" style="	width: 150px;	height: 150px;"></a>
-								</div>
-								
-								<div class="col">
-									<div class="row">
-										<div class="card-body">장소 이름</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 위치</div>
-									</div>
-									<div class="row">
-										<div class="card-body">장소 평점</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<h4>introduce</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<a class="carousel-control-prev" href="#slideRecom"	role="button" data-slide="prev"> 
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span> 
-					<span	class="sr-only">Previous</span>
-				</a> 
-				<a class="carousel-control-next"	href="#slideRecom" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-				
-			</div><!-- slide -->
 			
+						<div class="best1 " >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/island.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+						<div class="best1 col" >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/lamp.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+						<div class="best1 " >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/nature.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+			</div>
+			
+			<div class="carousel-item">
+			<div class="best1 " >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/island.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+						<div class="best1 " >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/temple.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+						<div class="best1 " >
+							<div class="row">
+								<div class="col">
+									<a href="#"><img class="img" src="/resources/img/temple.png" alt="" style="	width: 150px;	height: 150px;"></a>
+								</div>
+								
+								<div class="col">
+									<div class="row">
+										<div class="card-body">장소 이름</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 위치</div>
+									</div>
+									<div class="row">
+										<div class="card-body">장소 평점</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<h4>introduce</h4>
+							</div>
+						</div>
+			</div>
+	<a class="carousel-control-prev" href="#slideRe" data-slide="prev"> 
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span> 
+		<span	class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next" href="#slideRe" data-slide="next"> 
+		<span	class="carousel-control-next-icon" aria-hidden="true"></span>
+	</a>
 		</div>
 	</div><!-- 추천공간 -->
 	
 </div>
 	<div class="footer">
-		<div class="container">
 			<p class="m-0 text-right">
 				<a href="#">공지사항</a>
 				<a href="#">도움말</a> 
 				<a href="#">서비스정보</a>
 			</p>
-		</div>
-		<!-- /.container -->
 	</div>
 	
 </body>
