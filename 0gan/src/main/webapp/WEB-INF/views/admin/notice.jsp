@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -166,17 +167,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
                             <td>Garrett Winters</td>
                             <td>Accountant</td>
                             <td>Tokyo</td>
@@ -187,149 +177,19 @@
                                 <span class="text">삭제</span>
                             </a></td>
                         </tr>
+                        <c:forEach var="list" items="${list }">
                         <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
+                        	<td>${list.noti_num }</td>
+                        	<td>${list.noti_title }</td>
+                        	<td>${list.noti_date }</td>
+                        	<td><a href="admin_noti_update?noti_num=${list.noti_num }" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
+                            <a href="admin_noti_update?noti_num=${list.noti_num }" class="btn btn-danger btn-icon-split">
                                 <span class="text">삭제</span>
                             </a></td>
                         </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Colleen Hurst</td>
-                            <td>Javascript Developer</td>
-                            <td>San Francisco</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>Edinburgh</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Jena Gaines</td>
-                            <td>Office Manager</td>
-                            <td>London</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Quinn Flynn</td>
-                            <td>Support Lead</td>
-                            <td>Edinburgh</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Charde Marshall</td>
-                            <td>Regional Director</td>
-                            <td>San Francisco</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
+                       </c:forEach>
                     </tbody>
                 </table>
             </div>

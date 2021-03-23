@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="board">
+<mapper namespace="admin">
 	<!-- 관리자 로그인 확인 by 박권익 -->
 	<select id="login" resultType="java.lang.Integer">
 		select adm_no
@@ -13,9 +13,12 @@
 	<!-- # 공지사항 관련 -->
 
 	<!-- 공지사항List by 박권익 -->
-	<select id="selectNoti" resultType="notiVo">
-		select noti_num, noti_title,
-		noti_date from noti_tb
+	<select id="selectAllNoti" resultType="notiVo">
+		select noti_num,
+		noti_title,
+		noti_date from (select rownum rank, noti_num, noti_title,
+		noti_date
+		from noti_tb) order by rank desc
 	</select>
 
 	<!-- 공지사항 상세보기 by 박권익 -->
@@ -45,9 +48,10 @@
 	<!-- # 도움말 관련 -->
 
 	<!-- 도움말List by 박권익 -->
-	<select id="selectFaq" resultType="faqVo">
+	<select id="selectAllFaq" resultType="faqVo">
 		select faq_num, faq_title,
-		faq_category from faq_tb
+		faq_category from (select rownum rank, faq_num, faq_title,
+		faq_category from faq_tb) order by rank desc
 	</select>
 
 	<!-- 도움말 상세보기 by 박권익 -->
@@ -73,13 +77,14 @@
 	<delete id="deleteFaq">
 		delete faq_tb where faq_num = #{faq_num}
 	</delete>
-	
+
 	<!-- # 기획전 관련 -->
 
 	<!-- 기획전List by 박권익 -->
-	<select id="selectEvent" resultType="eventVo">
+	<select id="selectAllEvent" resultType="eventVo">
 		select event_num,
-		event_title from event_tb
+		event_title from (select rownum rank, event_num, event_title from
+		event_tb) order by rank desc
 	</select>
 
 	<!-- 기획전 상세보기 by 박권익 -->
@@ -111,11 +116,12 @@
 	<!-- # 1대1문의 관련 -->
 
 	<!-- 1대1문의List by 박권익 -->
-	<select id="selectAdmQue" resultType="admQueVo">
+	<select id="selectAllAdmQue" resultType="admQueVo">
 		select adm_que_num,
-		adm_que_writer, adm_que_title, adm_que_date,
-		adm_que_check from
-		adm_que_tb
+		user_num, adm_que_writer, adm_que_title, adm_que_date, adm_que_check
+		from (select rownum rank, adm_que_num, user_num, adm_que_writer,
+		adm_que_title, adm_que_date, adm_que_check from adm_que_tb) order by
+		rank desc
 	</select>
 
 	<!-- 1대1문의 상세보기 by 박권익 -->
@@ -136,9 +142,10 @@
 		#{adm_que_num}, #{user_num}, #{adm_ans_title}, #{adm_ans_content},
 		#{adm_ans_file}, systimestamp);
 	</insert>
-	
+
 	<!-- 1대1문의 답변등록 후 답변여부 수정 -->
-	<update id="">
-		update adm_que_tb set adm_que_check = 'Y' where adm_que_num = #{adm_que_num}
+	<update id="updateAdmAnsCheck">
+		update adm_que_tb set adm_que_check = 'Y' where
+		adm_que_num = #{adm_que_num}
 	</update>
 </mapper>
