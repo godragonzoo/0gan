@@ -165,18 +165,7 @@
                             <th>기능</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
+                    <tbody>                   
                         <c:forEach var="list" items="${list }">
                         <tr>
                         	<td>${list.noti_num }</td>
