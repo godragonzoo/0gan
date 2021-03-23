@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -9,19 +11,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>0gan 관리자 - Blank</title>
+    <title>0gan 관리자 - 공지사항</title>
 
     <!-- Custom fonts for this template -->
-    <link href="..resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="..resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../resources/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="..resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- 파일업로드 Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -85,7 +87,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item active" href="#"> 공지사항 관리 </a>
             <a class="collapse-item" href="#"> 도움말 관리 </a>
-            <a class="collapse-item" href="#"> 이벤트 관리 </a>
+            <a class="collapse-item" href="#"> 기획전 관리 </a>
             <a class="collapse-item" href="#"> 문의게시판 관리 </a>
         </div>
     </div>
@@ -112,7 +114,7 @@
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">{관리자}</span>
                     <img class="img-profile rounded-circle"
-                    src="img/undraw_profile.svg">
+                    src="../resources/img/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -133,56 +135,49 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">공지사항 등록</h1>
+    <h1 class="h3 mb-4 text-gray-800">공지사항</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">게시판 관리</a></li>
         <li class="breadcrumb-item active" aria-current="page">공지사항 관리</li>
-        <li class="breadcrumb-item active" aria-current="page">등록</li>
+        <li class="breadcrumb-item active" aria-current="page">수정</li>
     </ol>
 </nav>
-<div class="main-input-form">
-    <div class="my-2"></div>
-    <div>
-        제목 <input type="text">
-    </div>
-    <div class="my-2"></div>
-    
-    <div class="my-2"></div>
-    <div>
-        내용
-        <div class="my-2"></div>
-        <textarea rows="10" cols="40"></textarea>
-    </div>
-    <div class="my-2"></div>
 
-    
-        <div class="filebox">
-            <lable>첨부파일</lable> 
-            <input class="upload-name" value="파일선택" disabled="disabled">
-            <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
-            <input type="file" id="ex_filename" class="upload-hidden">
+<div class="card container-fluid w-75 shadow mt-4 mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"> 공지사항 관리 </h6>
+    </div>
+
+    <div class="card-body">
+        <div class="card container-fluid w-75 mb-5">
+            <div class="col-md-12">
+                <label class="mt-4">제목</label>
+                <input type="text" class="form-control-text" value="{제목}">
+            </div>
+            <hr>
+            <label class="col-md-12 mb-3">내용</label>
+            <textarea class="form-control" rows="7" style="resize: none;">{내용}</textarea>
+            <div class="col-md-12 mt-4">
+                <div class="filebox">
+                    <lable class="mt-4">첨부파일</lable> &nbsp;
+                    <input class="upload-name" value="파일선택" disabled="disabled">
+                    <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
+                    <input type="file" id="ex_filename" class="upload-hidden">
+                </div>
+            </div>
+            <hr>
+            <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+                <button class="btn btn-primary me-md-2" type="button">등록</button>
+            </div>
         </div>
-    
-
-    <div class="my-2"></div>
-  
-    <div align="right">
-        <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-
-            <span class="text">목록</span>
-        </a>
-        <a href="#" class="btn btn-primary btn-icon-split btn-sm">
-
-            <span class="text">등록</span>
-        </a>
     </div>
-</div>
 
 
 
 
-<!-- /.container-fluid -->
+
+    <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
@@ -191,7 +186,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; 0gan</span>
         </div>
     </div>
 </footer>
@@ -229,14 +224,14 @@ aria-hidden="true">
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="..resources/vendor/jquery/jquery.min.js"></script>
-<script src="..resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../resources/vendor/jquery/jquery.min.js"></script>
+<script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="..resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="..resources/js/sb-admin-2.min.js"></script>
+<script src="../resources/js/sb-admin-2.min.js"></script>
 
 </body>
 

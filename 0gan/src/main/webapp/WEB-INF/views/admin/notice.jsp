@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>0gan 관리자 - 도움말</title>
+    <title>0gan 관리자 - 공지사항</title>
 
     <!-- Custom fonts for this template -->
     <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -82,8 +82,8 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item active" href="#"> 도움말 관리 </a>
+            <a class="collapse-item active" href="#"> 공지사항 관리 </a>
+            <a class="collapse-item" href="#"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 기획전 관리 </a>
             <a class="collapse-item" href="#"> 문의게시판 관리 </a>
         </div>
@@ -132,23 +132,26 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">도움말</h1>
-     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <h1 class="h3 mb-2 text-gray-800">공지사항</h1>
+    
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">게시판 관리</a></li>
-        <li class="breadcrumb-item active" aria-current="page">도움말 관리</li>
+        <li class="breadcrumb-item active" aria-current="page">공지사항 관리</li>
     </ol>
 </nav>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">도움말 목록</h6>
+            <h6 class="m-0 font-weight-bold text-primary">공지사항 목록</h6>
         </div>
+
         <div class="card-body">
             <div align="right">
-                <a href="#" class="btn btn-primary btn-icon-split">
-                    <span class="text">도움말 등록</span>
-                </a>
+            <a href="#" class="btn btn-primary btn-icon-split">
+                <span class="text">공지사항 등록</span>
+            </a>
             </div>
             <br>
             <div class="table-responsive">
@@ -156,16 +159,16 @@
                     <thead>
                         <tr>
                             <th>번호</th>
-                            <th>카테고리</th>
                             <th>제목</th>
+                            <th>작성일</th>
                             <th>기능</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Tiger Nixon</td>
-                            <td>카테고리</td>
                             <td>System Architect</td>
+                            <td>Edinburgh</td>
                             <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
@@ -175,43 +178,31 @@
                         </tr>
                         <tr>
                             <td>Garrett Winters</td>
-                            <td>카테고리</td>
                             <td>Accountant</td>
+                            <td>Tokyo</td>
                             <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
                             <a href="#" class="btn btn-danger btn-icon-split">
                                 <span class="text">삭제</span>
                             </a></td>
-                            
                         </tr>
                         <tr>
                             <td>Ashton Cox</td>
-                            <td>카테고리</td>
                             <td>Junior Technical Author</td>
+                            <td>San Francisco</td>
                             <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
                             <a href="#" class="btn btn-danger btn-icon-split">
                                 <span class="text">삭제</span>
                             </a></td>
-                            
                         </tr>
                         <tr>
                             <td>Cedric Kelly</td>
-                            <td>카테고리</td>
-                            <td>Senior Javascript Developer</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>Tatyana Fitzpatrick</td>
-                            <td>카테고리</td>
-                            <td>Regional Director</td> <td><a href="#" class="btn btn-success btn-icon-split">
+                            <td>Senior Javascript Developer</td>
+                            <td>Edinburgh</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
                             <a href="#" class="btn btn-danger btn-icon-split">
@@ -219,9 +210,10 @@
                             </a></td>
                         </tr>
                         <tr>
-                            <td>Michael Silva</td>
-                            <td>카테고리</td>
-                            <td>Marketing Designer</td> <td><a href="#" class="btn btn-success btn-icon-split">
+                            <td>Airi Satou</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
                             <a href="#" class="btn btn-danger btn-icon-split">
@@ -229,9 +221,10 @@
                             </a></td>
                         </tr>
                         <tr>
-                            <td>Paul Byrd</td>
-                            <td>카테고리</td>
-                            <td>Chief Financial Officer (CFO)</td> <td><a href="#" class="btn btn-success btn-icon-split">
+                            <td>Brielle Williamson</td>
+                            <td>Integration Specialist</td>
+                            <td>New York</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
                             <a href="#" class="btn btn-danger btn-icon-split">
@@ -239,9 +232,10 @@
                             </a></td>
                         </tr>
                         <tr>
-                            <td>Gloria Little</td>
-                            <td>카테고리</td>
-                            <td>Systems Administrator</td> <td><a href="#" class="btn btn-success btn-icon-split">
+                            <td>Herrod Chandler</td>
+                            <td>Sales Assistant</td>
+                            <td>San Francisco</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
                             <a href="#" class="btn btn-danger btn-icon-split">
@@ -249,63 +243,101 @@
                             </a></td>
                         </tr>
                         <tr>
-                            <td>Bradley Greer</td>
-                            <td>카테고리</td>
-                            <td>Software Engineer</td> <td><a href="#" class="btn btn-success btn-icon-split">
+                            <td>Rhona Davidson</td>
+                            <td>Integration Specialist</td>
+                            <td>Tokyo</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
                             <a href="#" class="btn btn-danger btn-icon-split">
                                 <span class="text">삭제</span>
                             </a></td>
-
                         </tr>
                         <tr>
-                            <td>Dai Rios</td>
-                            <td>카테고리</td>
-                            <td>Personnel Lead</td> <td><a href="#" class="btn btn-success btn-icon-split">
+                            <td>Colleen Hurst</td>
+                            <td>Javascript Developer</td>
+                            <td>San Francisco</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
                             <a href="#" class="btn btn-danger btn-icon-split">
                                 <span class="text">삭제</span>
-                            </a></td>                            </tr>
-                            <tr>
-                                <td>Jenette Caldwell</td>
-                                <td>카테고리</td>
-                                <td>Development Lead</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                    <span class="text">수정</span>
-                                </a>                                    
-                                <a href="#" class="btn btn-danger btn-icon-split">
-                                    <span class="text">삭제</span>
-                                </a></td>
-                            </tr>
-                            <tr>
-                                <td>Yuri Berry</td>
-                                <td>카테고리</td>
-                                <td>Chief Marketing Officer (CMO)</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                    <span class="text">수정</span>
-                                </a>                                    
-                                <a href="#" class="btn btn-danger btn-icon-split">
-                                    <span class="text">삭제</span>
-                                </a></td>
-                            </tr>
-                            <tr>
-                                <td>Caesar Vance</td>
-                                <td>카테고리</td>
-                                <td>Pre-Sales Support</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                    <span class="text">수정</span>
-                                </a>                                    
-                                <a href="#" class="btn btn-danger btn-icon-split">
-                                    <span class="text">삭제</span>
-                                </a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            </a></td>
+                        </tr>
+                        <tr>
+                            <td>Sonya Frost</td>
+                            <td>Software Engineer</td>
+                            <td>Edinburgh</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
+                                <span class="text">수정</span>
+                            </a>                                    
+                            <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="text">삭제</span>
+                            </a></td>
+                        </tr>
+                        <tr>
+                            <td>Jena Gaines</td>
+                            <td>Office Manager</td>
+                            <td>London</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
+                                <span class="text">수정</span>
+                            </a>                                    
+                            <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="text">삭제</span>
+                            </a></td>
+                        </tr>
+                        <tr>
+                            <td>Quinn Flynn</td>
+                            <td>Support Lead</td>
+                            <td>Edinburgh</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
+                                <span class="text">수정</span>
+                            </a>                                    
+                            <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="text">삭제</span>
+                            </a></td>
+                        </tr>
+                        <tr>
+                            <td>Charde Marshall</td>
+                            <td>Regional Director</td>
+                            <td>San Francisco</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
+                                <span class="text">수정</span>
+                            </a>                                    
+                            <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="text">삭제</span>
+                            </a></td>
+                        </tr>
+                        <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
+                                <span class="text">수정</span>
+                            </a>                                    
+                            <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="text">삭제</span>
+                            </a></td>
+                        </tr>
+                        <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td><a href="#" class="btn btn-success btn-icon-split">
+                                <span class="text">수정</span>
+                            </a>                                    
+                            <a href="#" class="btn btn-danger btn-icon-split">
+                                <span class="text">삭제</span>
+                            </a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
     </div>
-    <!-- /.container-fluid -->
+
+</div>
+<!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

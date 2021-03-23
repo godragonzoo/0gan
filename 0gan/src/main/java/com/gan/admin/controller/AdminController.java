@@ -23,7 +23,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/admin_noti.do")
+	@RequestMapping("/admin_notice.do")
 	public ModelAndView selectAdminNoti() {
 		ModelAndView mav = new ModelAndView("/admin/noti");
 		return mav;
