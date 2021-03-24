@@ -56,10 +56,10 @@
 			
 			<!-- 네비게이션바 -->
 			<ul class="nav nav-tabs">
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="find.html">이메일 찾기</a></li>
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#">비밀번호 찾기</a></li>
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#">로그인</a></li>
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="userSign.html">회원가입</a></li>
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="finId.do">이메일 찾기</a></li>
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="findPwd.do">비밀번호 찾기</a></li>
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="login.do">로그인</a></li>
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="userSign.do">회원가입</a></li>
 			</ul>
 			<!-- 네비게이션바 -->
 			
@@ -82,7 +82,7 @@
 			</div>
 
 			<div class="form-group col-lg" align="center">
-				<button type="submit" class="btn btn-primary">이메일 찾기</button>
+				<input type="submit" class="btn btn-primary" value="이메일 찾기">
 			</div>
 			
 		</form>	

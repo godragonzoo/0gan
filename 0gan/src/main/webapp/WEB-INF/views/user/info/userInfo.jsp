@@ -60,7 +60,7 @@
 
 	<!-- 네비게이션바 -->
 	<ul class="nav nav-tabs">
-		<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="userInfo">프로필</a></li>
+		<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="userInfo.do">프로필</a></li>
 		<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#">예약내역</a></li>
 		<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#">관심목록</a></li>
 		<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#">나의 문의내역</a></li>
@@ -93,7 +93,7 @@
 			</table>
 			<div class="form-group" align="center">
 				<div class="col-lg-offset-2 col-lg-10">
-					<button type="submit" class="btn btn-primary">프로필 수정</button>
+					<input type="button" class="btn btn-primary">프로필 수정
 				</div>
 			</div>
 		</div>

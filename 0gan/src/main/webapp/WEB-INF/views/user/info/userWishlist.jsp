@@ -3,143 +3,201 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>관심 목록</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>관심목록</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/list_bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
+
 </head>
+
 <body>
-	<!-- 관심 목록 : 김은비 -->
 
-	<!--  -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<a class="navbar-brand" href="#">Navbar</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#navbarColor01" aria-controls="navbarColor01"
-		aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">프로필
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">예약내역</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">관심목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">문의내역</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-	<div class="collapse navbar-collapse" id="navbarColor01">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="#">Home
-				<span class="sr-only">(current)</span>
-			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Features</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-				role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Action</a> <a
-					class="dropdown-item" href="#">Another action</a> <a
-					class="dropdown-item" href="#">Something else here</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Separated link</a>
-				</div></li>
-			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search">
-				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-			</form>
-		</div>
-	</nav>
-	<!--  -->
+  <!-- Page Content -->
+  <div class="container">
 
+    <div class="row">
+      <!-- /.col-lg-3 -->
 
-	<hr>
-	<div class="container">
+      <div class="col-lg">
+      <h2>관심목록</h2>
+      <hr>
+        <div class="row">
 
-		<!-- 네비게이션바 -->
-		<ul class="nav nav-tabs">
-			<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="userInfo">프로필</a></li>
-			<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#">예약내역</a></li>
-			<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#">관심목록</a></li>
-			<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#">나의 문의내역</a></li>
-		</ul>
-		<!-- 네비게이션바 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">공간 이름1</a>
+                </h4>
+                <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
+                <p class="card-text">시간당 가격</p>
+                <p class="card-text">수용 가능 인원 수</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <input type="checkbox" name="wishlist">
+                </small>
+              </div>
+            </div>
+          </div>
 
-		<div class="row col-lg-12">
-			<h2>관심 목록</h2>
-			<hr>
-			<!-- 미완성 -->
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top" width="100" height="100" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">장소 이름</a>
-						</h4>
-						<p>장소 위치</p>
-						<p class="card-text">시간당 가격</p>
-						<p class="card-text">수용 가능 인원수</p>
-					</div>
-					<div class="card-footer">
-						<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-					</div>
-				</div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">공간 이름2</a>
+                </h4>
+                <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
+                <p class="card-text">시간당 가격</p>
+                <p class="card-text">수용 가능 인원 수</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <input type="checkbox" name="wishlist">
+                </small>
+              </div>
+            </div>
+          </div>
 
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top" width="100" height="100" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Item Six</a>
-						</h4>
-						<h5>$24.99</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-					</div>
-					<div class="card-footer">
-						<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-					</div>
-				</div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">공간 이름3</a>
+                </h4>
+                <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
+                <p class="card-text">시간당 가격</p>
+                <p class="card-text">수용 가능 인원 수</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <input type="checkbox" name="wishlist">
+                </small>
+              </div>
+            </div>
+          </div>
 
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top" width="100" height="100" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Item Six</a>
-						</h4>
-						<h5>$24.99</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-					</div>
-					<div class="card-footer">
-						<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-					</div>
-				</div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">공간 이름4</a>
+                </h4>
+                <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
+                <p class="card-text">시간당 가격</p>
+                <p class="card-text">수용 가능 인원 수</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <input type="checkbox" name="wishlist">
+                </small>
+              </div>
+            </div>
+          </div>
 
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top" width="100" height="100" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Item Six</a>
-						</h4>
-						<h5>$24.99</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-					</div>
-					<div class="card-footer">
-						<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-					</div>
-				</div>
-		</div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">공간 이름5</a>
+                </h4>
+                <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
+                <p class="card-text">시간당 가격</p>
+                <p class="card-text">수용 가능 인원 수</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <input type="checkbox" name="wishlist">
+                </small>
+              </div>
+            </div>
+          </div>
 
-	</div>
-	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-		</div>
-		<!-- /.container -->
-	</footer>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">공간 이름6</a>
+                </h4>
+                <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
+                <p class="card-text">시간당 가격</p>
+                <p class="card-text">수용 가능 인원 수</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <input type="checkbox" name="wishlist">
+                </small>
+              </div>
+            </div>
+          </div>
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/list_jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/list_bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

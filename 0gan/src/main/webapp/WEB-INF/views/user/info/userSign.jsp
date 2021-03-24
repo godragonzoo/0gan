@@ -56,7 +56,9 @@
 		<form class="form-horizontal" role="form" method="post" action="">
 				<h2>회원가입</h2>
 				<hr>
-
+				
+				<input type="hidden" name="user_num" value="0">
+				
 				<div class="form-group" id="divEmail">
 					<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
 					<div class="col-sm-9">
