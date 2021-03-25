@@ -1,50 +1,137 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!--CDN ë§í¬ -->
 
-<meta charset="EUC-KR">
+
+    <!-- Custom fonts for this template-->
+    <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript-->
+    <script src="../resources/vendor/jquery/jquery.min.js"></script>
+    <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../resources/js/sb-admin-2.min.js"></script>
+    
+<meta charset="UTF-8">
 <title>Insert title here</title>
 
 <style type="text/css">
-.container{
-	margin:0 auto;
-    width: 1000px;
-    height: 500px;
+body{
+background-color: white; 
 }
-.item{
-    display: inline-block;
-    float: left;
-    width: 350px;
-    height: 400px;
-    border: 1px solid gray;
+.row , .col{
+	width: 100%;
+}
+.header{ 
+border: solid 1px gray;
+margin: 0px auto; 
+position:relative; 
+width: 90%;   
+display: flex;
+
+background-color: white; 
+/* background-color: #F8F9FC; */ 
+}
+
+.logo{
+	height: 150px;
+}
+.menuIcon{
+position:absolute; right:0px;
+cursor: pointer;
+margin: 30px;
+}
+
+.container {
+    border: solid 1px gray;
+    margin: 50px auto;
+    width: 90%;
+}
+
+.btnWrap{
+border: solid 1px gray;
+	width: 90%;
+	height: 50px;
+	margin: auto;
+	display: flex;
+}
+.filter{
+	height:100%;
+}
+.btnMap, .btnSort{
+	width: 100px;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 10%;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.imgMap {
+    width: 90%;
+    height: 300px;
+    background-color: #ABCDEF;
     margin: 50px;
-	
 }
 
-
-.imgMap{
-	width:800px;
-	height: 500px;
-	background-color: #ABCDEF;
-	margin: 100px;
+/* ---------Bestê³µê°„--------- */
+.best1{
+	margin: 0px 30px;
+ 	border:2px solid #486DDA;
+ 	width: 550px;
+ 	height: 405px;
 }
-
+.card-col{
+	width: 200px;
+	height: 200px;
+	margin-left: 20px;
+}
+.img{
+	width: 200px;
+	height: 200px;
+	margin-top: 30px;
+}
+.card-body{
+	border: solid 1px gray;
+	margin-top: 20px;
+	width: 150px;
+	height: 50px;
+}
+.card-row{
+	display: flex;
+	width: 400px;
+	height: 200px;
+}
+.card-intro{
+	border: solid 1px gray;
+	margin-left: 20px;
+	margin-top: 70px;
+	bottom: 0px;
+	width: 350px; height: 100px;
+}
+/* ---------Bestê³µê°„--------- */
 </style>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
-  $('#btnMap').click( function() {
-    if( $(this).html() == 'Áöµµ on' ) {
-      $(this).html('Áöµµ off');
+  $('.btnMap').click( function() {
+    if( $(this).html() == 'ì§€ë„ on' ) {
+      $(this).html('ì§€ë„ off');
       $(".imgMap").css("display","none");
     }
     else {
-      $(this).html('Áöµµ on');
+      $(this).html('ì§€ë„ on');
       $(".imgMap").css("display","block");
     }
   });
@@ -53,74 +140,117 @@ $(function() {
 </head>
 <body>
 
-<div class="result">
-	<div class="logo" style="float: left">Logo</div>
-	<div class="menu" style="float: right;">menu</div>
-    <hgroup class="mb20">
-		<h1>Search Results</h1>
-		<h2 class="lead"><strong class="text-danger">3</strong> results were found for the search for <strong class="text-danger">Lorem</strong></h2>								
-	</hgroup>
-	<div id="title"><h1>°Ë»ö °á°ú</h1><hr></div>
-	<div class="cccc" style="width: 1000px;">
-		<!-- filter ¹öÆ°  -->
-		<div class="filter">
-			<select class="form-control custom-select nav" required="">
-			<option value="°ø°£¼±ÅÃ">°ø°£¼±ÅÃ</option><option value="°øÀ¯¿ÀÇÇ½º/ÄÚ¿öÅ·½ºÆäÀÌ½º/¼¥ÀÎ¼¥">°øÀ¯¿ÀÇÇ½º/ÄÚ¿öÅ·½ºÆäÀÌ½º/¼¥ÀÎ¼¥</option><option value="°øÀ¯ÁÖ¹æ">°øÀ¯ÁÖ¹æ</option><option value="¿¬½À½Ç/ÇÕÁÖ½Ç/³ìÀ½½Ç">¿¬½À½Ç/ÇÕÁÖ½Ç/³ìÀ½½Ç</option><option value="ÆÄÆ¼·ë/¸ğÀÓ°ø°£/ºê¶óÀÌ´ú»ş¿ö">ÆÄÆ¼·ë/¸ğÀÓ°ø°£/ºê¶óÀÌ´ú»ş¿ö</option><option value="È¸ÀÇ½Ç/°­´ç/¼¼¹Ì³ª½Ç/ºñÁî´Ï½º°ø°£">È¸ÀÇ½Ç/°­´ç/¼¼¹Ì³ª½Ç/ºñÁî´Ï½º°ø°£</option><option value="½ºÅÍµğ·ë/½ºÅÍµğÄ«Æä">½ºÅÍµğ·ë/½ºÅÍµğÄ«Æä</option><option value="°øÀ¯ÇÏ¿ì½º">°øÀ¯ÇÏ¿ì½º</option><option value="ÃÔ¿µ½ºÆ©µğ¿À´ë¿©">ÃÔ¿µ½ºÆ©µğ¿À´ë¿©</option>
-			</select>
-		</div>
-		<!-- filter ¹öÆ°  -->
+<div class="header">
+	<div >
+		<img  class="logo "src="resources/img/logo2.png" >
+	</div>
+	<div  class="menuIcon" >
+		<i class="fas fa-user-cog fa-3x  "></i>
+		<i class="fas fa-bars fa-3x "></i>
+	</div>
 		
-		<!-- map ¹öÆ°  -->
-		<div class="btnMap">
-		<button  id="btnMap"  >Áöµµ on</button>
-		</div>
-		<!-- map ¹öÆ°  -->
-		
-		<!-- Á¤·Ä ¹öÆ°  -->
-		<div class="sort">
-			<select class="selectSort">
-				<option >Á¤·Ä</option>
-				<option value="°¡°İ¼ø">°¡°İ¼ø</option>
-				<option value="ÃÖ½Å¼ø">ÃÖ½Å¼ø</option>
-				<option value="ÃßÃµ¼ø">ÃßÃµ¼ø</option>
-			</select>
-		</div>
-		<!-- Á¤·Ä ¹öÆ°  -->
+		<!-- Modal -->
+      
+</div>
 
+<div class="container ">
+	<div class="title row border-bottom-primary" style="font-size: 30px; margin: 20px 0;">ê²€ìƒ‰ ê²°ê³¼</div>
+	<div class="btnWrap row justify-content-between" >
+		<!-- filter ë²„íŠ¼  -->
+	<!-- 	<div class="filter col">
+			<select class="form-control custom-select nav" required="">
+			<option value="ê³µê°„ì„ íƒ">ê³µê°„ì„ íƒ</option><option value="ê³µìœ ì˜¤í”¼ìŠ¤/ì½”ì›Œí‚¹ìŠ¤í˜ì´ìŠ¤/ìƒµì¸ìƒµ">ê³µìœ ì˜¤í”¼ìŠ¤/ì½”ì›Œí‚¹ìŠ¤í˜ì´ìŠ¤/ìƒµì¸ìƒµ</option><option value="ê³µìœ ì£¼ë°©">ê³µìœ ì£¼ë°©</option><option value="ì—°ìŠµì‹¤/í•©ì£¼ì‹¤/ë…¹ìŒì‹¤">ì—°ìŠµì‹¤/í•©ì£¼ì‹¤/ë…¹ìŒì‹¤</option><option value="íŒŒí‹°ë£¸/ëª¨ì„ê³µê°„/ë¸Œë¼ì´ëœìƒ¤ì›Œ">íŒŒí‹°ë£¸/ëª¨ì„ê³µê°„/ë¸Œë¼ì´ëœìƒ¤ì›Œ</option><option value="íšŒì˜ì‹¤/ê°•ë‹¹/ì„¸ë¯¸ë‚˜ì‹¤/ë¹„ì¦ˆë‹ˆìŠ¤ê³µê°„">íšŒì˜ì‹¤/ê°•ë‹¹/ì„¸ë¯¸ë‚˜ì‹¤/ë¹„ì¦ˆë‹ˆìŠ¤ê³µê°„</option><option value="ìŠ¤í„°ë””ë£¸/ìŠ¤í„°ë””ì¹´í˜">ìŠ¤í„°ë””ë£¸/ìŠ¤í„°ë””ì¹´í˜</option><option value="ê³µìœ í•˜ìš°ìŠ¤">ê³µìœ í•˜ìš°ìŠ¤</option><option value="ì´¬ì˜ìŠ¤íŠœë””ì˜¤ëŒ€ì—¬">ì´¬ì˜ìŠ¤íŠœë””ì˜¤ëŒ€ì—¬</option>
+			</select>
+		</div> -->
+		<input type="text" class="searchWord filter " placeholder="í•„í„° ì„ íƒ" >
+		<!-- filter ë²„íŠ¼  -->
+		
+		<div class="rightWrap filter" style="display: flex; border: solid 1px lime;">
+			<!-- map ë²„íŠ¼  -->
+			<button  class="btnMap btn btn-primary btn-icon-split "  >ì§€ë„ on</button>
+			<!-- map ë²„íŠ¼  -->
+			
+			<!-- ì •ë ¬ ë²„íŠ¼  -->
+			<ul class="ml-auto" style="    list-style: none;">
+				<li class="dropdown">
+					<a class="btnSort nav-link dropdown-toggle " href="#" id="navbarDropdown" 	data-toggle="dropdown" aria-expanded="false"
+						style="width:100px; border: solid 1px black;"	>
+			             ì •ë ¬
+			       	</a>
+					<div class="dropdown-menu dropdown-menu-right animated--fade-in show" style="position: absolute; transform: translate3d(0px, -104px, 0px); top: 0px; left: 0px; will-change: transform;">
+				       <a class="dropdown-item" href="#">ê°€ê²©ìˆœ</a>
+				       <a class="dropdown-item" href="#">í‰ì ìˆœ</a>
+				       <a class="dropdown-item" href="#">ì¶”ì²œìˆœ</a>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
+		<!-- ì •ë ¬ ë²„íŠ¼  -->
+
+	<!-- ì§€ë„ -->
 	<div class="imgMap">
-	<h1>ÁöµµÀÔ´Ï´Ù</h1>
+	<h1>ì§€ë„ì…ë‹ˆë‹¤</h1>
 	</div>
+	<!-- ì§€ë„ -->
+	
+	<!-- ê²°ê³¼ ëª©ë¡ -->
 	<div class="container searchResultList">
-		<div class="item">
-			<div class="mainImg">
-				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
-			</div>
-			<div class="infoList">
-				<ul class="meta-search">
-					<li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
-					<li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
-					<li><i class="glyphicon glyphicon-tags"></i> <span>People</span></li>
-					<h3>list1</h3>
-				</ul>
-			</div>
+	
+						<div class="best1  bg-gradient-light" >
+							<div class="card-row">
+								<div class="card-col">
+									<a href="#"><img class="img well" src="/resources/img/island.png" alt="" ></a>
+								</div>
+								
+								<div class="card-col">
+										<div class="card-body well">ì¥ì†Œ ì´ë¦„</div>
+										<div class="card-body well">ì¥ì†Œ ìœ„ì¹˜</div>
+										<div class="card-body well">ì¥ì†Œ í‰ì </div>
+								</div>
+							</div>
+							<div class="card-row">
+									<div class="card-intro well">ì¥ì†Œ ì´ë¦„</div>
+							</div>
+						</div>
+						
+						
+						<div class="best1  bg-gradient-light" >
+							<div class="card-row">
+								<div class="card-col">
+									<a href="#"><img class="img well" src="/resources/img/island.png" alt="" ></a>
+								</div>
+								
+								<div class="card-col">
+										<div class="card-body well">ì¥ì†Œ ì´ë¦„</div>
+										<div class="card-body well">ì¥ì†Œ ìœ„ì¹˜</div>
+										<div class="card-body well">ì¥ì†Œ í‰ì </div>
+								</div>
+							</div>
+							<div class="card-row">
+									<div class="card-intro well">ì¥ì†Œ ì´ë¦„</div>
+							</div>
+						</div>
+						
+						
+						<div class="best1  bg-gradient-light" >
+							<div class="card-row">
+								<div class="card-col">
+									<a href="#"><img class="img well" src="/resources/img/island.png" alt="" ></a>
+								</div>
+								
+								<div class="card-col">
+										<div class="card-body well">ì¥ì†Œ ì´ë¦„</div>
+										<div class="card-body well">ì¥ì†Œ ìœ„ì¹˜</div>
+										<div class="card-body well">ì¥ì†Œ í‰ì </div>
+								</div>
+							</div>
+							<div class="card-row">
+									<div class="card-intro well">ì¥ì†Œ ì´ë¦„</div>
+							</div>
+						</div>
 		
-		</div>	
-		<div class="item">
-			<div class="mainImg">
-				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
-			</div>
-			<div class="infoList">
-				<ul class="meta-search">
-					<li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
-					<li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
-					<li><i class="glyphicon glyphicon-tags"></i> <span>People</span></li>
-					<h3>list2</h3>
-				</ul>
-			</div>
-		
-		</div>	
-		<div class="item">
+<!-- 		<div class="item">
 			<div class="mainImg">
 				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
 			</div>
@@ -133,10 +263,11 @@ $(function() {
 				</ul>
 			</div>
 		
-		</div>	
+		</div> -->	
 	
 	</div>
+	<!-- ê²°ê³¼ ëª©ë¡ -->
 	
-</div>
+</div><!-- ì»¨í…Œì´ë„ˆ -->
 </body>
 </html>

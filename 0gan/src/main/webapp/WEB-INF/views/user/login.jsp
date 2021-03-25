@@ -1,21 +1,118 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+
+<!-- Bootstrap core CSS -->
+<link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!--CDN ë§í¬ -->
+
+
+    <!-- Custom fonts for this template-->
+    <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript-->
+    <script src="../resources/vendor/jquery/jquery.min.js"></script>
+    <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../resources/js/sb-admin-2.min.js"></script>
+
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.signup{
-	text-align: right;
+
+body{
+background-color: #F8F9FC; 
+}
+.row , .col{
+	width: 100%;
+}
+.header{ 
+margin: 50px auto; 
+position:relative; 
+width: 70%; height: 150px;   
+display: flex;
+}
+.logo {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+}
+.menuIcon{
+position:absolute; right:0px;
+cursor: pointer;
+}
+.container {
+    display: flex;
+    width: 80%;
+    top: 50px;
+    margin: 50px auto;
+}
+.inputWrap {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin: 20px 0;
+    background-color: white;
+}
+.btnLogin {
+    width: 100%;
+    height: 50px;
+    /* display: flex; */
+    margin: 20px 0;
+	padding: 13px 0;
+}
+.icon{
+	align-items: center;
+	margin: auto 0;
+}
+.keep{
+	width: 50%;
+}
+.input{
+	height: 50px;
+	width: auto;
+}
+.btn-circle {
+    border-radius: 100%;
+    /* display: block; */
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin: 25px;
+    cursor: pointer;
+}
+.centerIcon {
+    margin: 100px;
+    width: 202px;
+    height: 202px;
+    display: flex;
+}
+.keepWrap{
+	width:100%;
+	display:flex;
+}
+.input {
+    height: 100%;
+    width: auto;
+	border:none;
 }
 /* The switch - the box around the slider */
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 24px;
-  vertical-align:middle;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    vertical-align: middle;
 }
 
 /* Hide default HTML checkbox */
@@ -69,11 +166,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.container{
-	display: flex;
-	width: 80%;
-	float:none; margin:0 auto;
-}
 </style>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
@@ -81,74 +173,106 @@ input:checked + .slider:before {
 <script type="text/javascript">
 var check = $("input[type='checkbox']");
 check.click(function(){
-	$("#signupIcon").toggle();
+	$(".signup").toggle();
 });
 </script>
 </head>
 <body>
-
-	<div id="header">
-		<span id="logo">logo</span>
-		<span id="menu">menu</span>
+<div class="header">
+	<div class="logo ">
+		<img class="logo" src="" >ì´ë¯¸ì§€
 	</div>
-	<div class="container">
-			<div class="item" style="width: 40%; height: 300px;">È¸¿ø·Î±×ÀÎ
-				<div class="row">
-					<div id="email">
-							<div class="input">
-								<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-  								<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-								</svg> 
-								
-								<input height="20px" width="250px" type="text" class="form-control"	placeholder="Email" aria-label="Input group example"	aria-describedby="basic-addon1">
-							</div>
-					</div>
-					<div id="pwd">
-							<div class="input">
-								<span class="input-group-text" id="basic-addon1" style="background-color: gray; "> 
-								<svg xmlns="http://www.w3.org/2000/svg"  width="30" height="30"	fill="currentColor" class="bi bi-key" viewBox="0 -3 15 15"><!-- viewBox ¼ıÀÚ°¡ ÀÛÀ» ¼ö·Ï Ä¿Áü -->
-								<path	d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
-						  		<path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-								</svg>
-								</span> 
-								
-								<input height="20px" width="280px" type="text" class="form-control"	placeholder="Password" aria-label="Input group example"	aria-describedby="basic-addon1">
-							</div>
-					</div>
-					<div id="keep">
-						<span id="keepLogin" class="signup" >
-							<label class="switch">
-							  <input type="checkbox">
-							  <span class="slider round"></span>
-							</label>·Î±×ÀÎ»óÅÂÀ¯Áö
-						</span>
-						<span id="keepId" class="signup">
-							<label class="switch">
-							  <input type="checkbox">
-							  <span class="slider round"></span>
-							</label
-							>¾ÆÀÌµğÀúÀå
-						</span>
-					</div>
-					<button id="btnLogin" style="width:280px;">·Î±×ÀÎ</button>
-				</div>
-				<div class="row">
-					<span id="findIcon">		</span>
-					<a href="#" id="findId">¾ÆÀÌµğ</a>
-					<a href="#" id="findPwd">ºñ¹Ğ¹øÈ£ Ã£±â</a>
-					<a href="#" id="btnSignup" class="signup"></a>
-				</div>
+	<div  class="menuIcon" >
+		<i class="fas fa-user-cog fa-3x  "></i>
+		<i class="fas fa-bars fa-3x "></i>
+	</div>
+		
+		<!-- Modal -->
+  		<div class="modal fade" class="myModal2" role="dialog">
+    	<div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"> </button>
+          <h4 class="modal-title">Modal without Overlay</h4>
+        </div>
+        <div class="modal-body">
+          <p>This modal has no overlay.</p>
+          <p><strong>Note:</strong> You cannot click outside of this modal to close it.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div> 
+<div class="container">
+	<div class="login  col" ><h3 class="  text-center border-bottom-primary">íšŒì›ë¡œê·¸ì¸</h3>
+	
+		<div class="row  login">
+		<!-- email input -->
+			<div class="row inputWrap email">
+				<span class="btn-primary text-white-50" style="width: 50px; padding: 7px;">
+        			<i class="far fa-user  fa-2x icon"></i>
+        		</span>
+        		<input type="text" class="input" placeholder="Email" style="border:none">
 			</div>
 			
-			<div class="item" style="width: 40%; height: 300px;">¼Ò¼È ·Î±×ÀÎ
-				<div class="row"> 
-					<img  style="width: 100px; height: 100px;" class="item" alt="" src="resources/img/bibimbab.png">
-					<img  style="width: 100px; height: 100px;"class="item" alt="" src="resources/img/bibimbab.png">
-					<img  style="width: 100px; height: 100px;"class="item" alt="" src="resources/img/bibimbab.png">
-					<img  style="width: 100px; height: 100px;"class="item" alt="" src="resources/img/bibimbab.png">
-					
+		<!-- pwd input -->
+			<div class="row inputWrap pwd">
+				<span class="btn-primary text-white-50" style="width: 50px; padding: 7px;">
+        			<i class="fas fa-key  fa-2x icon"></i>
+        		</span>
+        		<input type="text" class="input" placeholder="Password" style="border:none">
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<div class="keepWrap" >
+				<div class="keep keepLogin" class="signup" >
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>ë¡œê·¸ì¸ìƒíƒœìœ ì§€
+				</div>
+				<div class="keep keepId" class="signup">
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label	>ì•„ì´ë””ì €ì¥
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			<a href="#" class="btn btn-primary  btnLogin">
+            	<span class="btn-group-lg text-center">ë¡œê·¸ì¸</span>
+            </a>
+		</div>
+		<div class="row" >
+			<div class="col-8">
+				<i class="fa fa-unlock fa-2x icon"></i>
+				<a href="#" class="findId" >ì•„ì´ë”” / </a>
+				<a href="#" class="findPwd">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a>
+			</div>
+			<div class="col-4">
+				<i class="fas fa-user-circle fa-2x icon"></i>
+				<a href="#" class="btnSignup">íšŒì›ê°€ì…</a>
+			</div>
+		</div>
 	</div>
+			
+	<div class="social  col" ><h3  class=" text-center border-bottom-primary">ì†Œì…œ ë¡œê·¸ì¸</h3>
+		<div class="row centerIcon"> 
+			<img  class=" btn-circle" alt="" src="resources/img/loginIcon/facebook.png">
+			<img  class=" btn-circle" alt="" src="resources/img/loginIcon/google+.png">
+			<img  class=" btn-circle" alt="" src="resources/img/loginIcon/kakaotalk.png">
+			<img  class=" btn-circle" alt="" src="resources/img/loginIcon/naver.png">
+		</div>
+	</div>
+</div>
 </body>
 </html>
