@@ -39,7 +39,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-text mx-3">0gan logo</div>
             </a>
 
@@ -85,10 +85,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item active" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item" href="#"> 도움말 관리 </a>
+            <a class="collapse-item active" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 이벤트 관리 </a>
-            <a class="collapse-item" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -151,20 +151,20 @@
     <div class="card-body">
         <div class="card container-fluid w-75 mb-5">
             <div class="col-md-12">
-                <label class="mt-4">제목</label> <label class="mt-4">{공지사항제목}</label>
+                <label class="mt-4">제목</label> <label class="mt-4">${noti.noti_title }</label>
             </div>
             <hr>
             <label class="col-md-12 mb-3">내용</label>
-            <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">{공지사항 내용}</textarea>
+            <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">${noti.noti_content }</textarea>
             <div class="col-md-12 mt-4">
                 <div class="filebox">
                     <lable class="mt-4">첨부파일</lable> &nbsp;
-                    <input class="upload-name" value="{첨부파일명}" disabled="disabled">
+                    <input class="upload-name" value="${noti.noti_file }" disabled="disabled">
                 </div>
             </div>
             <hr>
             <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button">등록</button>
+                <a href="adminNoti.do"><button class="btn btn-primary me-md-2" type="button">목록</button></a>
             </div>
         </div>
     </div>
@@ -213,7 +213,7 @@ aria-hidden="true">
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
         </div>
     </div>
 </div>

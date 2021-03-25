@@ -149,15 +149,15 @@
         <div class="card-body">
             <div class="card container-fluid w-75 mb-5">
                 <div class="col-md-12">
-                    <label class="mt-4">제목</label> <label class="mt-4">{문의 제목}</label>
+                    <label class="mt-4">제목</label> <label class="mt-4">${question.adm_que_title }</label>
                 </div>
                 <hr>
                 <label class="col-md-12 mb-3">내용</label>
-                <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">{문의 내용}</textarea>
+                <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">${question.adm_que_content }</textarea>
                 <div class="col-md-12 mt-4">
                     <div class="filebox">
                         <lable class="mt-4">첨부파일</lable> &nbsp;
-                        <input class="upload-name" value="{첨부파일명}" disabled="disabled">
+                        <input class="upload-name" value="${question.adm_que_file }" disabled="disabled">
                     </div>
                     <br>
                 </div>
@@ -166,25 +166,31 @@
         <hr style="width: 75%;" >
         <div class="card-body">
             <div class="card container-fluid w-75 mb-5">
-                <div class="col-md-12">
-                    <label class="mt-4">제목</label>
-                    <input type="text" class="form-control-text">
-                </div>
-                <hr>
-                <label class="col-md-12 mb-3">내용</label>
-                <textarea class="form-control" rows="7" style="resize: none;">{답변내용}</textarea>
-                <div class="col-md-12 mt-4">
-                    <div class="filebox">
-                        <lable class="mt-4">첨부파일</lable> &nbsp;
-                        <input class="upload-name" value="{첨부파일}" disabled="disabled">
-                        <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
-                        <input type="file" id="ex_filename" class="upload-hidden">
-                    </div>
-                </div>
-                <hr>
-                <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-                    <button class="btn btn-primary me-md-2" type="button">수정</button>
-                </div>
+	            <form action="adminAnswerUpdate.do" method="post" enctype="multipart/form-data">
+	                <div class="col-md-12">
+	                <input type="hidden" name="adm_ans_num" value="${answer.adm_ans_num }">
+	                <input type="hidden" name="user_num" value="${answer.user_num }">
+	                <input type="hidden" name="adm_que_num" value="${answer.adm_que_num }">
+	                    <label class="mt-4">제목</label>
+	                    <input type="text" class="form-control-text" value="${answer.adm_ans_title }" name="adm_ans_title">
+	                </div>
+	                <hr>
+	                <label class="col-md-12 mb-3">내용</label>
+	                <textarea class="form-control" rows="7" name="adm_ans_content" style="resize: none;">${answer.adm_ans_content }</textarea>
+	                <div class="col-md-12 mt-4">
+	                    <div class="filebox">
+	                        <lable class="mt-4">첨부파일</lable> &nbsp;
+	                        <input class="upload-name" value="${answer.adm_ans_file }" disabled="disabled">
+	                        <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
+	                        <input type="file" id="ex_filename" class="upload-hidden" name="uploadFile">
+	                        <input type="hidden" name="adm_ans_file" value="${answer.adm_ans_file }">
+	                    </div>
+	                </div>
+	                <hr>
+	                <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+	                    <button class="btn btn-primary me-md-2" type="submit">수정</button>
+	                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-text mx-3">0gan logo</div>
             </a>
 
@@ -82,10 +82,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item" href="#"> 도움말 관리 </a>
+            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item active" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item active" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -148,15 +148,15 @@
     <div class="card-body">
         <div class="card container-fluid w-75 mb-5">
             <div class="col-md-12">
-                <label class="mt-4">제목</label> <label class="mt-4">{문의 제목}</label>
+                <label class="mt-4">제목</label> <input type="text" class="form-control-text" readonly="readonly" value=${question.adm_que_title }>
             </div>
             <hr>
             <label class="col-md-12 mb-3">내용</label>
-            <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">{문의 내용}</textarea>
+            <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">${question.adm_que_content }</textarea>
             <div class="col-md-12 mt-4">
                 <div class="filebox">
                     <lable class="mt-4">첨부파일</lable> &nbsp;
-                    <input class="upload-name" value="{첨부파일명}" disabled="disabled">
+                    <input class="upload-name" value="${question.adm_que_file }" disabled="disabled">
                 </div>
                 <br>
             </div>
@@ -165,25 +165,29 @@
     <hr>
     <div class="card-body">
         <div class="card container-fluid w-75 mb-5">
-            <div class="col-md-12">
-                <label class="mt-4">제목</label>
-                <input type="text" class="form-control-text" readonly="readonly">
-            </div>
-            <hr>
-            <label class="col-md-12 mb-3">내용</label>
-            <textarea class="form-control" rows="7" style="resize: none;"></textarea>
-            <div class="col-md-12 mt-4">
-                <div class="filebox">
-                    <lable class="mt-4">첨부파일</lable> &nbsp;
-                    <input class="upload-name" value="파일선택" disabled="disabled">
-                    <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
-                    <input type="file" id="ex_filename" class="upload-hidden">
-                </div>
-            </div>
-            <hr>
-            <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button">등록</button>
-            </div>
+	        <form action="adminAnswerInsert.do" method="post" enctype="multipart/form-data">
+	        	<input type="hidden" name="adm_que_num" value="${question.adm_que_num }">
+	        	<input type="hidden" name="user_num" value="${question.user_num }">
+	            <div class="col-md-12">
+	                <label class="mt-4">제목</label>
+	                <input type="text" class="form-control-text" name="adm_ans_title">
+	            </div>
+	            <hr>
+	            <label class="col-md-12 mb-3">내용</label>
+	            <textarea class="form-control" rows="7" name="adm_ans_content" style="resize: none;"></textarea>
+	            <div class="col-md-12 mt-4">
+	                <div class="filebox">
+	                    <lable class="mt-4">첨부파일</lable> &nbsp;
+	                    <input class="upload-name" value="파일선택" disabled="disabled">
+	                    <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
+	                    <input type="file" id="ex_filename" class="upload-hidden" name="uploadFile">
+	                </div>
+	            </div>
+	            <hr>
+	            <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+	                <button class="btn btn-primary me-md-2" type="submit">등록</button>
+	            </div>
+	        </form>    
         </div>
     </div>
 
@@ -231,7 +235,7 @@ aria-hidden="true">
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
         </div>
     </div>
 </div>

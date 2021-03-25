@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE>
 <html>
 
 <head>
@@ -23,7 +24,7 @@
     <link href="../resources/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -82,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item" href="#"> 도움말 관리 </a>
+            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item active" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item active" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -160,33 +161,18 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Shou Itou</td>
-                        <td>Regional Marketing</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                            <font color="#4e73df">답변완료</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Michelle House</td>
-                        <td>Integration Specialist</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                           <font color="#e74a3b">답변대기</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Michelle House</td>
-                        <td>Integration Specialist</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                           <font color="#4e73df">답변완료</font>
-                        </td>
-                    </tr>
+                	<c:forEach var="list" items="${list }">
+                		<tr>
+                			<td>${list.adm_que_num }</td>
+                			<td><a href="adminAnswerDetail.do?adm_que_num=${list.adm_que_num }">${list.adm_que_title }</a></td>
+                			<td>${list.adm_que_writer }</td>
+                			<td>${list.adm_que_date }</td>
+                			<td>
+                			<c:if test="${list.adm_que_check=='Y' }"><font color="#4e73df">답변완료</font></c:if>
+                			<c:if test="${list.adm_que_check=='N' }"><font color="#e74a3b">답변대기</font></c:if>
+                			</td>
+                		</tr>
+                	</c:forEach>
             </tbody>
         </table>
     </div>

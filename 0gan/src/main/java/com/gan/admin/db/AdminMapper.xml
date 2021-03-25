@@ -6,9 +6,109 @@
 	<!-- # 공지사항 관련 -->
 	<!-- 공지사항List by 박권익 -->
 	<select id="selectAllNoti" resultType="notiVo">
-		select noti_num, noti_title, noti_date
-		from (select rownum rank, noti_num, noti_title, noti_date
-				from noti_tb)
+		select noti_num,
+		noti_title, noti_date
+		from (select rownum rank, noti_num, noti_title,
+		noti_date
+		from noti_tb)
 		order by rank desc
 	</select>
-</mapper>
+	<!-- 공지사항 VO by 박권익 -->
+	<select id="selectNoti" resultType="notiVo">
+		select * from noti_tb where
+		noti_num = #{noti_num}
+	</select>
+	<!-- 공지사항 등록 by 박권익 -->
+	<insert id="insertNoti">
+		insert into noti_tb values(seq_noti.nextval,
+		#{noti_title}, #{noti_content}, #{noti_file}, systimestamp)
+	</insert>
+	<!-- 공지사항 삭제 by 박권익 -->
+	<delete id="deleteNoti">
+		delete noti_tb where noti_num = #{noti_num}
+	</delete>
+	<!-- 공지사항 수정 by 박권익 -->
+	<update id="updateNoti">
+		update noti_tb
+		set noti_title = #{noti_title},
+		noti_content = #{noti_content}, noti_file = #{noti_file}, noti_date =
+		systimestamp
+		where noti_num = #{noti_num}
+	</update>
+
+	<!-- # 도움말 관련 -->
+	<!-- 도움말List by 박권익 -->
+	<select id="selectAllFaq" resultType="FaqVo">
+		select faq_num, faq_title,
+		faq_category from (select rownum rank, faq_num, faq_title,
+		faq_category from faq_tb) order by rank desc
+	</select>
+	<!-- 도움말 VO by 박권익 -->
+	<select id="selectFaq" resultType="FaqVo">
+		select * from faq_tb where
+		faq_num = #{faq_num}
+	</select>
+	<!-- 도움말 등록 -->
+	<insert id="insertFaq">
+		insert into faq_tb values(seq_faq.nextval,
+		#{faq_title}, #{faq_content}, #{faq_category}, #{faq_file})
+	</insert>
+	<!-- 도움말 삭제 by 박권익 -->
+	<delete id="deleteFaq">
+		delete faq_tb where faq_num = #{faq_num}
+	</delete>
+	<!-- 도움말 수정 by 박권익 -->
+	<update id="updateFaq">
+		update faq_tb
+		set faq_title = #{faq_title},
+		faq_content = #{faq_content}, faq_category = #{faq_category}, faq_file
+		= #{faq_file}
+		where faq_num = #{faq_num}
+	</update>
+
+	<!-- # 1대1문의 관련 -->
+	<!-- 1대1문의List by 박권익 -->
+	<select id="selectAllAdmQue" resultType="admQueVo">
+		select adm_que_num,
+		user_num, adm_que_writer,
+		adm_que_title, adm_que_content, adm_que_file,
+		adm_que_date,
+		adm_que_check
+		from (select rownum rank, adm_que_num,
+		user_num, adm_que_writer,
+		adm_que_title, adm_que_content, adm_que_file,
+		adm_que_date,
+		adm_que_check from adm_que_tb)
+		order by rank desc
+	</select>
+	<!-- 1대1문의 정보 by 박권익 -->
+	<select id="selectAdmQue" resultType="admQueVo">
+		select * from adm_que_tb
+		where adm_que_num = #{adm_que_num}
+	</select>
+	<!-- 1대1문의 답변 정보 by 박권익 -->
+	<select id="selectAdmAns" resultType="admAnsVo">
+		select * from adm_ans_tb
+		where adm_que_num = #{adm_que_num}
+	</select>
+	<!-- 1대1문의 답변 등록 by 박권익 -->
+	<insert id="insertAdmAns">
+		insert into adm_ans_tb values(seq_adm_ans.nextval,
+		#{adm_que_num}, #{user_num}, #{adm_ans_title}, #{adm_ans_content},
+		#{adm_ans_file}, systimestamp)
+	</insert>
+	<!-- 1대1문의 답변 수정 by 박권익 -->
+	<update id="updateAdmAns">
+		update adm_ans_tb
+		set adm_ans_title =
+		#{adm_ans_title}, adm_ans_content = #{adm_ans_content}, adm_ans_file =
+		#{adm_ans_file}, adm_ans_date = systimestamp
+		where adm_que_num =
+		#{adm_que_num}
+	</update>
+	<!-- 1대1문의 답변여부 변경 by 박권익 -->
+	<update id="updateAdmQueCheck">
+		update adm_que_tb set adm_que_check = 'Y' where
+		adm_que_num = #{adm_que_num}
+	</update>
+</mapper> 

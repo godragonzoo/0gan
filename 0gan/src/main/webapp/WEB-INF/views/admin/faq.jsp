@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -82,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item active" href="#"> 도움말 관리 </a>
+            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item active" href="adminFaq.do"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -146,7 +147,7 @@
         </div>
         <div class="card-body">
             <div align="right">
-                <a href="#" class="btn btn-primary btn-icon-split">
+                <a href="adminFaqInsert.do" class="btn btn-primary btn-icon-split">
                     <span class="text">도움말 등록</span>
                 </a>
             </div>
@@ -162,142 +163,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>카테고리</td>
-                            <td>System Architect</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>카테고리</td>
-                            <td>Accountant</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>카테고리</td>
-                            <td>Junior Technical Author</td>
-                            <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>카테고리</td>
-                            <td>Senior Javascript Developer</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>Tatyana Fitzpatrick</td>
-                            <td>카테고리</td>
-                            <td>Regional Director</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Michael Silva</td>
-                            <td>카테고리</td>
-                            <td>Marketing Designer</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Paul Byrd</td>
-                            <td>카테고리</td>
-                            <td>Chief Financial Officer (CFO)</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Gloria Little</td>
-                            <td>카테고리</td>
-                            <td>Systems Administrator</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                        <tr>
-                            <td>Bradley Greer</td>
-                            <td>카테고리</td>
-                            <td>Software Engineer</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-
-                        </tr>
-                        <tr>
-                            <td>Dai Rios</td>
-                            <td>카테고리</td>
-                            <td>Personnel Lead</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>                            </tr>
+                        <c:forEach var="list" items="${list }">
                             <tr>
-                                <td>Jenette Caldwell</td>
-                                <td>카테고리</td>
-                                <td>Development Lead</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                    <span class="text">수정</span>
-                                </a>                                    
-                                <a href="#" class="btn btn-danger btn-icon-split">
+                                <td>${list.faq_num }</td>
+                                <td>${list.faq_category }</td>
+                                <td><a href="adminFaqDetail.do?faq_num=${list.faq_num }">${list.faq_title }</a></td>
+                                <td>
+                                	<a href="adminFaqUpdate.do?faq_num=${list.faq_num }" class="btn btn-success btn-icon-split">
+                                    <span class="text">수정</span></a>                                    
+                                <a href="adminFaqDelete.do?faq_num=${list.faq_num }" class="btn btn-danger btn-icon-split">
                                     <span class="text">삭제</span>
-                                </a></td>
+                                </a>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Yuri Berry</td>
-                                <td>카테고리</td>
-                                <td>Chief Marketing Officer (CMO)</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                    <span class="text">수정</span>
-                                </a>                                    
-                                <a href="#" class="btn btn-danger btn-icon-split">
-                                    <span class="text">삭제</span>
-                                </a></td>
-                            </tr>
-                            <tr>
-                                <td>Caesar Vance</td>
-                                <td>카테고리</td>
-                                <td>Pre-Sales Support</td> <td><a href="#" class="btn btn-success btn-icon-split">
-                                    <span class="text">수정</span>
-                                </a>                                    
-                                <a href="#" class="btn btn-danger btn-icon-split">
-                                    <span class="text">삭제</span>
-                                </a></td>
-                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -345,7 +224,7 @@ aria-hidden="true">
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
         </div>
     </div>
 </div>

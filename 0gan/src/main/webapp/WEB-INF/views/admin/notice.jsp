@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-text mx-3">0gan logo</div>
             </a>
 
@@ -83,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item active" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item" href="#"> 도움말 관리 </a>
+            <a class="collapse-item active" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -150,7 +150,7 @@
 
         <div class="card-body">
             <div align="right">
-            <a href="#" class="btn btn-primary btn-icon-split">
+            <a href="adminNotiInsert.do" class="btn btn-primary btn-icon-split">
                 <span class="text">공지사항 등록</span>
             </a>
             </div>
@@ -169,12 +169,12 @@
                         <c:forEach var="list" items="${list }">
                         <tr>
                         	<td>${list.noti_num }</td>
-                        	<td>${list.noti_title }</td>
+                        	<td><a href="adminNotiDetail.do?noti_num=${list.noti_num }">${list.noti_title }</a></td>
                         	<td>${list.noti_date }</td>
-                        	<td><a href="admin_noti_update?noti_num=${list.noti_num }" class="btn btn-success btn-icon-split">
+                        	<td><a href="adminNotiUpdate.do?noti_num=${list.noti_num }" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
-                            <a href="admin_noti_update?noti_num=${list.noti_num }" class="btn btn-danger btn-icon-split">
+                            <a href="adminNotiDelete.do?noti_num=${list.noti_num }" class="btn btn-danger btn-icon-split">
                                 <span class="text">삭제</span>
                             </a></td>
                         </tr>
@@ -226,7 +226,7 @@ aria-hidden="true">
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
         </div>
     </div>
 </div>
