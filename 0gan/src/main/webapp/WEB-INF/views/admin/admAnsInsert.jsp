@@ -148,7 +148,7 @@
     <div class="card-body">
         <div class="card container-fluid w-75 mb-5">
             <div class="col-md-12">
-                <label class="mt-4">제목</label> <input type="text" class="form-control-text" readonly="readonly" value=${question.adm_que_title }>
+                <label class="mt-4">제목</label> <label class="mt-4">${question.adm_que_title }</label>
             </div>
             <hr>
             <label class="col-md-12 mb-3">내용</label>
