@@ -133,56 +133,130 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">기획전</h1>
+    <h1 class="h3 mb-4 text-gray-800">기획전</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">게시판 관리</a></li>
         <li class="breadcrumb-item active" aria-current="page">기획전 관리</li>
+        <li class="breadcrumb-item active" aria-current="page">관리</li>
     </ol>
 </nav>
+
+<div class="card container-fluid w-75 shadow mt-4 mb-4">
+   <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary"> 기획전 관리 </h6>
+</div>
+
+<div class="card-body">
+    <div class="card container-fluid w-75 mb-5">
+    <form action="adminThemeUpdate.do" method="post" enctype="multipart/form-data">
+    	<input type="hidden" name="theme_num" value="${theme.theme_num }">
+	        <div class="col-md-12">
+	            <label class="mt-4">제목</label>
+	            <input type="text" class="form-control-text" name="theme_title" value="${theme.theme_title }">
+	        </div>
+	        <hr>
+	        <label class="col-md-12 mb-3">내용</label>
+	        <textarea class="form-control" rows="7" name="theme_content" style="resize: none;">${theme.theme_content }</textarea>
+	        <div class="col-md-12 mt-4">
+	            <div class="filebox">
+	                <lable class="mt-4">첨부파일</lable> &nbsp;
+	                <input class="upload-name" value="${theme.theme_file }" disabled="disabled">
+	                <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
+	                <input type="file" id="ex_filename" class="upload-hidden" name="uploadFile">
+	                <input type="hidden" name="theme_file" value="${theme.theme_file }">
+	            </div>
+	        </div>
+	        <hr>
+	        <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+	            <button class="btn btn-primary me-md-2" type="submit">수정</button>
+	        </div>
+        </form>
+    </div>
+</div>
+<hr>
+<br>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">기획전 목록</h6>
+        <h6 class="m-0 font-weight-bold text-primary">공간리스트</h6>
     </div>
     <div class="card-body">
-        <div align="right">
-            <a href="adminThemeInsert.do" class="btn btn-primary btn-icon-split">
-                <span class="text">기획전 등록</span>
-            </a>
-        </div>
-        <br>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th style="width: 10%;" id="th_num" >번호</th>
-                        <th style="width: 45%;">제목</th>
-                        <th>작성일</th>
-                        <th style="width: 18%;">기능</th>
+                        <th>공간번호</th>
+                        <th>공간이름</th>
+                        <th>공간유형</th>
+                        <th>공간주소</th>
+                        <th>기능</th>
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="list" items="${list }">
-					<tr>
-						<td>${list.theme_num }</td>
-						<td>${list.theme_title }</td>
-						<td>${list.theme_date }</td>
-						<td><a href="adminThemeUpdate.do?theme_num=${list.theme_num }" class="btn btn-success btn-icon-split">
-                            <span class="text">관리</span>
-                        </a>                                    
-                        <a href="adminThemeDelete.do?theme_num=${list.theme_num }" class="btn btn-danger btn-icon-split">
-                            <span class="text">삭제</span>
-                        </a></td>
-					</tr>                
+                <c:forEach var="place" items="${place }">
+                    <tr>
+                        <td>${place.PLACE_NUM }</td>
+                        <td>${place.PLACE_NAME }</td>
+                        <td>${place.PLACE_CATEGORY }</td>
+                        <td>${place.PLACE_ADDR }</td>
+                        <td><a href="adminThemePlaceInsert.do?theme_num=${theme.theme_num }&place_num=${place.PLACE_NUM }"><button class="btn btn-primary me-md-2" type="button">등록</button></a></td>
+                    </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<hr>
+<br>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">기획전리스트</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>공간번호</th>
+                        <th>공간이름</th>
+                        <th>공간유형</th>
+                        <th>공간주소</th>
+                        <th>기능</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <c:forEach var="theme_place" items="${theme_place }">
+                   <tr>
+                    <td>${theme_place.PLACE_NUM }</td>
+                    <td>${theme_place.PLACE_NAME }</td>
+                    <td>${theme_place.PLACE_CATEGORY }</td>
+                    <td>${theme_place.PLACE_ADDR }</td>
+                    <td><a href="adminThemePlaceDelete.do?theme_num=${theme.theme_num }&place_num=${theme_place.PLACE_NUM }" class="btn btn-danger btn-icon-split">
+                        <span class="text">삭제</span>
+                    </a></td>
+                </c:forEach>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
 
 </div>
+</div> 
+</div>
+<
+</div>
+
+
+
+
+
+
 <!-- /.container-fluid -->
 
 </div>

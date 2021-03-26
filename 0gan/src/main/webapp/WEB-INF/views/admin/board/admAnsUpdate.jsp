@@ -82,10 +82,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item" href="#"> 도움말 관리 </a>
-            <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item active" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
+            <a class="collapse-item" href="adminTheme.do"> 기획전 관리 </a>
+            <a class="collapse-item active" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>

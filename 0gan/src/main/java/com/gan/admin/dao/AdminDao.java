@@ -1,6 +1,7 @@
 package com.gan.admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -164,6 +165,32 @@ public class AdminDao {
 	}
 	
 	/**
+	 * 기획전 정보 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
+	public ThemeVo selectTheme(int theme_num) {
+		return DBManager.selectTheme(theme_num);
+	}
+	/**
+	 * 기획전 등록 by 박권익
+	 * @param theme
+	 * @return
+	 */
+	public int insertTheme(ThemeVo theme) {
+		return DBManager.insertTheme(theme);
+	}
+	
+	/**
+	 * 기획전 수정 by 박권익
+	 * @param theme
+	 * @return
+	 */
+	public int updateTheme(ThemeVo theme) {
+		return DBManager.updateTheme(theme);
+	}
+	
+	/**
 	 * 기획전 삭제 by 박권익
 	 * @param theme_num
 	 * @return
@@ -171,4 +198,40 @@ public class AdminDao {
 	public int deleteTheme(int theme_num) {
 		return DBManager.deleteTheme(theme_num);
 	}
+	
+	/**
+	 * 모든 장소 정보 by 박권익
+	 * @return
+	 */
+	public List<Map> selectPlace(int theme_num){
+		return DBManager.selectPlace(theme_num);
+	}
+	/**
+	 * 기회전에 등록된 장소 정보 가져오기 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
+	public List<Map> selectAllThemePlace(int theme_num){
+		return DBManager.selectAllThemePlace(theme_num);
+	}
+	
+	/**
+	 * 기획전에 장소 등록 by 박권익
+	 * @param theme_num
+	 * @param place_num
+	 * @return
+	 */
+	public int insertThemePlace(int theme_num, int place_num) {
+		return DBManager.insertThemePlace(theme_num, place_num);
+	}
+	
+	/**
+	 * 기획전에 등록한 장소 삭제 by 박권익
+	 * @param place_num
+	 * @return
+	 */
+	public int deleteThemePlace(int theme_num, int place_num) {
+		return DBManager.deleteThemePlace(theme_num, place_num);
+	}
+
 }

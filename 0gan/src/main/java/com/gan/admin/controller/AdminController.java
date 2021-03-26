@@ -23,6 +23,7 @@ import com.gan.admin.dao.AdminDao;
 import com.gan.admin.vo.AdmAnsVo;
 import com.gan.admin.vo.FaqVo;
 import com.gan.admin.vo.NotiVo;
+import com.gan.admin.vo.ThemeVo;
 import com.gan.util.RenameUtil;
 
 @Controller
@@ -99,11 +100,9 @@ public class AdminController {
 		}
 		noti.setNoti_file(noti_file);
 		int re = dao.insertNori(noti);
-		if (re == 1) {
+		mav.setViewName("redirect:/adminError.do");
+		if (re == 1)
 			mav.setViewName("redirect:/adminNoti.do");
-		} else {
-			mav.setViewName("redirect:/adminError.do");
-		}
 		return mav;
 	}
 
@@ -132,10 +131,11 @@ public class AdminController {
 			noti.setNoti_file(noti_file);
 		}
 
-		FileOutputStream fos = null;
 		int re = dao.updateNoti(noti);
+		mav.setViewName("redirect:/adminError.do");
 		if (re == 1) {
 			if (!"".equals(noti_file)) {
+				FileOutputStream fos = null;
 				try {
 					byte[] data = uploadFile.getBytes();
 					fos = new FileOutputStream(path + "/" + noti_file);
@@ -154,8 +154,6 @@ public class AdminController {
 				file.delete();
 			}
 			mav.setViewName("redirect:/adminNoti.do");
-		} else {
-			mav.setViewName("redirect:/adminError.do");
 		}
 		return mav;
 	}
@@ -171,12 +169,11 @@ public class AdminController {
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		String noti_file = dao.selectNoti(noti_num).getNoti_file();
 		int re = dao.deleteNoti(noti_num);
+		mav.setViewName("redirect:/adminError.do");
 		if (re == 1) {
 			mav.setViewName("redirect:/adminNoti.do");
 			File file = new File(path + "/" + noti_file);
 			file.delete();
-		} else {
-			mav.setViewName("redirect:/adminError.do");
 		}
 		return mav;
 	}
@@ -248,11 +245,9 @@ public class AdminController {
 		}
 		faq.setFaq_file(faq_file);
 		int re = dao.insertFaq(faq);
-		if (re == 1) {
+		mav.setViewName("redirect:/adminError.do");
+		if (re == 1)
 			mav.setViewName("redirect:/adminFaq.do");
-		} else {
-			mav.setViewName("redirect:/adminError.do");
-		}
 		return mav;
 	}
 
@@ -286,11 +281,11 @@ public class AdminController {
 			faq.setFaq_file(faq_file);
 		}
 
-		FileOutputStream fos = null;
 		int re = dao.updateFaq(faq);
+		mav.setViewName("redirect:/adminError.do");
 		if (re == 1) {
 			if (!"".equals(faq_file)) {
-
+				FileOutputStream fos = null;
 				try {
 					byte[] data = uploadFile.getBytes();
 					fos = new FileOutputStream(path + "/" + faq_file);
@@ -309,8 +304,6 @@ public class AdminController {
 				file.delete();
 			}
 			mav.setViewName("redirect:/adminFaqDetail.do?faq_num=" + faq.getFaq_num());
-		} else {
-			mav.setViewName("redirect:/adminError.do");
 		}
 		return mav;
 	}
@@ -323,16 +316,14 @@ public class AdminController {
 	@RequestMapping("/adminFaqDelete.do")
 	public ModelAndView deletesAdminFaq(int faq_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqDelete");
-		FaqVo faq = dao.selectFaq(faq_num);
 		String path = request.getSession().getServletContext().getRealPath("/upload");
-		String faq_file = faq.getFaq_file();
+		String faq_file = dao.selectFaq(faq_num).getFaq_file();
 		int re = dao.deleteFaq(faq_num);
+		mav.setViewName("redirect:/adminError.do");
 		if (re == 1) {
 			File file = new File(path + "/" + faq_file);
 			file.delete();
 			mav.setViewName("redirect:/adminFaq.do");
-		} else {
-			mav.setViewName("redirect:/adminError.do");
 		}
 		return mav;
 	}
@@ -373,9 +364,8 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView("/admin/board/admAnsDetail");
 		mav.addObject("question", dao.selectAdmQue(adm_que_num));
 		AdmAnsVo admAns = dao.selectAdmAns(adm_que_num);
-		if (admAns != null) {
+		if (admAns != null)
 			mav.addObject("answer", dao.selectAdmAns(adm_que_num));
-		}
 		return mav;
 	}
 
@@ -424,11 +414,10 @@ public class AdminController {
 
 		int re1 = dao.insertAdmAns(admAns);
 		int re2 = dao.updateAdmQueCheck(admAns.getAdm_que_num());
-		if (re1 == 1 && re2 == 1) {
+		mav.setViewName("redirect:/adminError.do");
+		if (re1 == 1 && re2 == 1)
 			mav.setViewName("redirect:/adminAnswer.do");
-		} else {
-			mav.setViewName("redirect:/adminError.do");
-		}
+
 		return mav;
 	}
 
@@ -464,9 +453,10 @@ public class AdminController {
 			admAns.setAdm_ans_file(adm_ans_file);
 		}
 
-		FileOutputStream fos = null;
 		int re = dao.updateAdmAns(admAns);
+		mav.setViewName("redirect:/adminError.do");
 		if (re == 1) {
+			FileOutputStream fos = null;
 			if (!"".equals(adm_ans_file)) {
 				try {
 					byte[] data = uploadFile.getBytes();
@@ -486,14 +476,13 @@ public class AdminController {
 				file.delete();
 			} // if
 			mav.setViewName("redirect:/adminAnswerDetail.do?adm_que_num=" + admAns.getAdm_que_num());
-		} else {
-			mav.setViewName("redirect:/adminError.do");
 		}
 		return mav;
 	}
-	
+
 	/**
 	 * 기획전 목록 by 박권익
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/adminTheme.do")
@@ -502,20 +491,164 @@ public class AdminController {
 		mav.addObject("list", dao.selectAllTheme());
 		return mav;
 	}
-	
+
+	@RequestMapping(value = "/adminThemeInsert.do", method = RequestMethod.GET)
+	public ModelAndView insertThemeForm() {
+		ModelAndView mav = new ModelAndView("/admin/board/themeInsert");
+		return mav;
+	}
+
+	/**
+	 * 기획전 등록 by 박권익
+	 * 
+	 * @param theme
+	 * @return
+	 */
+	@RequestMapping(value = "adminThemeInsert.do", method = RequestMethod.POST)
+	public ModelAndView insertAdminTheme(ThemeVo theme, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("/admin/board/themeInsert");
+		String path = request.getSession().getServletContext().getRealPath("/upload");
+		MultipartFile uploadFile = theme.getUploadFile();
+		String theme_file = uploadFile.getOriginalFilename();
+		if (uploadFile != null && !"".equals(theme_file)) {
+			FileOutputStream fos = null;
+			theme_file = RenameUtil.getRename(theme_file, path);
+			try {
+				byte[] data = uploadFile.getBytes();
+				fos = new FileOutputStream(path + "/" + theme_file);
+				fos.write(data);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (fos != null)
+						fos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		} // if
+
+		theme.setTheme_file(theme_file);
+		int re = dao.insertTheme(theme);
+		mav.setViewName("redirect:/adminError.do");
+		if (re == 1)
+			mav.setViewName("redirect:/adminTheme.do");
+		return mav;
+	}
+
 	/**
 	 * 기획적 삭제 by 박권익
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/adminThemeDelete.do")
-	public ModelAndView deleteAdminTheme(int theme_num) {
+	public ModelAndView deleteAdminTheme(int theme_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/themeDelete");
+		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String theme_file = dao.selectTheme(theme_num).getTheme_file();
 		int re = dao.deleteTheme(theme_num);
-		if(re==1) {
+		mav.setViewName("redirect:/adminError.do");
+		if (re == 1) {
+			File file = new File(path + "/" + theme_file);
+			file.delete();
 			mav.setViewName("redirect:/adminTheme.do");
-		} else {
-			mav.setViewName("redirect:/adminError.do");
 		}
+		return mav;
+	}
+
+	/**
+	 * 기획전 관리 양식 by 박권익
+	 * 
+	 * @param theme_num
+	 * @return
+	 */
+	@RequestMapping(value = "/adminThemeUpdate.do", method = RequestMethod.GET)
+	public ModelAndView updateThemeForm(int theme_num) {
+		ModelAndView mav = new ModelAndView("/admin/board/themeUpdate");
+		mav.addObject("theme", dao.selectTheme(theme_num));
+		mav.addObject("place", dao.selectPlace(theme_num));
+		mav.addObject("theme_place", dao.selectAllThemePlace(theme_num));
+		return mav;
+	}
+
+	/**
+	 * 기획전 정보 수정 by 박권익
+	 * 
+	 * @param theme
+	 * @param reuqest
+	 * @return
+	 */
+	@RequestMapping(value = "/adminThemeUpdate.do", method = RequestMethod.POST)
+	public ModelAndView updateAdminTheme(ThemeVo theme, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("/admin/board/themeUpdate");
+		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String oldFilename = theme.getTheme_file();
+		MultipartFile uploadFile = theme.getUploadFile();
+		String theme_file = uploadFile.getOriginalFilename();
+		if (!"".equals(theme_file)) {
+			theme_file = RenameUtil.getRename(theme_file, path);
+			theme.setTheme_file(theme_file);
+		}
+		int re = dao.updateTheme(theme);
+		mav.setViewName("redirect:/adminError.do");
+		if (re == 1) {
+			if (!"".equals(theme_file)) {
+				FileOutputStream fos = null;
+				try {
+					byte[] data = uploadFile.getBytes();
+					fos = new FileOutputStream(path + "/" + theme_file);
+					fos.write(data);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if (fos != null)
+							fos.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} // try-finally
+				File file = new File(path + "/" + oldFilename);
+				file.delete();
+			} // if
+			mav.setViewName("redirect:/adminThemeUpdate.do?theme_num=" + theme.getTheme_num());
+		}
+		// if
+		return mav;
+	}
+
+	/**
+	 * 기획전 장소 추가 by 박권익
+	 * 
+	 * @param theme_num
+	 * @param place_num
+	 * @return
+	 */
+	@RequestMapping("/adminThemePlaceInsert.do")
+	public ModelAndView insertThemePlace(int theme_num, int place_num) {
+		ModelAndView mav = new ModelAndView("/admin/board/themePlaceInsert");
+		int re = dao.insertThemePlace(theme_num, place_num);
+		mav.setViewName("redirect:/adminError.do");
+		if (re == 1)
+			mav.setViewName("redirect:/adminThemeUpdate.do?theme_num=" + theme_num);
+		return mav;
+	}
+
+	/**
+	 * 기획전 장소 삭제 by 박권익
+	 * 
+	 * @param theme_num
+	 * @param place_num
+	 * @return
+	 */
+	@RequestMapping("/adminThemePlaceDelete.do")
+	public ModelAndView deleteThemePlace(int theme_num, int place_num) {
+		ModelAndView mav = new ModelAndView("/admin/board/themePlaceDelete");
+		int re = dao.deleteThemePlace(theme_num, place_num);
+		mav.setViewName("redirect:/adminError.do");
+		if (re == 1)
+			mav.setViewName("redirect:/adminThemeUpdate.do?theme_num=" + theme_num);
 		return mav;
 	}
 
@@ -543,7 +676,7 @@ public class AdminController {
 	@RequestMapping("/file/filedownload")
 	public void fileDownload(HttpServletRequest request, HttpServletResponse response) {
 		String path = request.getSession().getServletContext().getRealPath("/upload");
-		String fname = request.getParameter("filename"); //QueryString으로 다운로드 파일이름 받아오기
+		String fname = request.getParameter("filename"); // QueryString으로 다운로드 파일이름 받아오기
 		File file = new File(path + "/" + fname);
 		FileInputStream fis = null; // 파일 읽어오기
 		BufferedInputStream bis = null; // 파일 읽어오기
