@@ -1,11 +1,16 @@
 package com.gan.admin.controller;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +53,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/adminNoti.do")
 	public ModelAndView selectAdminNoti() {
-		ModelAndView mav = new ModelAndView("/admin/notice");
+		ModelAndView mav = new ModelAndView("/admin/board/notice");
 		List<NotiVo> list = dao.selectAllNoti();
 		mav.addObject("list", list);
 		return mav;
@@ -59,7 +64,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminNotiInsert.do", method = RequestMethod.GET)
 	public ModelAndView insertNotiForm() {
-		ModelAndView mav = new ModelAndView("/admin/noticeInsert");
+		ModelAndView mav = new ModelAndView("/admin/board/noticeInsert");
 		return mav;
 	}
 
@@ -109,7 +114,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminNotiUpdate.do", method = RequestMethod.GET)
 	public ModelAndView updateNotiForm(int noti_num) {
-		ModelAndView mav = new ModelAndView("/admin/noticeUpdate");
+		ModelAndView mav = new ModelAndView("/admin/board/noticeUpdate");
 		mav.addObject("noti", dao.selectNoti(noti_num));
 		return mav;
 	}
@@ -162,7 +167,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/adminNotiDelete.do")
 	public ModelAndView deleteAdminNoti(int noti_num, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("/admin/noticeDelete");
+		ModelAndView mav = new ModelAndView("/admin/board/noticeDelete");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		String noti_file = dao.selectNoti(noti_num).getNoti_file();
 		int re = dao.deleteNoti(noti_num);
@@ -183,7 +188,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/adminNotiDetail.do")
 	public ModelAndView detailAdminNoti(int noti_num) {
-		ModelAndView mav = new ModelAndView("/admin/noticeDetail");
+		ModelAndView mav = new ModelAndView("/admin/board/noticeDetail");
 		mav.addObject("noti", dao.selectNoti(noti_num));
 		return mav;
 	}
@@ -195,7 +200,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/adminFaq.do")
 	public ModelAndView selectAdminFaq() {
-		ModelAndView mav = new ModelAndView("/admin/faq");
+		ModelAndView mav = new ModelAndView("/admin/board/faq");
 		List<FaqVo> list = dao.selectAllFaq();
 		mav.addObject("list", list);
 		return mav;
@@ -208,7 +213,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminFaqInsert.do", method = RequestMethod.GET)
 	public ModelAndView insertFaqForm() {
-		ModelAndView mav = new ModelAndView("/admin/faqInsert");
+		ModelAndView mav = new ModelAndView("/admin/board/faqInsert");
 		return mav;
 	}
 
@@ -219,7 +224,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminFaqInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminFaq(FaqVo faq, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("/admin/faqInsert");
+		ModelAndView mav = new ModelAndView("/admin/board/faqInsert");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		MultipartFile uploadFile = faq.getUploadFile();
 		String faq_file = uploadFile.getOriginalFilename();
@@ -258,7 +263,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminFaqUpdate.do", method = RequestMethod.GET)
 	public ModelAndView updateFaqForm(int faq_num) {
-		ModelAndView mav = new ModelAndView("/admin/faqUpdate");
+		ModelAndView mav = new ModelAndView("/admin/board/faqUpdate");
 		mav.addObject("faq", dao.selectFaq(faq_num));
 		return mav;
 	}
@@ -270,7 +275,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminFaqUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateAdminFaq(FaqVo faq, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("/admin/faqUpdate");
+		ModelAndView mav = new ModelAndView("/admin/board/faqUpdate");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		String oldFileNmae = faq.getFaq_file();
 
@@ -303,7 +308,7 @@ public class AdminController {
 				File file = new File(path + "/" + oldFileNmae);
 				file.delete();
 			}
-			mav.setViewName("redirect:/adminFaqDetail.do?faq_num="+faq.getFaq_num());
+			mav.setViewName("redirect:/adminFaqDetail.do?faq_num=" + faq.getFaq_num());
 		} else {
 			mav.setViewName("redirect:/adminError.do");
 		}
@@ -317,7 +322,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/adminFaqDelete.do")
 	public ModelAndView deletesAdminFaq(int faq_num, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("/admin/faqDelete");
+		ModelAndView mav = new ModelAndView("/admin/board/faqDelete");
 		FaqVo faq = dao.selectFaq(faq_num);
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		String faq_file = faq.getFaq_file();
@@ -339,7 +344,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/adminFaqDetail.do")
 	public ModelAndView detailAdminFaq(int faq_num) {
-		ModelAndView mav = new ModelAndView("/admin/faqDetail");
+		ModelAndView mav = new ModelAndView("/admin/board/faqDetail");
 		mav.addObject("faq", dao.selectFaq(faq_num));
 		return mav;
 	}
@@ -351,7 +356,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/adminAnswer.do")
 	public ModelAndView selectAdminAns() {
-		ModelAndView mav = new ModelAndView("/admin/admAns");
+		ModelAndView mav = new ModelAndView("/admin/board/admAns");
 		List<AdmAnsVo> list = dao.selectAllAdmQue();
 		mav.addObject("list", list);
 		return mav;
@@ -365,7 +370,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/adminAnswerDetail.do")
 	public ModelAndView insertAnsForm(int adm_que_num) {
-		ModelAndView mav = new ModelAndView("/admin/admAnsDetail");
+		ModelAndView mav = new ModelAndView("/admin/board/admAnsDetail");
 		mav.addObject("question", dao.selectAdmQue(adm_que_num));
 		AdmAnsVo admAns = dao.selectAdmAns(adm_que_num);
 		if (admAns != null) {
@@ -381,7 +386,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminAnswerInsert.do", method = RequestMethod.GET)
 	public ModelAndView insertAnsForm(int adm_que_num, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("/admin/admAnsInsert");
+		ModelAndView mav = new ModelAndView("/admin/board/admAnsInsert");
 		mav.addObject("question", dao.selectAdmQue(adm_que_num));
 		return mav;
 	}
@@ -393,7 +398,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminAnswerInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminAns(AdmAnsVo admAns, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("/admin/admAnsInsert");
+		ModelAndView mav = new ModelAndView("/admin/board/admAnsInsert");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		MultipartFile uploadFile = admAns.getUploadFile();
 		String adm_ans_file = uploadFile.getOriginalFilename();
@@ -434,7 +439,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminAnswerUpdate.do", method = RequestMethod.GET)
 	public ModelAndView updateAnsForm(int adm_que_num) {
-		ModelAndView mav = new ModelAndView("/admin/admAnsUpdate");
+		ModelAndView mav = new ModelAndView("/admin/board/admAnsUpdate");
 		mav.addObject("question", dao.selectAdmQue(adm_que_num));
 		mav.addObject("answer", dao.selectAdmAns(adm_que_num));
 		return mav;
@@ -442,6 +447,7 @@ public class AdminController {
 
 	/**
 	 * 1대1문의 답변 수정 by 박권익
+	 * 
 	 * @param admAns
 	 * @param request
 	 * @return
@@ -475,11 +481,38 @@ public class AdminController {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-				}//try-finally
-				File file = new File(path+"/"+oldFileName);
+				} // try-finally
+				File file = new File(path + "/" + oldFileName);
 				file.delete();
-			}//if
-			mav.setViewName("redirect:/adminAnswerDetail.do?adm_que_num="+admAns.getAdm_que_num());
+			} // if
+			mav.setViewName("redirect:/adminAnswerDetail.do?adm_que_num=" + admAns.getAdm_que_num());
+		} else {
+			mav.setViewName("redirect:/adminError.do");
+		}
+		return mav;
+	}
+	
+	/**
+	 * 기획전 목록 by 박권익
+	 * @return
+	 */
+	@RequestMapping("/adminTheme.do")
+	public ModelAndView selectAdminTheme() {
+		ModelAndView mav = new ModelAndView("/admin/board/theme");
+		mav.addObject("list", dao.selectAllTheme());
+		return mav;
+	}
+	
+	/**
+	 * 기획적 삭제 by 박권익
+	 * @return
+	 */
+	@RequestMapping("/adminThemeDelete.do")
+	public ModelAndView deleteAdminTheme(int theme_num) {
+		ModelAndView mav = new ModelAndView("/admin/board/themeDelete");
+		int re = dao.deleteTheme(theme_num);
+		if(re==1) {
+			mav.setViewName("redirect:/adminTheme.do");
 		} else {
 			mav.setViewName("redirect:/adminError.do");
 		}
@@ -498,4 +531,60 @@ public class AdminController {
 		return mav;
 	}
 
+	/**
+	 * 파일 다운로드<br>
+	 * jsp에서 jstl로 첨부파일 유무 확인 후 a href로 link<br>
+	 * 첨부파일 있는 경우 not null, 첨부파일 없는 경우 null by 박권익
+	 * 
+	 * @param filename
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping("/file/filedownload")
+	public void fileDownload(HttpServletRequest request, HttpServletResponse response) {
+		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String fname = request.getParameter("filename"); //QueryString으로 다운로드 파일이름 받아오기
+		File file = new File(path + "/" + fname);
+		FileInputStream fis = null; // 파일 읽어오기
+		BufferedInputStream bis = null; // 파일 읽어오기
+		ServletOutputStream sos = null; // InputStream으로 읽어오는 데이터를 ServletOutputStream을 이용하여 출력
+		try {
+			fis = new FileInputStream(file);
+			bis = new BufferedInputStream(fis);
+			sos = response.getOutputStream();
+			String reFilename = ""; // 다운받는 파일의 이름 저장
+			// IE로 실행할 경우는 따로 인코딩 해주어야 한다.
+			// IE는 request의 헤더에 MSIE 또는 Trident가 포함되어 있다.
+			// IE를 제외한 다른 브라우저로 실행할 경우 한글이 깨지는 것을 방지하기 위해 인코딩
+			boolean isMSIE = request.getHeader("user-agent").indexOf("MSIE") != -1
+					|| request.getHeader("user-agent").indexOf("Trident") != -1;
+			if (isMSIE) {
+				reFilename = URLEncoder.encode(fname, "utf-8");
+				reFilename = reFilename.replaceAll("\\+", "%20");
+			} else {
+				reFilename = new String(fname.getBytes("utf-8"), "ISO-8859-1");
+			}
+			// response의 ContentType과 ContentLength를 설정하고 헤더를 추가한다.
+			response.setContentType("application/octet-stream;charset=utf-8");
+			response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
+			response.setContentLength((int) file.length());
+			int read = 0;
+			while ((read = bis.read()) != -1) {
+				sos.write(read);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (sos != null)
+					sos.close();
+				if (bis != null)
+					bis.close();
+				if (fis != null)
+					fis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

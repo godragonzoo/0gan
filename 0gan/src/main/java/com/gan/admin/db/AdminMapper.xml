@@ -65,7 +65,6 @@
 		= #{faq_file}
 		where faq_num = #{faq_num}
 	</update>
-
 	<!-- # 1대1문의 관련 -->
 	<!-- 1대1문의List by 박권익 -->
 	<select id="selectAllAdmQue" resultType="admQueVo">
@@ -111,4 +110,13 @@
 		update adm_que_tb set adm_que_check = 'Y' where
 		adm_que_num = #{adm_que_num}
 	</update>
+	<!-- #기획전 관련 -->
+	<!-- 기획전 목록 by 박권익 -->
+	<select id="selectAllTheme" resultType="themeVo">
+		select * from theme_tb
+	</select>
+	<!-- 기획전 삭제 by 박권익 -->
+	<delete id="deleteTheme">
+		delete theme_tb where theme_num = #{theme_num}
+	</delete>
 </mapper> 

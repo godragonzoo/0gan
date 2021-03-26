@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>0gan 관리자 - 도움말</title>
+    <title>0gan 관리자 - 공지사항</title>
 
     <!-- Custom fonts for this template -->
     <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,6 +25,9 @@
 
     <!-- Custom styles for this page -->
     <link href="../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- 파일업로드 Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head>
 
@@ -82,9 +86,9 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
-            <a class="collapse-item active" href="adminFaq.do"> 도움말 관리 </a>
-            <a class="collapse-item" href="#"> 기획전 관리 </a>
+            <a class="collapse-item active" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
+            <a class="collapse-item" href="#"> 이벤트 관리 </a>
             <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
@@ -132,41 +136,45 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">도움말</h1>
+    <h1 class="h3 mb-4 text-gray-800">공지사항</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">게시판 관리</a></li>
-        <li class="breadcrumb-item active" aria-current="page">도움말 관리</li>
+        <li class="breadcrumb-item active" aria-current="page">공지사항 관리</li>
         <li class="breadcrumb-item active" aria-current="page">조회</li>
     </ol>
 </nav>
 
-<div class="card-body">
-    <div class="card container-fluid w-75 mb-5">
-        <div class="col-md-12">
-            <label class="mt-4">제목</label>&nbsp;<label class="mt-4">${faq.faq_title }</label>
-        </div>
-        <hr>
-        <div class="col-md-12">
-            <label class="mt-4">카테고리</label>&nbsp;&nbsp; <label class="mt-4">${faq.faq_category }</label>
-        </div>
-        <hr>
-        <label class="col-md-12 mb-3">내용</label>
-        <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">${faq.faq_content }</textarea>
-        <div class="col-md-12 mt-4">
-            <div class="filebox">
-                <lable>첨부파일</lable> &nbsp;
-                <input class="upload-name" value="${faq.faq_file }" disabled="disabled">
+<div class="card container-fluid w-75 shadow mt-4 mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"> 공지사항 관리 </h6>
+    </div>
+    <div class="card-body">
+        <div class="card container-fluid w-75 mb-5">
+            <div class="col-md-12">
+                <label class="mt-4">제목</label> <label class="mt-4">${noti.noti_title }</label>
+            </div>
+            <hr>
+            <label class="col-md-12 mb-3">내용</label>
+            <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">${noti.noti_content }</textarea>
+            <div class="col-md-12 mt-4">
+                <div class="filebox">
+                    <lable class="mt-4">첨부파일</lable> &nbsp;
+                    <c:if test="${empty noti.noti_file }">
+                    	<input class="upload-name" value="${noti.noti_file }" disabled="disabled">
+                    </c:if>
+                    <c:if test="${not empty noti.noti_file }">
+                    	<a href="file/filedownload?filename=${noti.noti_file }"><input class="upload-name" value="${noti.noti_file }" disabled="disabled"></a>
+                    </c:if>
+                    
+                </div>
+            </div>
+            <hr>
+            <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+                <a href="adminNoti.do"><button class="btn btn-primary me-md-2" type="button">목록</button></a>
             </div>
         </div>
-        <hr>
-        <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-            <a href="adminFaq.do"><button class="btn btn-primary me-md-2" type="button">목록</button></a>
-        </div>
     </div>
-
-
-
 
 
 
@@ -226,14 +234,7 @@ aria-hidden="true">
 <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="../resources/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="../resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="../resources/js/demo/datatables-demo.js"></script>
+<script src="../resources/js/sb-admin-2.min.js"></script>
 
 </body>
 

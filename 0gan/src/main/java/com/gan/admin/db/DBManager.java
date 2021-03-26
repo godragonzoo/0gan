@@ -14,6 +14,7 @@ import com.gan.admin.vo.AdmAnsVo;
 import com.gan.admin.vo.AdmQueVo;
 import com.gan.admin.vo.FaqVo;
 import com.gan.admin.vo.NotiVo;
+import com.gan.admin.vo.ThemeVo;
 
 public class DBManager {
 	private static SqlSessionFactory factory;
@@ -231,5 +232,27 @@ public class DBManager {
 		return re;
 	}
 
+	/**
+	 * 기획전 목록 by 박권익
+	 * @return
+	 */
+	public static List<ThemeVo> selectAllTheme() {
+		SqlSession session = factory.openSession();
+		List<ThemeVo> list = session.selectList("admin.selectAllTheme");
+		session.close();
+		return list;
+	}
 
+	/**
+	 * 기획전 삭제 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
+	public static int deleteTheme(int theme_num) {
+		SqlSession session = factory.openSession();
+		int re = session.delete("admin.deleteTheme", theme_num);
+		session.commit();
+		session.close();
+		return re;
+	}
 }// class

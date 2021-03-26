@@ -9,12 +9,13 @@ import com.gan.admin.vo.AdmAnsVo;
 import com.gan.admin.vo.AdmQueVo;
 import com.gan.admin.vo.FaqVo;
 import com.gan.admin.vo.NotiVo;
+import com.gan.admin.vo.ThemeVo;
 
 @Repository
 public class AdminDao {
 
 	/**
-	 * 모든 공지사항 정보 by 박권익
+	 * 공지사항 목록 by 박권익
 	 * 
 	 * @return List<NotiVo>
 	 */
@@ -64,7 +65,7 @@ public class AdminDao {
 	}
 
 	/**
-	 * 모든 도움말 정보 by 박권익
+	 * 도움말 목록 by 박권익
 	 * 
 	 * @return List<FaqVo>
 	 */
@@ -107,7 +108,7 @@ public class AdminDao {
 	}
 	
 	/**
-	 * 모든 1대1문의 정보 by 박권익
+	 * 1대1문의 목록 by 박권익
 	 * 
 	 * @return List<AdmAnsVo>
 	 */
@@ -152,5 +153,22 @@ public class AdminDao {
 	 */
 	public int updateAdmAns(AdmAnsVo admAns) {
 		return DBManager.updateAdmAns(admAns);
+	}
+
+	/**
+	 * 기획전 목록 by 박권익
+	 * @return
+	 */
+	public List<ThemeVo> selectAllTheme() {
+		return DBManager.selectAllTheme();
+	}
+	
+	/**
+	 * 기획전 삭제 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
+	public int deleteTheme(int theme_num) {
+		return DBManager.deleteTheme(theme_num);
 	}
 }
