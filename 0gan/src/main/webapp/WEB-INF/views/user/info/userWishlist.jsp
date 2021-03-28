@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <head>
 
   <meta charset="utf-8">
@@ -10,21 +9,25 @@
   <meta name="author" content="">
 
   <title>관심목록</title>
+	<!-- Bootstrap core CSS -->
+	<link href="../resources/userResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/list_bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/shop-homepage.css" rel="stylesheet">
-
+	<!-- Custom styles for this template -->
+	<link href="../resources/userResources/css/shop-homepage.css" rel="stylesheet">
 </head>
 
 <body>
+  <!-- Page Content -->
+  <div class="container">
+
+<div class="jumbotron">
+
+</div>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <hr>
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,7 +35,6 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">프로필
-              <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
@@ -48,15 +50,14 @@
       </div>
     </div>
   </nav>
-
-  <!-- Page Content -->
-  <div class="container">
+  <!-- Navigation -->
 
     <div class="row">
       <!-- /.col-lg-3 -->
 
       <div class="col-lg">
-      <h2>관심목록</h2>
+
+      <h2 class="text-center">관심목록</h2>
       <hr>
         <div class="row">
 

@@ -3,86 +3,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>비밀번호 찾기</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<meta charset="UTF-8">
+	<title>비밀번호 찾기</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap core CSS -->
+	<link href="../resources/userResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="../resources/userResources/css/shop-homepage.css" rel="stylesheet">
 </head>
 <body>
 
-<!--  -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<a class="navbar-brand" href="#">Navbar</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarColor01" aria-controls="navbarColor01"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
 
-		<div class="collapse navbar-collapse" id="navbarColor01">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Features</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-					role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a> <a
-							class="dropdown-item" href="#">Something else here</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Separated link</a>
-					</div></li>
-			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search">
-				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-			</form>
-		</div>
-	</nav>
-
-<!--  -->
+  <!-- Navigation -->
+  <hr>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">프로필
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">예약내역</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">관심목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">문의내역</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navigation -->
 
 	<div class="container">
 		<form class="form-horizontal" role="form" method="post" action="">
-		
-	<!-- 네비게이션바 -->
-			<ul class="nav nav-tabs">
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="finId.do">이메일 찾기</a></li>
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="findPwd.do">비밀번호 찾기</a></li>
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="login.do">로그인</a></li>
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="userSign.do">회원가입</a></li>
-		</ul>
-		
-	<!-- 네비게이션바 -->
-	
-			<h2> 비밀번호 찾기</h2>
+			<h2 class="text-center">비밀번호 찾기</h2>
 			<hr>
 
-			<div class="form-group" id="divEmail">
-				<label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-				<div class="col-lg-10">
-					<input type="text" class="form-control" id="email" data-rule-required="true" placeholder="이메일을 입력하세요." maxlength="50">
+			<div class="form-group col-lg-8 center-block" style="float:none; margin:0 auto" id="divName">
+				<label for="inputName" class="col-lg-2 control-label">이메일</label>
+				<div class="col-lg">
+					<input type="text" class="form-control col-lg onlyHangul" id="name" name="name" data-rule-required="true" placeholder="이름을 입력하세요." maxlength="15"><br>
 				</div>
-			</div>
-				
-			<div class="form-group" id="divPhone">
-				<label for="inputPhone" class="col-lg-2 control-label"> 휴대폰 번호 </label>
-				<div class="col-lg-9">
-					<input type="tel" class="form-control onlyNumber" id="phone" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
-				</div>
-				<input type="button" class="btn btn-primary" value="본인인증">
 			</div>
 
-			<div class="form-group col-lg" align="center">
-				<input type="submit" class="btn btn-primary" value="비밀번호 찾기">
+			<div class="form-group col-lg-8 center-block" style="float:none; margin:0 auto" id="divPhone">
+				<label for="inputPhone" class="col-lg-2 control-label"> 휴대폰 번호 </label>
+				<div class="col-lg form-inline">
+					<input type="tel" class="form-control col-lg-10 onlyNumber" id="phone" name="phone" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" class="btn btn-primary col-lg-offset-2" value="본인인증"><br>
+				</div>
+			</div>
+
+			<br>
+			<hr>
+			<br>
+
+			<div class="form-group col-lg center-block" style="float:none; margin:0 auto" align="center">
+				<div class="col-lg">
+					<input type="submit" class="btn btn-primary col-lg-3" value="비밀번호 찾기">
+				</div>
 			</div>
 			
 		</form>	

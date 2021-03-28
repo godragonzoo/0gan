@@ -10,21 +10,25 @@
   <meta name="author" content="">
 
   <title>예약내역</title>
+	<!-- Bootstrap core CSS -->
+	<link href="../resources/userResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/list_bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/shop-homepage.css" rel="stylesheet">
-
+	<!-- Custom styles for this template -->
+	<link href="../resources/userResources/css/shop-homepage.css" rel="stylesheet">
 </head>
 
 <body>
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="jumbotron">
+
+    </div>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <hr>
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,7 +36,6 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">프로필
-              <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
@@ -48,15 +51,14 @@
       </div>
     </div>
   </nav>
-
-  <!-- Page Content -->
-  <div class="container">
+  <!-- Navigation -->
 
     <div class="row">
       <!-- /.col-lg-3 -->
 
       <div class="col-lg">
-      <h2>예약내역</h2>
+
+      <h2 class="text-center">예약내역</h2>
       <hr>
         <div class="row">
 
@@ -70,11 +72,6 @@
                 <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
                 <p class="card-text">시간당 가격</p>
                 <p class="card-text">수용 가능 인원 수</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">
-                  <input type="button" name="revw" value="후기작성">
-                </small>
               </div>
             </div>
           </div>
@@ -90,11 +87,6 @@
                 <p class="card-text">시간당 가격</p>
                 <p class="card-text">수용 가능 인원 수</p>
               </div>
-              <div class="card-footer">
-                <small class="text-muted">
-                  <input type="button" name="revw" value="후기작성">
-                </small>
-              </div>
             </div>
           </div>
 
@@ -108,11 +100,6 @@
                 <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
                 <p class="card-text">시간당 가격</p>
                 <p class="card-text">수용 가능 인원 수</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">
-                  <input type="button" name="revw" value="후기작성">
-                </small>
               </div>
             </div>
           </div>
@@ -128,11 +115,6 @@
                 <p class="card-text">시간당 가격</p>
                 <p class="card-text">수용 가능 인원 수</p>
               </div>
-              <div class="card-footer">
-                <small class="text-muted">
-                  <input type="button" name="revw" value="후기작성">
-                </small>
-              </div>
             </div>
           </div>
 
@@ -147,11 +129,6 @@
                 <p class="card-text">시간당 가격</p>
                 <p class="card-text">수용 가능 인원 수</p>
               </div>
-              <div class="card-footer">
-                <small class="text-muted">
-                  <input type="button" name="revw" value="후기작성">
-                </small>
-              </div>
             </div>
           </div>
 
@@ -165,11 +142,6 @@
                 <p class="card-text">서울특별시 마포구 월드컵북로 21 2층 풍성빌딩</p>
                 <p class="card-text">시간당 가격</p>
                 <p class="card-text">수용 가능 인원 수</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">
-                  <input type="button" name="revw" value="후기작성">
-                </small>
               </div>
             </div>
           </div>
