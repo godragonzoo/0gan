@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>0gan 관리자 - 문의페이지</title>
+    <title>0gan 관리자 - 도움말</title>
 
     <!-- Custom fonts for this template -->
     <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +24,7 @@
     <link href="../resources/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -36,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-text mx-3">0gan logo</div>
             </a>
 
@@ -82,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item" href="#"> 도움말 관리 </a>
+            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item active" href="adminFaq.do"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item active" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -132,69 +133,46 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">문의게시판</h1>
+    <h1 class="h3 mb-4 text-gray-800">도움말</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">게시판 관리</a></li>
-        <li class="breadcrumb-item active" aria-current="page">문의게시판 관리</li>
+        <li class="breadcrumb-item active" aria-current="page">도움말 관리</li>
+        <li class="breadcrumb-item active" aria-current="page">조회</li>
     </ol>
 </nav>
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">문의게시판 목록</h6>
+<div class="card-body">
+    <div class="card container-fluid w-75 mb-5">
+        <div class="col-md-12">
+            <label class="mt-4">제목</label>&nbsp;
+            <label class="mt-4">${faq.faq_title }</label>
+        </div>
+        <hr>
+        <div class="col-md-12">
+            <label class="mt-4">카테고리</label>&nbsp;&nbsp; <label class="mt-4">${faq.faq_category }</label>
+        </div>
+        <hr>
+        <label class="col-md-12 mb-3">내용</label>
+        <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">${faq.faq_content }</textarea>
+        <div class="col-md-12 mt-4">
+            <div class="filebox">
+                <lable>첨부파일</lable> &nbsp;
+                <c:if test="${empty faq.faq_file }">
+                <input class="upload-name" value="${faq.faq_file }" disabled="disabled">
+                </c:if>
+                <c:if test="${not empty faq.faq_file }">
+                <a href="file/filedownload?filename=${faq.faq_file }"><input class="upload-name" value="${faq.faq_file }" disabled="disabled"></a>
+                </c:if>
+            </div>
+        </div>
+        <hr>
+        <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+            <a href="adminFaq.do"><button class="btn btn-primary me-md-2" type="button">목록</button></a>
+        </div>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                        <th>답변여부</th>
-                        
-                    </tr>
-                </thead>
 
-                <tbody>
-                    <tr>
-                        <td>Shou Itou</td>
-                        <td>Regional Marketing</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                            <font color="#4e73df">답변완료</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Michelle House</td>
-                        <td>Integration Specialist</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                           <font color="#e74a3b">답변대기</font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Michelle House</td>
-                        <td>Integration Specialist</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                           <font color="#4e73df">답변완료</font>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-</div>
-
-</div>
-<!-- /.container-fluid -->
+    <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
@@ -234,7 +212,7 @@ aria-hidden="true">
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
         </div>
     </div>
 </div>
@@ -248,7 +226,7 @@ aria-hidden="true">
 <script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="../resources/js/sb-admin-2.min.js"></script>
+<script src="js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
 <script src="../resources/vendor/datatables/jquery.dataTables.min.js"></script>

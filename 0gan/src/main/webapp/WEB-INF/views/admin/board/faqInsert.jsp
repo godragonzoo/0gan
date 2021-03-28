@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-text mx-3">0gan logo</div>
             </a>
 
@@ -82,10 +82,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item active" href="#"> 도움말 관리 </a>
+            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item active" href="adminFaq.do"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -148,36 +148,39 @@
 
     <div class="card-body">
         <div class="card container-fluid w-75 mb-5">
-            <div class="col-md-12">
-                <label class="mt-4">제목</label>&nbsp;&nbsp;
-                <input type="text" class="form-control-text">
-            </div>
-            <hr>
-            <div class="col-md-12">
-                <label class="mt-4">카테고리</label>&nbsp;&nbsp;
-                <select class="form-control-category">
-                    <option disabled="disabled" selected="selected">카테고리 선택</option>
-                    <option>1번 카테고리</option>
-                    <option>2번 카테고리</option>
-                    <option>3번 카테고리</option>
-                    <option>4번 카테고리</option>
-                </select>
-            </div>
-            <hr>
-            <label class="col-md-12 mb-3">내용</label>
-            <textarea class="form-control" rows="7" style="resize: none;"></textarea>
-            <div class="col-md-12 mt-4">
-                <div class="filebox">
-                    <lable>첨부파일</lable> &nbsp;
-                    <input class="upload-name" value="파일선택" disabled="disabled">
-                    <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
-                    <input type="file" id="ex_filename" class="upload-hidden">
-                </div>
-            </div>
-            <hr>
-            <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button">등록</button>
-            </div>
+	        <form action="adminFaqInsert.do" method="post" name="form" enctype="multipart/form-data" onsubmit="return valid();">
+	            <div class="col-md-12">
+	                <label class="mt-4">제목</label>&nbsp;&nbsp;
+	                <input type="text" class="form-control-text" name="faq_title">
+	            </div>
+	            <hr>
+	             <div class="col-md-12">
+	                    <label class="mt-4">카테고리</label>&nbsp;&nbsp;
+	                    <select class="form-control-category" id="faq_category" name="faq_category" size="1" >
+	                        <option selected="selected" value="선택">선택</option>
+		                    <option value="회원">회원</option>
+		                    <option value="예약 및 결제">예약 및 결제</option>
+		                    <option value="취소 및 환불">취소 및 환불</option>
+		                    <option value="공간이용 및 후기">공간이용 및 후기</option>
+		                    <option value="기타">기타</option>
+		                </select>
+	                </div>
+	            <hr>
+	            <label class="col-md-12 mb-3">내용</label>
+	            <textarea class="form-control" rows="7" name="faq_content" style="resize: none;"></textarea>
+	            <div class="col-md-12 mt-4">
+	                <div class="filebox">
+	                    <lable>첨부파일</lable> &nbsp;
+	                    <input class="upload-name" value="파일선택" disabled="disabled">
+	                    <label for="ex_filename"><i class="fas fa-folder-plus fa-2x"></i></label>
+	                    <input type="file" id="ex_filename" class="upload-hidden" name="uploadFile">
+	                </div>
+	            </div>
+	            <hr>
+	            <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+	                <button class="btn btn-primary me-md-2" type="submit">등록</button>
+	            </div>
+            </form>
         </div>
     </div>
 
@@ -227,7 +230,7 @@ aria-hidden="true">
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
         </div>
     </div>
 </div>

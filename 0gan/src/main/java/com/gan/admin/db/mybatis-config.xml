@@ -7,8 +7,11 @@
 <typeAliases>
 	<typeAlias type="com.gan.admin.vo.NotiVo" alias="notiVo"/>
 	<typeAlias type="com.gan.admin.vo.FaqVo" alias="faqVo"/>
-	<typeAlias type="com.gan.admin.vo.EventVo" alias="eventVo"/>
+	<typeAlias type="com.gan.admin.vo.ThemeVo" alias="themeVo"/>
+	<typeAlias type="com.gan.admin.vo.ThemePlaceVo" alias="themePlaceVo"/>
 	<typeAlias type="com.gan.admin.vo.AdmQueVo" alias="admQueVo"/>
+	<typeAlias type="com.gan.admin.vo.AdmAnsVo" alias="admAnsVo"/>
+	<typeAlias type="com.gan.vo.PlaceVo" alias="placeVo"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">

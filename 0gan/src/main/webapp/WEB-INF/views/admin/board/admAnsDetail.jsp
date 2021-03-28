@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>0gan 관리자 - 공지사항</title>
+    <title>0gan 관리자 - 문의게시판</title>
 
     <!-- Custom fonts for this template -->
     <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-text mx-3">0gan logo</div>
             </a>
 
@@ -83,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item active" href="#"> 공지사항 관리 </a>
-            <a class="collapse-item" href="#"> 도움말 관리 </a>
+            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
             <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item" href="#"> 문의게시판 관리 </a>
+            <a class="collapse-item active" href="adminAnswer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -133,59 +133,83 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">공지사항</h1>
-    
-      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">게시판 관리</a></li>
-        <li class="breadcrumb-item active" aria-current="page">공지사항 관리</li>
-    </ol>
-</nav>
-
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">공지사항 목록</h6>
-        </div>
-
-        <div class="card-body">
-            <div align="right">
-            <a href="#" class="btn btn-primary btn-icon-split">
-                <span class="text">공지사항 등록</span>
-            </a>
-            </div>
-            <br>
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>작성일</th>
-                            <th>기능</th>
-                        </tr>
-                    </thead>
-                    <tbody>                   
-                        <c:forEach var="list" items="${list }">
-                        <tr>
-                        	<td>${list.noti_num }</td>
-                        	<td>${list.noti_title }</td>
-                        	<td>${list.noti_date }</td>
-                        	<td><a href="admin_noti_update?noti_num=${list.noti_num }" class="btn btn-success btn-icon-split">
-                                <span class="text">수정</span>
-                            </a>                                    
-                            <a href="admin_noti_update?noti_num=${list.noti_num }" class="btn btn-danger btn-icon-split">
-                                <span class="text">삭제</span>
-                            </a></td>
-                        </tr>
-                       </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
+    <h1 class="h3 mb-4 text-gray-800">문의게시판</h1>
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">게시판 관리</a></li>
+            <li class="breadcrumb-item active" aria-current="page">문의게시판 관리</li>
+            <li class="breadcrumb-item active" aria-current="page">조회</li>
+        </ol>
+    </nav>
 </div>
+
+
+<div class="card container-fluid w-75 shadow mt-4 mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"> 문의게시판 관리 </h6>
+    </div>
+    <div>
+        <div class="card-body">
+            <div class="card container-fluid w-75 mb-5">
+                <div class="col-md-12">
+                    <label class="mt-4">제목</label> <label class="mt-4">${question.adm_que_title }</label>
+                </div>
+                <hr>
+                <label class="col-md-12 mb-3">내용</label>
+                <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">${question.adm_que_content }</textarea>
+                <div class="col-md-12 mt-4">
+                    <div class="filebox">
+                        <lable class="mt-4">첨부파일</lable> &nbsp;
+                        <c:if test="${empty question.adm_que_file }">
+                        <input class="upload-name" value="${question.adm_que_file }" disabled="disabled">
+                    </c:if>
+                    <c:if test="${not empty question.adm_que_file }">
+                    <a href="file/filedownload?filename=${question.adm_que_file }"><input class="upload-name" value="${question.adm_que_file }" disabled="disabled"></a>
+                </c:if>
+            </div>
+        </div>
+        <hr>
+        <c:if test="${question.adm_que_check=='N' }">
+        <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+            <a href="adminAnswer.do"><button class="btn btn-primary me-md-2" type="button">목록</button></a>
+            &nbsp;
+            <a href="adminAnswerInsert.do?adm_que_num=${question.adm_que_num }"><button class="btn btn-primary me-md-2" type="button">답변</button></a>
+        </div>
+    </c:if>
+</div>
+<c:if test="${question.adm_que_check=='Y' }">
+<hr style="width: 75%;" >
+<div class="card-body">
+    <div class="card container-fluid w-75 mb-5">
+        <div class="col-md-12">
+            <label class="mt-4">제목</label>
+            <label class="mt-4">${answer.adm_ans_title }</label>
+        </div>
+        <hr>
+        <label class="col-md-12 mb-3">내용</label>
+        <textarea class="form-control" rows="7" readonly="readonly" style="resize: none;">${answer.adm_ans_content }</textarea>
+        <div class="col-md-12 mt-4">
+            <div class="filebox">
+                <lable class="mt-4">첨부파일</lable> &nbsp;
+                <c:if test="${empty answer.adm_ans_file }">
+                <input class="upload-name" value="${answer.adm_ans_file }" disabled="disabled">
+            </c:if>
+            <c:if test="${not empty answer.adm_ans_file }">
+            <a href="file/filedownload?filename=${answer.adm_ans_file }"><input class="upload-name" value="${answer.adm_ans_file }" disabled="disabled"></a>
+        </c:if>
+    </div>
+</div>
+<hr>
+<div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+    <a href="adminAnswerUpdate.do?adm_que_num=${question.adm_que_num }"><button class="btn btn-primary me-md-2" type="button">수정</button></a>
+</div>
+</div>
+</div>
+</c:if>
+</div>
+</div>
+</div>
+
 <!-- /.container-fluid -->
 
 </div>
@@ -204,8 +228,6 @@
 </div>
 <!-- End of Content Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
@@ -226,7 +248,7 @@ aria-hidden="true">
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
         </div>
     </div>
 </div>
