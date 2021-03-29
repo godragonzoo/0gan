@@ -6,7 +6,14 @@
 	메인 파랑: #486DDA
 	카드 제목? 회색: #F8F9FC-->
 <html><head>
+<!-- tempusdominus -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
 
+<!-- tempusdominus -->
 <!-- datepicker -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css">  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
@@ -42,6 +49,10 @@
     <!-- Custom scripts for all pages-->
     <script src="../resources/js/sb-admin-2.min.js"></script>
 
+<!--  -->
+<script type="text/javascript" src="/resources/js/main.js"></script>
+<link href="/resources/css/main.css" rel="stylesheet">
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -49,241 +60,88 @@
 
 <title>main.jsp</title>
 <style type="text/css">
-body{
-background-color: #F8F9FC; 
-}
-.header{ 
-margin: 0px auto; 
-position:relative; 
-width: 90%; height: 150px;   
-display: flex;
-background-color: #F8F9FC; 
-}
-.container{
-margin: 0px auto;  
-width: 90%; 
-height: ;  	 
-}
-.logo {
-	position: absolute;
-	width: 150px;
-	height: 150px;
-	
-}
-.img-fluid{
-	width: 100%;	height: 300px;
-}
-/* ---------검색창--------- */
-.search-wrap{
-	display: table;
-	table-layout: fixed;
-	position: absolute;
-	width: 80%;  
-	left: 200px;
-/* 	left: 50%;
-	transform: translate(-50%); */
-	margin: auto;
-	bottom: 0px;
-	
-	vertical-align: middle;
-	box-sizing: border-box;
-	max-width: 100%;
-}
-.search{
-	display: table-cell;
-	padding: 5 35px;
-	height: 35px;
-	font-size: 14px;
-	box-sizing: content-box;/* 테두리 미포함크기 */
-	vertical-align: middle;/* 세로 정렬 */
-	border: 10px solid #4E73DF;
-}
-.nav{
-	width: 150px;
-	font-size: 10px;
-	margin-right: 20px;
-}
-/* ---------검색창--------- */
-
-/* ---------Best공간--------- */
-.title{
-	margin-top: 3rem !important;
-	margin-bottom: 3rem !important;
-	text-align: center;
- 	border-radius: 10px;
-	padding-top: 1rem !important;
-	padding-bottom: 1rem !important;
-}
-.slideBest{
-	width: 100%;
-	height: 430px;
-	/* border: solid 1px red; */
-	display: flex;
-	overflow: auto;
-	margin: 30px 0px;
-}
-.best1{
-	background-color: white;
-	margin: 0px 30px;
- 	border:2px solid #486DDA;
- 	width: 550px;
- 	height: 405px;
-}
-.card-col{
-	width: 200px;
-	height: 200px;
-	margin-left: 20px;
-}
-.img{
-	width: 200px;
-	height: 200px;
-	margin-top: 30px;
-}
-.card-body {
-	border: solid 1px gray;
-	background-color: white;
-	margin-top: 20px;
-	width: 150px;
-	height: 50px;
-}
-.card-row{
-	display: flex;
-	width: 400px;
-	height: 200px;
-}
-.card-intro {
-	border: solid 1px gray;
-	background-color: white;
-	margin-left: 20px;
-	margin-top: 70px;
-	bottom: 0px;
-	width: 350px; height: 100px;
-}
-/* ---------Best공간--------- */
-.footer{
-	text-align: right;
-	font-size: 14pt;
-	margin-right: 10%;
-}
-div{
-	border-radius: 10px;
-}
 </style>
 <script type="text/javascript">
 
-    //-------------------------------------------------------------------------------------
-    // 달력 - 한글 변형
-    // endDate달력은 startDate달력에서 선택된 이전 날짜 선택 불가
-  $(document).ready(function () {
-            $.datepicker.setDefaults($.datepicker.regional['ko']); 
-            $( "#startDate" ).datepicker({
-                 changeMonth: true, 
-                 changeYear: true,
-                 nextText: '다음 달',
-                 prevText: '이전 달', 
-                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
-                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 dateFormat: "yymmdd",
-                 minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
-                 onClose: function( selectedDate ) {    
-                      //시작일(startDate) datepicker가 닫힐때
-                      //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-                     $("#endDate").datepicker( "option", "minDate", selectedDate );
-                 }    
- 
-            });
-            
-          
-    //-------------------------------------------------------------------------------------
-    // 달력 - 한글 변형
-    // endDate달력 최대 선택 날짜 제한 제거  
-            $( "#endDate" ).datepicker({
-                 changeMonth: true, 
-                 changeYear: true,
-                 nextText: '다음 달',
-                 prevText: '이전 달', 
-                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
-                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 dateFormat: "yymmdd",
-                 //maxDate: 0,                       // 선택할수있는 최대날짜, ( 0 : 오늘 이후 날짜 선택 불가)
-                
-                /* onClose: function( selectedDate ) {    
-                     // 종료일(endDate) datepicker가 닫힐때
-                     // 시작일(startDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 시작일로 지정
-                     $("#startDate").datepicker( "option", "maxDate", selectedDate );
-                 }    */
- 
-            });    
-    });
-    
-    //-------------------------------------------------------------------------------------
-    // 슬라이드 시간 조절
-$(function() {
-	 $('.carousel').carousel({
-		interval: 1000
-	});
-});
-
-    //-------------------------------------------------------------------------------------
-    // 팝업
-$(document).ready(function(){
-    $("#menuIcon").click(function(){
-        $("#myModal2").modal({backdrop: false});
-    });
-});
 </script>
 
 </head>
 <body>
-<div class="header ">
-	<div class="logo ">
-		<img class="logo" src="/resources/img/logo.png">
-	</div>
-		<div id="menuIcon" style="position:absolute; right:0px;">
-			<i class="far fa-user fa-3x"></i>
-			<i class="fas fa-bars fa-3x"></i>
+<header>
+	<div class="row justify-content-between">
+		<div class="logo ">
+			<img class="logo" src="/resources/img/logo2.png">
 		</div>
-		
-		<!-- Modal -->
-  		<div class="modal fade animated--grow-in" id="myModal2" role="dialog">
-    	<div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">�</button>
-          <h4 class="modal-title">Modal without Overlay</h4>
-        </div>
-        <div class="modal-body">
-          <p>This modal has no overlay.</p>
-          <p><strong>Note:</strong> You cannot click outside of this modal to close it.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+		<div class="menu" style="display: flex;">
+			<div class="dropdown">
+				<a class="dropdown-toggle" id="profileIcon"  data-toggle="dropdown" aria-expanded="false" style="float:right;">
+					<i class="far fa-user fa-2x"></i>
+				</a>
+				<div class="dropdown-menu" id="profileList"  style="position: relative;">
+					<h6 class="text-center small text-primary">[] 님 안녕하세요</h6>
+					<a class="dropdown-submenu">
+						<div class="dropdown-menu" id="submenu">
+							<a class="dropdown-item text-center" href="#">프로필</a>
+							<a class="dropdown-item text-center" href="#">예약내역</a>
+							<a class="dropdown-item text-center" href="#">관심목록</a>
+							<a class="dropdown-item text-center" href="#">나의문의내역</a>
+						</div>
+					</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item text-center" href="#">내 계정</a>
+					<a class="dropdown-item text-center" href="#">공지사항</a>
+					<a class="dropdown-item text-center" href="#">도움말</a>
+					<a class="dropdown-item text-center" href="#">서비스 정보</a>
+					<a class="dropdown-item text-center" href="#">호스트로 전환</a>
+					
+					<div class="dropdown-divider" ></div>
+					<a class="dropdown-item text-center small" href="#">로그아웃</a>
+				</div>
+			</div>
+		  	<div class="dropdown">
+			    <a class=" dropdown-toggle" id="menuIcon"  data-toggle="dropdown" aria-expanded="false">
+			    	<i class="fas fa-bars fa-2x"></i></a>
+			    <div class="dropdown-menu" id="menuList">
+					<div class="btn-primary text-center" href="#">회원가입</div>
+					<div class="btn-primary text-center" href="#">로그인</div>
+					<div class="dropdown-divider" ></div>
+					<a class="dropdown-item text-center" href="#">공지사항</a>
+					<a class="dropdown-item text-center" href="#">도움말</a>
+					<a class="dropdown-item text-center" href="#">서비스 정보</a>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="navSearch border-bottom-primary ">
+			<div class="filter__form__input">
+            	<input type="text" placeholder="Search Location">
+                	<span class="icon_search"></span>
+			</div>
+			<div class="filter__form__input">
+            	<span class="icon_calendar"></span>
+                <input type="date" class="datepicker_pop check__in hasDatepicker" >
+                <i class="arrow_carrot-down"></i>
+			</div>
+            <div class="filter__form__input">
+            	<span class="icon_calendar"></span>
+                <input type="date" class="datepicker_pop check__out hasDatepicker" >
+                <i class="arrow_carrot-down"></i>
+			</div>
+            <div class="filter__form__input">
+            	<input type="text" placeholder="인원수" style="width:100px">
+                <span class="icon_search"></span>
+			</div>
+            <button type="submit" class="btnBook text-gray-100">BOOK NOW</button>
+		</div>
+	</div>		
+</header>
+ 
   
-  
-	<div class="search-wrap ">
-		<input class="search" type="text" id="searchWord" placeholder="공간선택"> 
-		<input class="search" type="text" id="startDate" placeholder="체크인"> 
-		<input class="search" type="text" id="endDate" placeholder="체크아웃">
-		<input class="search" type="text" placeholder="인원">
-		<button class="search">검색</button>
-	</div> 
-</div>      
-
 	
-<div class="container">
+<div class="container ">
 	<div class="row"><!-- 이벤트 배너 -->
-		<div class="col"><h3 class="title bg-gradient-primary text-white">기획 및 테마 배너 이미지</h3>
+		<div class="col border-bottom-primary"><h1 class="text-center title font-weight-bold text-primary">기획 및 테마 배너 </h1>
 		
 			
 <!-- 메인 슬라이드 이미지 -->
@@ -318,129 +176,321 @@ $(document).ready(function(){
 		</div>
 	</div><!-- 이벤트 배너 -->
 	
-<h3 class="title  bg-gradient-primary text-white">최고의 공간</h3>
-			<div class=" slideBest d-flex justify-content-between col-md-12">
-
-						<div class="best1  ">
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img well" src="/resources/img/island.png" alt=""></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body border-left-primary">장소 이름</div> 
-										<div class="card-body border-left-primary ">장소 위치</div>
-										<div class="card-body border-left-primary ">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro border-left-primary ">장소 이름</div>
-							</div>
+<!-- 최고의 공간 -->
+		<div class="BestSlider "><h1 class="text-center title font-weight-bold text-primary">최고의 공간</h1> 
+  			<ul class="best_panel">
+    			<li class="row ">
+	        		<div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body content-overflow">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text ">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
 						</div>
-						
-						
-						<div class="best1 ">
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img" src="/resources/img/island.png" alt=""></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body border-left-primary">장소 이름</div>
-										<div class="card-body border-left-primary">장소 위치</div>
-										<div class="card-body border-left-primary">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro border-left-primary">장소 이름</div>
-							</div>
+		            </div>
+		            </div>
+	      		  <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100 content-overflow">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
 						</div>
-						
-						
-						<div class="best1 ">
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img" src="/resources/img/island.png" alt=""></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body border-left-primary">장소 이름</div>
-										<div class="card-body border-left-primary">장소 위치</div>
-										<div class="card-body border-left-primary">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro border-left-primary">장소 이름</div>
-							</div>
+		            </div>
+		            </div>
+	     		   <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100 content-overflow">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
 						</div>
-			</div>
-		
-<h3 class="title bg-gradient-primary text-white">추천 공간</h3>
-			<div class=" slideBest d-flex justify-content-between col-md-12">
-
-						<div class="best1 ">
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img" src="/resources/img/island.png" alt=""></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body border-left-primary">장소 이름</div>
-										<div class="card-body border-left-primary">장소 위치</div>
-										<div class="card-body border-left-primary">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro border-left-primary">장소 이름</div>
-							</div>
+		            </div>
+		            </div>
+				</li>
+    			<li class="row ">
+	       		 <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
 						</div>
-						
-						
-						<div class="best1 ">
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img" src="/resources/img/island.png" alt=""></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body border-left-primary">장소 이름</div>
-										<div class="card-body border-left-primary">장소 위치</div>
-										<div class="card-body border-left-primary">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro border-left-primary">장소 이름</div>
-							</div>
+		            </div>
+		            </div>
+	       			 <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
 						</div>
-						
-						
-						<div class="best1 ">
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img" src="/resources/img/island.png" alt=""></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body border-left-primary">장소 이름</div>
-										<div class="card-body border-left-primary">장소 위치</div>
-										<div class="card-body border-left-primary">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro border-left-primary">장소 이름</div>
-							</div>
+		            </div>
+		            </div>
+	      			  <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
 						</div>
-			</div>	
+		            </div>
+					</div>
+				</li>
+		  	</ul>
+		  	<span><i class=" fas carousel-control-prev-icon best_prev fa-4x"></i></span>
+		  	<span><i class=" fas carousel-control-next-icon best_next fa-4x"></i></span>
+		</div>
+          <hr class="border-bottom-primary endLine">
+<!-- 최고의 공간 -->
+<!-- 이용 후기 -->
+		<div class="RevwSlider "><h1 class="text-center title font-weight-bold text-primary">이용후기</h1> 
+  			<ul class="revw_panel">
+    			<li class="row ">
+	        		<div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body content-overflow">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text ">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+	      		  <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100 content-overflow">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+	     		   <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100 content-overflow">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+				</li>
+    			<li class="row ">
+	       		 <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+	       			 <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+	      			  <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+					</div>
+				</li>
+		  	</ul>
+		  	<span><i class=" fas carousel-control-prev-icon revw_prev fa-4x"></i></span>
+		  	<span><i class=" fas carousel-control-next-icon revw_next fa-4x"></i></span>
+		</div>
+          <hr class="border-bottom-primary endLine">
+<!-- 이용 후기 -->
+<!-- 추천 공간 -->
+		<div class="RecomSlider "><h1 class="text-center title font-weight-bold text-primary">추천공간</h1> 
+  			<ul class="recom_panel">
+    			<li class="row ">
+	        		<div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body content-overflow">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text ">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+	      		  <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100 content-overflow">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+	     		   <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100 content-overflow">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울특별시 중구 청파로 4</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] 서울각</a>
+		                </h4>
+		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+				</li>
+    			<li class="row ">
+	       		 <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+	       			 <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+		            </div>
+	      			  <div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body">
+		                <h5>서울 강남구 도곡동 4</h5>
+						<h4 class="card-title">
+							<a href="#">공간4567</a>
+		                </h4>
+		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+						</div>
+		            </div>
+					</div>
+				</li>
+		  	</ul>
+		  	<span><i class=" fas carousel-control-prev-icon recom_prev fa-4x"></i></span>
+		  	<span><i class=" fas carousel-control-next-icon recom_next fa-4x"></i></span>
+		</div>
+        <hr class="border-bottom-primary endLine">
+<!-- 추천 공간 -->
 	
-</div>
-<footer>
-	<div class="footer">
+	<div class="footer text-right">
 				<a href="#" class="bottomMenu">공지사항</a>
 				<a href="#" class="bottomMenu">도움말</a> 
 				<a href="#" class="bottomMenu">서비스정보</a>
 	</div>
-</footer>
-	
-
+</div>
 
 </body></html>

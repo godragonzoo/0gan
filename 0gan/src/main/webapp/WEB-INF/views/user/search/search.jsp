@@ -70,7 +70,7 @@ border: solid 1px gray;
 .filter{
 	height:100%;
 }
-.btnMap, .btnSort{
+.btnMap, .dropdown-toggle{
 	width: 100px;
 	padding: 10px;
 	cursor: pointer;
@@ -86,40 +86,47 @@ border: solid 1px gray;
 }
 
 /* ---------Best공간--------- */
-.best1{
-	margin: 0px 30px;
- 	border:2px solid #486DDA;
- 	width: 550px;
- 	height: 405px;
+.searchResultList   {
+    width: 90%;
+    margin: 50px auto;
+    border: solid 1px;
+    display: block;
 }
-.card-col{
-	width: 200px;
-	height: 200px;
-	margin-left: 20px;
+.best1 {
+    border: 2px solid #486DDA;
+    width: 450px;
+    height: 405px;
+    display: inline-table;
 }
-.img{
-	width: 200px;
-	height: 200px;
-	margin-top: 30px;
+.card-row {
+    display: flex;
+    width: 100%;
+    height: 50%;
 }
-.card-body{
-	border: solid 1px gray;
-	margin-top: 20px;
-	width: 150px;
-	height: 50px;
+.card-col {
+    width: 80%;
+    height: 100%;
+    margin: 20px;
 }
-.card-row{
-	display: flex;
-	width: 400px;
-	height: 200px;
+.img {
+    width: 180px;
+    height: 180px;
 }
-.card-intro{
-	border: solid 1px gray;
-	margin-left: 20px;
-	margin-top: 70px;
-	bottom: 0px;
-	width: 350px; height: 100px;
+.card-body {
+    border: solid 1px gray;
+    width: 150px;
+    height: 50px;
+    margin-bottom: 20px;
 }
+
+.card-intro {
+    border: solid 1px gray;
+    margin: 20px;
+    bottom: 0px;
+    width: 350px;
+    height: 150px;
+}
+
 /* ---------Best공간--------- */
 </style>
 <script src="//code.jquery.com/jquery.min.js"></script>
@@ -133,6 +140,16 @@ $(function() {
     else {
       $(this).html('지도 on');
       $(".imgMap").css("display","block");
+    }
+  });
+});
+$(function() {
+  $('.dropdown-toggle').click( function() {
+    if( $('.dropdown-toggle').css("aria-expanded","false") ) {
+      $('.dropdown-toggle').css("aria-expanded","true");
+    }
+    else {
+      $('.dropdown-toggle').css("aria-expanded","false");
     }
   });
 });
@@ -171,23 +188,20 @@ $(function() {
 			<!-- map 버튼  -->
 			
 			<!-- 정렬 버튼  -->
-			<ul class="ml-auto" style="    list-style: none;">
-				<li class="dropdown">
-					<a class="btnSort nav-link dropdown-toggle " href="#" id="navbarDropdown" 	data-toggle="dropdown" aria-expanded="false"
-						style="width:100px; border: solid 1px black;"	>
-			             정렬
-			       	</a>
-					<div class="dropdown-menu dropdown-menu-right animated--fade-in show" style="position: absolute; transform: translate3d(0px, -104px, 0px); top: 0px; left: 0px; will-change: transform;">
-				       <a class="dropdown-item" href="#">가격순</a>
-				       <a class="dropdown-item" href="#">평점순</a>
-				       <a class="dropdown-item" href="#">추천순</a>
-					</div>
-				</li>
-			</ul>
+			<div class="dropdown mb-4 show">
+            	<button class="btn bg-gradient-light  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                정렬
+                </button>
+                <div class="dropdown-menu animated--fade-in show" aria-labelledby="dropdownMenuButton" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
+                	<a class="dropdown-item" href="#">가격순</a>
+                    <a class="dropdown-item" href="#">추천순</a>
+                    <a class="dropdown-item" href="#">평점순</a>
+                </div>
+            </div>
+			<!-- 정렬 버튼  -->
+			
 		</div>
 	</div>
-		<!-- 정렬 버튼  -->
-
 	<!-- 지도 -->
 	<div class="imgMap">
 	<h1>지도입니다</h1>
@@ -195,7 +209,7 @@ $(function() {
 	<!-- 지도 -->
 	
 	<!-- 결과 목록 -->
-	<div class="container searchResultList">
+	<div class=" searchResultList justify-content-between">
 	
 						<div class="best1  bg-gradient-light" >
 							<div class="card-row">
