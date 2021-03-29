@@ -83,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
-            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
-            <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item active" href="adminAnswer.do"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="notice.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="faq.do"> 도움말 관리 </a>
+            <a class="collapse-item" href="theme.do"> 기획전 관리 </a>
+            <a class="collapse-item active" href="answer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -164,7 +164,7 @@
                 	<c:forEach var="list" items="${list }">
                 		<tr>
                 			<td>${list.adm_que_num }</td>
-                			<td><a href="adminAnswerDetail.do?adm_que_num=${list.adm_que_num }">${list.adm_que_title }</a></td>
+                			<td><a href="answerDetail.do?adm_que_num=${list.adm_que_num }">${list.adm_que_title }</a></td>
                 			<td>${list.adm_que_writer }</td>
                 			<td>${list.adm_que_date }</td>
                 			<td>
@@ -220,7 +220,7 @@ aria-hidden="true">
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
         </div>
     </div>
 </div>

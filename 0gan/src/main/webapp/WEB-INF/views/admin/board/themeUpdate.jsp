@@ -83,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
-            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
-            <a class="collapse-item active" href="adminTheme.do"> 기획전 관리 </a>
-            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="notice.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="faq.do"> 도움말 관리 </a>
+            <a class="collapse-item active" href="theme.do"> 기획전 관리 </a>
+            <a class="collapse-item" href="answer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -149,7 +149,7 @@
 
 <div class="card-body">
     <div class="card container-fluid w-75 mb-5">
-    <form action="adminThemeUpdate.do" method="post" enctype="multipart/form-data">
+    <form action="themeUpdate.do" method="post" enctype="multipart/form-data">
     	<input type="hidden" name="theme_num" value="${theme.theme_num }">
 	        <div class="col-md-12">
 	            <label class="mt-4">제목</label>
@@ -200,7 +200,7 @@
                         <td>${place.PLACE_NAME }</td>
                         <td>${place.PLACE_CATEGORY }</td>
                         <td>${place.PLACE_ADDR }</td>
-                        <td><a href="adminThemePlaceInsert.do?theme_num=${theme.theme_num }&place_num=${place.PLACE_NUM }"><button class="btn btn-primary me-md-2" type="button">등록</button></a></td>
+                        <td><a href="themePlaceInsert.do?theme_num=${theme.theme_num }&place_num=${place.PLACE_NUM }"><button class="btn btn-primary me-md-2" type="button">등록</button></a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -235,11 +235,11 @@
                     <td>${theme_place.PLACE_NAME }</td>
                     <td>${theme_place.PLACE_CATEGORY }</td>
                     <td>${theme_place.PLACE_ADDR }</td>
-                    <td><a href="adminThemePlaceDelete.do?theme_num=${theme.theme_num }&place_num=${theme_place.PLACE_NUM }" class="btn btn-danger btn-icon-split">
+                    <td><a href="themePlaceDelete.do?theme_num=${theme.theme_num }&place_num=${theme_place.PLACE_NUM }" class="btn btn-danger btn-icon-split">
                         <span class="text">삭제</span>
                     </a></td>
-                </c:forEach>
                 </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>

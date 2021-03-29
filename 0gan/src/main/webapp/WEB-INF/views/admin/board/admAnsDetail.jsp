@@ -83,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
-            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
-            <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item active" href="adminAnswer.do"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="notice.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="faq.do"> 도움말 관리 </a>
+            <a class="collapse-item" href="theme.do"> 기획전 관리 </a>
+            <a class="collapse-item active" href="answer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -171,9 +171,9 @@
         <hr>
         <c:if test="${question.adm_que_check=='N' }">
         <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-            <a href="adminAnswer.do"><button class="btn btn-primary me-md-2" type="button">목록</button></a>
+            <a href="answer.do"><button class="btn btn-primary me-md-2" type="button">목록</button></a>
             &nbsp;
-            <a href="adminAnswerInsert.do?adm_que_num=${question.adm_que_num }"><button class="btn btn-primary me-md-2" type="button">답변</button></a>
+            <a href="answerInsert.do?adm_que_num=${question.adm_que_num }"><button class="btn btn-primary me-md-2" type="button">답변</button></a>
         </div>
     </c:if>
 </div>
@@ -201,7 +201,7 @@
 </div>
 <hr>
 <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-    <a href="adminAnswerUpdate.do?adm_que_num=${question.adm_que_num }"><button class="btn btn-primary me-md-2" type="button">수정</button></a>
+    <a href="answerUpdate.do?adm_que_num=${question.adm_que_num }"><button class="btn btn-primary me-md-2" type="button">수정</button></a>
 </div>
 </div>
 </div>

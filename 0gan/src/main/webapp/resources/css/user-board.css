@@ -1,0 +1,33 @@
+.answer {
+        display: none;
+        padding-bottom: 30px;
+        padding-top: 30px;
+        padding-left: 30px;
+        font-size: 15px;
+    }
+    
+    .question {
+        font-size: 19px;
+        padding: 30px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+    }
+    .question:hover {
+        color: #2962ff;
+    }
+    [id$="-toggle"] {
+        margin-right: 15px;
+    }
+    table {
+        width: 80%;
+        border-top: 1px solid #e0e0e0;
+        border-collapse: collapse;
+    }
+    .tr-question td {
+        border-bottom: 1px solid#e0e0e0;
+        padding: 10px;
+    }

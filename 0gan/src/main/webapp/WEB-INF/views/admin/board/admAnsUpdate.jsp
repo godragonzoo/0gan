@@ -82,10 +82,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
-            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
-            <a class="collapse-item" href="adminTheme.do"> 기획전 관리 </a>
-            <a class="collapse-item active" href="adminAnswer.do"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="notice.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="faq.do"> 도움말 관리 </a>
+            <a class="collapse-item" href="theme.do"> 기획전 관리 </a>
+            <a class="collapse-item active" href="answer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -166,7 +166,7 @@
         <hr style="width: 75%;" >
         <div class="card-body">
             <div class="card container-fluid w-75 mb-5">
-	            <form action="adminAnswerUpdate.do" method="post" enctype="multipart/form-data">
+	            <form action="answerUpdate.do" method="post" enctype="multipart/form-data">
 	                <div class="col-md-12">
 	                <input type="hidden" name="adm_ans_num" value="${answer.adm_ans_num }">
 	                <input type="hidden" name="user_num" value="${answer.user_num }">

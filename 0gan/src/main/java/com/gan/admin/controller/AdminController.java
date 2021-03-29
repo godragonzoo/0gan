@@ -11,8 +11,13 @@ import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gan.admin.dao.AdminDao;
 import com.gan.admin.vo.AdmAnsVo;
+import com.gan.admin.vo.AdmVo;
 import com.gan.admin.vo.FaqVo;
 import com.gan.admin.vo.NotiVo;
 import com.gan.admin.vo.ThemeVo;
@@ -36,24 +42,49 @@ public class AdminController {
 		this.dao = dao;
 	}
 
-	/**
-	 * localhost/adminLogin.do -> admin/login.jsp 관리자 로그인페이지 by 박권익
-	 * 
-	 * @return
-	 */
-	@RequestMapping("/adminLogin.do")
-	public ModelAndView adminLogin() {
-		ModelAndView mav = new ModelAndView("/admin/login");
-		return mav;
-	}
-
+//	@RequestMapping(value="/admin/join.do", method = RequestMethod.GET)
+//	public ModelAndView joinForm() {
+//		ModelAndView mav = new ModelAndView("/admin/join");
+//		return mav;
+//	}
+//	
+//	@RequestMapping(value="/admin/join.do", method=RequestMethod.POST)
+//	public ModelAndView adminJoin(AdmVo admin) {
+//		ModelAndView mav = new ModelAndView("/admin/join");
+//		admin.setAdm_pwd(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(admin.getAdm_pwd()));
+//		int re = dao.insertAdmin(admin);
+//		mav.setViewName("redirect:/admin/error.do");
+//		if(re==1) {
+//			mav.setViewName("redirect:/admin/login.do");
+//		}
+//		return mav;
+//	}
+//	
+//	@RequestMapping(value="/admin/login.do", method=RequestMethod.GET)
+//	public ModelAndView loginForm() {
+//		ModelAndView mav = new ModelAndView("/admin/login");
+//		return mav;
+//	}
+//	
+//	@RequestMapping(value="/admin/loginOK.do")
+//	public ModelAndView adminLoginOK(HttpSession session) {
+//		ModelAndView mav = new ModelAndView();
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		User user = (User)authentication.getPrincipal();
+//		String id = user.getUsername();
+//		AdmVo admin = dao.selectAdmin(id);
+//		session.setAttribute("admin", admin);
+//		mav.setViewName("redirect:/admin/notice.do");
+//		return mav;
+//	}
+	
 	/**
 	 * localhost/adminNoti.do -> admin/noti.jsp 관리자 공지사항관리 페이지 by 박권익
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminNoti.do")
-	public ModelAndView selectAdminNoti() {
+	@RequestMapping("/admin/notice.do")
+	public ModelAndView selectAdminNoti(HttpSession session) {
 		ModelAndView mav = new ModelAndView("/admin/board/notice");
 		List<NotiVo> list = dao.selectAllNoti();
 		mav.addObject("list", list);
@@ -63,7 +94,7 @@ public class AdminController {
 	/**
 	 * 공지사항 등록 form
 	 */
-	@RequestMapping(value = "/adminNotiInsert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/noticeInsert.do", method = RequestMethod.GET)
 	public ModelAndView insertNotiForm() {
 		ModelAndView mav = new ModelAndView("/admin/board/noticeInsert");
 		return mav;
@@ -74,7 +105,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminNotiInsert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/noticeInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminNoti(NotiVo noti, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -100,9 +131,9 @@ public class AdminController {
 		}
 		noti.setNoti_file(noti_file);
 		int re = dao.insertNori(noti);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1)
-			mav.setViewName("redirect:/adminNoti.do");
+			mav.setViewName("redirect:/admin/notice.do");
 		return mav;
 	}
 
@@ -111,14 +142,14 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminNotiUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/noticeUpdate.do", method = RequestMethod.GET)
 	public ModelAndView updateNotiForm(int noti_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/noticeUpdate");
 		mav.addObject("noti", dao.selectNoti(noti_num));
 		return mav;
 	}
 
-	@RequestMapping(value = "/adminNotiUpdate.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/noticeUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateAdminNoti(NotiVo noti, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		String oldNotiFile = noti.getNoti_file();
@@ -132,7 +163,7 @@ public class AdminController {
 		}
 
 		int re = dao.updateNoti(noti);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1) {
 			if (!"".equals(noti_file)) {
 				FileOutputStream fos = null;
@@ -153,7 +184,7 @@ public class AdminController {
 				File file = new File(path + "/" + oldNotiFile);
 				file.delete();
 			}
-			mav.setViewName("redirect:/adminNoti.do");
+			mav.setViewName("redirect:/admin/notice.do");
 		}
 		return mav;
 	}
@@ -163,15 +194,15 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminNotiDelete.do")
+	@RequestMapping("/admin/noticeDelete.do")
 	public ModelAndView deleteAdminNoti(int noti_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/noticeDelete");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		String noti_file = dao.selectNoti(noti_num).getNoti_file();
 		int re = dao.deleteNoti(noti_num);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1) {
-			mav.setViewName("redirect:/adminNoti.do");
+			mav.setViewName("redirect:/admin/notice.do");
 			File file = new File(path + "/" + noti_file);
 			file.delete();
 		}
@@ -183,7 +214,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminNotiDetail.do")
+	@RequestMapping("/admin/noticeDetail.do")
 	public ModelAndView detailAdminNoti(int noti_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/noticeDetail");
 		mav.addObject("noti", dao.selectNoti(noti_num));
@@ -195,7 +226,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminFaq.do")
+	@RequestMapping("/admin/faq.do")
 	public ModelAndView selectAdminFaq() {
 		ModelAndView mav = new ModelAndView("/admin/board/faq");
 		List<FaqVo> list = dao.selectAllFaq();
@@ -208,7 +239,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminFaqInsert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/faqInsert.do", method = RequestMethod.GET)
 	public ModelAndView insertFaqForm() {
 		ModelAndView mav = new ModelAndView("/admin/board/faqInsert");
 		return mav;
@@ -219,7 +250,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminFaqInsert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/faqInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminFaq(FaqVo faq, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqInsert");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -245,9 +276,9 @@ public class AdminController {
 		}
 		faq.setFaq_file(faq_file);
 		int re = dao.insertFaq(faq);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1)
-			mav.setViewName("redirect:/adminFaq.do");
+			mav.setViewName("redirect:/admin/faq.do");
 		return mav;
 	}
 
@@ -256,7 +287,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminFaqUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/faqUpdate.do", method = RequestMethod.GET)
 	public ModelAndView updateFaqForm(int faq_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqUpdate");
 		mav.addObject("faq", dao.selectFaq(faq_num));
@@ -268,7 +299,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminFaqUpdate.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/faqUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateAdminFaq(FaqVo faq, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqUpdate");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -282,7 +313,7 @@ public class AdminController {
 		}
 
 		int re = dao.updateFaq(faq);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1) {
 			if (!"".equals(faq_file)) {
 				FileOutputStream fos = null;
@@ -303,7 +334,7 @@ public class AdminController {
 				File file = new File(path + "/" + oldFileNmae);
 				file.delete();
 			}
-			mav.setViewName("redirect:/adminFaqDetail.do?faq_num=" + faq.getFaq_num());
+			mav.setViewName("redirect:/admin/faqDetail.do?faq_num=" + faq.getFaq_num());
 		}
 		return mav;
 	}
@@ -313,17 +344,17 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminFaqDelete.do")
+	@RequestMapping("/admin/faqDelete.do")
 	public ModelAndView deletesAdminFaq(int faq_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqDelete");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		String faq_file = dao.selectFaq(faq_num).getFaq_file();
 		int re = dao.deleteFaq(faq_num);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1) {
 			File file = new File(path + "/" + faq_file);
 			file.delete();
-			mav.setViewName("redirect:/adminFaq.do");
+			mav.setViewName("redirect:/admin/faq.do");
 		}
 		return mav;
 	}
@@ -333,7 +364,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminFaqDetail.do")
+	@RequestMapping("/admin/faqDetail.do")
 	public ModelAndView detailAdminFaq(int faq_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqDetail");
 		mav.addObject("faq", dao.selectFaq(faq_num));
@@ -345,7 +376,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminAnswer.do")
+	@RequestMapping("/admin/answer.do")
 	public ModelAndView selectAdminAns() {
 		ModelAndView mav = new ModelAndView("/admin/board/admAns");
 		List<AdmAnsVo> list = dao.selectAllAdmQue();
@@ -359,7 +390,7 @@ public class AdminController {
 	 * @param adm_que_num
 	 * @return
 	 */
-	@RequestMapping("/adminAnswerDetail.do")
+	@RequestMapping("/admin/answerDetail.do")
 	public ModelAndView insertAnsForm(int adm_que_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/admAnsDetail");
 		mav.addObject("question", dao.selectAdmQue(adm_que_num));
@@ -374,7 +405,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminAnswerInsert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/answerInsert.do", method = RequestMethod.GET)
 	public ModelAndView insertAnsForm(int adm_que_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/admAnsInsert");
 		mav.addObject("question", dao.selectAdmQue(adm_que_num));
@@ -386,7 +417,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminAnswerInsert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/answerInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminAns(AdmAnsVo admAns, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/admAnsInsert");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -414,9 +445,9 @@ public class AdminController {
 
 		int re1 = dao.insertAdmAns(admAns);
 		int re2 = dao.updateAdmQueCheck(admAns.getAdm_que_num());
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re1 == 1 && re2 == 1)
-			mav.setViewName("redirect:/adminAnswer.do");
+			mav.setViewName("redirect:/admin/answer.do");
 
 		return mav;
 	}
@@ -426,7 +457,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/adminAnswerUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/answerUpdate.do", method = RequestMethod.GET)
 	public ModelAndView updateAnsForm(int adm_que_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/admAnsUpdate");
 		mav.addObject("question", dao.selectAdmQue(adm_que_num));
@@ -441,7 +472,7 @@ public class AdminController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/adminAnswerUpdate.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/answerUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateAdminAns(AdmAnsVo admAns, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		String oldFileName = admAns.getAdm_ans_file();
@@ -454,7 +485,7 @@ public class AdminController {
 		}
 
 		int re = dao.updateAdmAns(admAns);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1) {
 			FileOutputStream fos = null;
 			if (!"".equals(adm_ans_file)) {
@@ -475,7 +506,7 @@ public class AdminController {
 				File file = new File(path + "/" + oldFileName);
 				file.delete();
 			} // if
-			mav.setViewName("redirect:/adminAnswerDetail.do?adm_que_num=" + admAns.getAdm_que_num());
+			mav.setViewName("redirect:/admin/answerDetail.do?adm_que_num=" + admAns.getAdm_que_num());
 		}
 		return mav;
 	}
@@ -485,14 +516,14 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminTheme.do")
+	@RequestMapping("/admin/theme.do")
 	public ModelAndView selectAdminTheme() {
 		ModelAndView mav = new ModelAndView("/admin/board/theme");
 		mav.addObject("list", dao.selectAllTheme());
 		return mav;
 	}
 
-	@RequestMapping(value = "/adminThemeInsert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/themeInsert.do", method = RequestMethod.GET)
 	public ModelAndView insertThemeForm() {
 		ModelAndView mav = new ModelAndView("/admin/board/themeInsert");
 		return mav;
@@ -504,7 +535,7 @@ public class AdminController {
 	 * @param theme
 	 * @return
 	 */
-	@RequestMapping(value = "adminThemeInsert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "admin/themeInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminTheme(ThemeVo theme, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/themeInsert");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -531,9 +562,9 @@ public class AdminController {
 
 		theme.setTheme_file(theme_file);
 		int re = dao.insertTheme(theme);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1)
-			mav.setViewName("redirect:/adminTheme.do");
+			mav.setViewName("redirect:/admin/theme.do");
 		return mav;
 	}
 
@@ -542,17 +573,17 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminThemeDelete.do")
+	@RequestMapping("/admin/themeDelete.do")
 	public ModelAndView deleteAdminTheme(int theme_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/themeDelete");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
 		String theme_file = dao.selectTheme(theme_num).getTheme_file();
 		int re = dao.deleteTheme(theme_num);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1) {
 			File file = new File(path + "/" + theme_file);
 			file.delete();
-			mav.setViewName("redirect:/adminTheme.do");
+			mav.setViewName("redirect:/admin/theme.do");
 		}
 		return mav;
 	}
@@ -563,7 +594,7 @@ public class AdminController {
 	 * @param theme_num
 	 * @return
 	 */
-	@RequestMapping(value = "/adminThemeUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/themeUpdate.do", method = RequestMethod.GET)
 	public ModelAndView updateThemeForm(int theme_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/themeUpdate");
 		mav.addObject("theme", dao.selectTheme(theme_num));
@@ -579,7 +610,7 @@ public class AdminController {
 	 * @param reuqest
 	 * @return
 	 */
-	@RequestMapping(value = "/adminThemeUpdate.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/themeUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateAdminTheme(ThemeVo theme, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/themeUpdate");
 		String path = request.getSession().getServletContext().getRealPath("/upload");
@@ -591,7 +622,7 @@ public class AdminController {
 			theme.setTheme_file(theme_file);
 		}
 		int re = dao.updateTheme(theme);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1) {
 			if (!"".equals(theme_file)) {
 				FileOutputStream fos = null;
@@ -612,7 +643,7 @@ public class AdminController {
 				File file = new File(path + "/" + oldFilename);
 				file.delete();
 			} // if
-			mav.setViewName("redirect:/adminThemeUpdate.do?theme_num=" + theme.getTheme_num());
+			mav.setViewName("redirect:/admin/themeUpdate.do?theme_num=" + theme.getTheme_num());
 		}
 		// if
 		return mav;
@@ -625,13 +656,13 @@ public class AdminController {
 	 * @param place_num
 	 * @return
 	 */
-	@RequestMapping("/adminThemePlaceInsert.do")
+	@RequestMapping("/admin/themePlaceInsert.do")
 	public ModelAndView insertThemePlace(int theme_num, int place_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/themePlaceInsert");
 		int re = dao.insertThemePlace(theme_num, place_num);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1)
-			mav.setViewName("redirect:/adminThemeUpdate.do?theme_num=" + theme_num);
+			mav.setViewName("redirect:/admin/themeUpdate.do?theme_num=" + theme_num);
 		return mav;
 	}
 
@@ -642,13 +673,13 @@ public class AdminController {
 	 * @param place_num
 	 * @return
 	 */
-	@RequestMapping("/adminThemePlaceDelete.do")
+	@RequestMapping("/admin/themePlaceDelete.do")
 	public ModelAndView deleteThemePlace(int theme_num, int place_num) {
 		ModelAndView mav = new ModelAndView("/admin/board/themePlaceDelete");
 		int re = dao.deleteThemePlace(theme_num, place_num);
-		mav.setViewName("redirect:/adminError.do");
+		mav.setViewName("redirect:/admin/error.do");
 		if (re == 1)
-			mav.setViewName("redirect:/adminThemeUpdate.do?theme_num=" + theme_num);
+			mav.setViewName("redirect:/admin/themeUpdate.do?theme_num=" + theme_num);
 		return mav;
 	}
 
@@ -658,7 +689,7 @@ public class AdminController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/adminError.do")
+	@RequestMapping("/admin/error.do")
 	public ModelAndView error() {
 		ModelAndView mav = new ModelAndView("/admin/error");
 		return mav;

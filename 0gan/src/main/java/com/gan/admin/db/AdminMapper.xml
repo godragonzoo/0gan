@@ -3,6 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
+	<insert id="insertAdmin">
+		insert into adm_tb values(seq_admin.nextval, #{adm_id}, #{adm_pwd}, 'admin')
+	</insert>
+	<select id="selectAdmin" resultType="adminVo">
+		select * from adm_tb where adm_id = #{username}
+	</select>
 	<!-- # 공지사항 관련 -->
 	<!-- 공지사항List by 박권익 -->
 	<select id="selectAllNoti" resultType="notiVo">
@@ -117,30 +123,41 @@
 	</select>
 	<!-- 기획전 정보 by 박권익 -->
 	<select id="selectTheme" resultType="themeVo">
-		select * from theme_tb where theme_num = #{theme_num}
+		select * from theme_tb where
+		theme_num = #{theme_num}
 	</select>
-	<!-- 공간정보 가져오기 by 박권익-->
+	<!-- 공간정보 가져오기 by 박권익 -->
 	<select id="selectPlace" resultType="java.util.Map">
-		select place_num, place_name, place_category, place_addr from place_tb 
-		minus 
-		select place_tb.place_num, place_name, place_category, place_addr from place_tb, theme_place_tb where place_tb.place_num = theme_place_tb.place_num and theme_num = #{theme_num}
+		select place_num,
+		place_name, place_category, place_addr from place_tb
+		minus
+		select place_tb.place_num, place_name, place_category, place_addr from
+		place_tb, theme_place_tb where place_tb.place_num =
+		theme_place_tb.place_num and theme_num = #{theme_num}
 	</select>
 	<!-- 기획전에 등록된 장소 정보 가져오기 -->
 	<select id="selectAllThemePlace" resultType="java.util.Map">
-		select place_tb.place_num, place_name, place_category, place_addr from place_tb, theme_place_tb where place_tb.place_num = theme_place_tb.place_num and theme_num = #{theme_num} order by place_tb.place_num 
+		select
+		place_tb.place_num, place_name, place_category, place_addr from
+		place_tb, theme_place_tb where place_tb.place_num =
+		theme_place_tb.place_num and theme_num = #{theme_num} order by
+		place_tb.place_num
 	</select>
 	<!-- 기획전 등록 by 박권익 -->
 	<insert id="insertTheme">
-		insert into theme_tb values(seq_theme.nextval, #{theme_title}, #{theme_content}, #{theme_file}, systimestamp)
+		insert into theme_tb values(seq_theme.nextval,
+		#{theme_title}, #{theme_content}, #{theme_file}, systimestamp)
 	</insert>
 	<!-- 기획전 장소 등록 by 박권익 -->
 	<insert id="insertThemePlace">
-		insert into theme_place_tb values(seq_theme_place.nextval, #{theme_num}, #{place_num})
+		insert into theme_place_tb
+		values(seq_theme_place.nextval, #{theme_num}, #{place_num})
 	</insert>
-	<!-- 기획전 수정 by 박권익-->
+	<!-- 기획전 수정 by 박권익 -->
 	<update id="updateTheme">
-		update theme_tb 
-		set theme_title = #{theme_title}, theme_content = #{theme_content}, theme_file = #{theme_file}, theme_date = systimestamp 
+		update theme_tb
+		set theme_title = #{theme_title}, theme_content = #{theme_content},
+		theme_file = #{theme_file}, theme_date = systimestamp
 		where theme_num = #{theme_num}
 	</update>
 	<!-- 기획전 삭제 by 박권익 -->
@@ -149,6 +166,7 @@
 	</delete>
 	<!-- 기획전 장소 삭제 by 박권익 -->
 	<delete id="deleteThemePlace">
-		delete theme_place_tb where theme_num = #{theme_num} and place_num = #{place_num}
+		delete theme_place_tb where theme_num = #{theme_num}
+		and place_num = #{place_num}
 	</delete>
 </mapper> 

@@ -83,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
-            <a class="collapse-item active" href="adminFaq.do"> 도움말 관리 </a>
-            <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="notice.do"> 공지사항 관리 </a>
+            <a class="collapse-item active" href="faq.do"> 도움말 관리 </a>
+            <a class="collapse-item" href="theme.do"> 기획전 관리 </a>
+            <a class="collapse-item" href="answer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -147,7 +147,7 @@
         </div>
         <div class="card-body">
             <div align="right">
-                <a href="adminFaqInsert.do" class="btn btn-primary btn-icon-split">
+                <a href="faqInsert.do" class="btn btn-primary btn-icon-split">
                     <span class="text">도움말 등록</span>
                 </a>
             </div>
@@ -167,11 +167,11 @@
                             <tr>
                                 <td>${list.faq_num }</td>
                                 <td>${list.faq_category }</td>
-                                <td><a href="adminFaqDetail.do?faq_num=${list.faq_num }">${list.faq_title }</a></td>
+                                <td><a href="faqDetail.do?faq_num=${list.faq_num }">${list.faq_title }</a></td>
                                 <td>
-                                	<a href="adminFaqUpdate.do?faq_num=${list.faq_num }" class="btn btn-success btn-icon-split">
+                                	<a href="faqUpdate.do?faq_num=${list.faq_num }" class="btn btn-success btn-icon-split">
                                     <span class="text">수정</span></a>                                    
-                                <a href="adminFaqDelete.do?faq_num=${list.faq_num }" class="btn btn-danger btn-icon-split">
+                                <a href="faqDelete.do?faq_num=${list.faq_num }" class="btn btn-danger btn-icon-split">
                                     <span class="text">삭제</span>
                                 </a>
                                 </td>

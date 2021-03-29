@@ -40,19 +40,17 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form action="admin/login.do" method="post" class="user">
+                                    <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="아이디 입력">
+                                            <input type="text" class="form-control form-control-user"
+                                                placeholder="아이디 입력" name="username">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="비밀번호 입력">
+                                                id="exampleInputPassword" placeholder="비밀번호 입력" name="password">
                                         </div>
-                                        <a href="#" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                            <input type="submit" value="로그인" class="btn btn-primary btn-user btn-block">
                                     </form>
                                 </div>
                             </div>
@@ -71,7 +69,7 @@
     <script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="v../resources/endor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../resources/endor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="../resources/js/sb-admin-2.min.js"></script>

@@ -83,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="adminNoti.do"> 공지사항 관리 </a>
-            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
-            <a class="collapse-item active" href="adminTheme.do"> 기획전 관리 </a>
-            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
+            <a class="collapse-item" href="notice.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="faq.do"> 도움말 관리 </a>
+            <a class="collapse-item active" href="theme.do"> 기획전 관리 </a>
+            <a class="collapse-item" href="answer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -147,7 +147,7 @@
     </div>
     <div class="card-body">
         <div align="right">
-            <a href="adminThemeInsert.do" class="btn btn-primary btn-icon-split">
+            <a href="themeInsert.do" class="btn btn-primary btn-icon-split">
                 <span class="text">기획전 등록</span>
             </a>
         </div>
@@ -168,10 +168,10 @@
 						<td>${list.theme_num }</td>
 						<td>${list.theme_title }</td>
 						<td>${list.theme_date }</td>
-						<td><a href="adminThemeUpdate.do?theme_num=${list.theme_num }" class="btn btn-success btn-icon-split">
+						<td><a href="themeUpdate.do?theme_num=${list.theme_num }" class="btn btn-success btn-icon-split">
                             <span class="text">관리</span>
                         </a>                                    
-                        <a href="adminThemeDelete.do?theme_num=${list.theme_num }" class="btn btn-danger btn-icon-split">
+                        <a href="themeDelete.do?theme_num=${list.theme_num }" class="btn btn-danger btn-icon-split">
                             <span class="text">삭제</span>
                         </a></td>
 					</tr>                

@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.gan.admin.vo.AdmAnsVo;
 import com.gan.admin.vo.AdmQueVo;
+import com.gan.admin.vo.AdmVo;
 import com.gan.admin.vo.FaqVo;
 import com.gan.admin.vo.NotiVo;
 import com.gan.admin.vo.ThemeVo;
@@ -36,6 +37,13 @@ public class DBManager {
 		}
 	}// static
 
+	public static AdmVo selectAdmin(String username) {
+		SqlSession session = factory.openSession();
+		AdmVo adm = session.selectOne("admin.selectAdmin", username);
+		System.out.println("회원정보:" + adm);
+		session.close();
+		return adm;
+	}
 	/**
 	 * 모든 공지사항 정보 가져오기 by 박권익
 	 * 
@@ -373,5 +381,12 @@ public class DBManager {
 		session.close();
 		return re;
 	}
-
+	public static int insertAdmin(AdmVo adm) {
+		SqlSession session = factory.openSession();
+		int re = session.insert("admin.insertAdmin", adm);
+		session.commit();
+		session.close();
+		return re;
+	}
+	
 }// class

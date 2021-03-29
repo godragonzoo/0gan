@@ -83,10 +83,10 @@
         <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item active" href="adminNoti.do"> 공지사항 관리 </a>
-            <a class="collapse-item" href="adminFaq.do"> 도움말 관리 </a>
-            <a class="collapse-item" href="#"> 기획전 관리 </a>
-            <a class="collapse-item" href="adminAnswer.do"> 문의게시판 관리 </a>
+            <a class="collapse-item active" href="notice.do"> 공지사항 관리 </a>
+            <a class="collapse-item" href="faq.do"> 도움말 관리 </a>
+            <a class="collapse-item" href="theme.do"> 기획전 관리 </a>
+            <a class="collapse-item" href="answer.do"> 문의게시판 관리 </a>
         </div>
     </div>
 </li>
@@ -150,7 +150,7 @@
 
         <div class="card-body">
             <div align="right">
-            <a href="adminNotiInsert.do" class="btn btn-primary btn-icon-split">
+            <a href="noticeInsert.do" class="btn btn-primary btn-icon-split">
                 <span class="text">공지사항 등록</span>
             </a>
             </div>
@@ -169,12 +169,12 @@
                         <c:forEach var="list" items="${list }">
                         <tr>
                         	<td>${list.noti_num }</td>
-                        	<td><a href="adminNotiDetail.do?noti_num=${list.noti_num }">${list.noti_title }</a></td>
+                        	<td><a href="noticeDetail.do?noti_num=${list.noti_num }">${list.noti_title }</a></td>
                         	<td>${list.noti_date }</td>
-                        	<td><a href="adminNotiUpdate.do?noti_num=${list.noti_num }" class="btn btn-success btn-icon-split">
+                        	<td><a href="noticeUpdate.do?noti_num=${list.noti_num }" class="btn btn-success btn-icon-split">
                                 <span class="text">수정</span>
                             </a>                                    
-                            <a href="adminNotiDelete.do?noti_num=${list.noti_num }" class="btn btn-danger btn-icon-split">
+                            <a href="noticeDelete.do?noti_num=${list.noti_num }" class="btn btn-danger btn-icon-split">
                                 <span class="text">삭제</span>
                             </a></td>
                         </tr>
