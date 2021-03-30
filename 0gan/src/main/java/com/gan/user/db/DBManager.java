@@ -13,6 +13,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.gan.vo.FaqVo;
 import com.gan.vo.NotiVo;
+import com.gan.vo.ThemePlaceVo;
+import com.gan.vo.ThemeVo;
 
 public class DBManager {
 
@@ -34,14 +36,24 @@ public class DBManager {
 			}
 		}
 	}// static
-	
-	public static List<NotiVo> selectNoti(Map<String, Object> map){
+
+	/**
+	 * 검색 조건에 적합한 공지사항 목록 by 박권익
+	 * @param map
+	 * @return
+	 */
+	public static List<NotiVo> selectNoti(Map<String, Object> map) {
 		SqlSession session = factory.openSession();
 		List<NotiVo> list = session.selectList("board.selectNoti", map);
 		session.close();
 		return list;
 	}
-	
+
+	/**
+	 * 검색 조건에 적합한 공지사항 개수 by 박권익
+	 * @param keyword
+	 * @return
+	 */
 	public static int countNoti(String keyword) {
 		SqlSession session = factory.openSession();
 		int re = session.selectOne("board.countNoti", keyword);
@@ -49,6 +61,12 @@ public class DBManager {
 		return re;
 	}
 
+	/**
+	 * 검색 조건에 적합한 도움말 개수 by 박권익
+	 * @param keyword
+	 * @param category
+	 * @return
+	 */
 	public static int countFaq(String keyword, String category) {
 		SqlSession session = factory.openSession();
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -59,9 +77,37 @@ public class DBManager {
 		return re;
 	}
 
+	/**
+	 * 검색 조건에 적합한 도움말 목록 by 박권익
+	 * @param map
+	 * @return
+	 */
 	public static List<FaqVo> selectFaq(Map<String, Object> map) {
 		SqlSession session = factory.openSession();
 		List<FaqVo> list = session.selectList("board.selectFaq", map);
+		session.close();
+		return list;
+	}
+
+	/**
+	 * 기획전 목록 by 박권익
+	 * @return
+	 */
+	public static List<ThemeVo> selectAllTheme() {
+		SqlSession session = factory.openSession();
+		List<ThemeVo> list = session.selectList("board.selectAllTheme");
+		session.close();
+		return list;
+	}
+
+	/**
+	 * 기획전에 등록된 장소 목록 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
+	public static List<ThemePlaceVo> selectThemePlace(int theme_num) {
+		SqlSession session = factory.openSession();
+		List<ThemePlaceVo> list = session.selectList("board.selectThemePlace", theme_num);
 		session.close();
 		return list;
 	}

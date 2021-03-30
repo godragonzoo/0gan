@@ -58,8 +58,15 @@ public class BoardController {
 		return mav;
 	}
 
+	/**
+	 * 공지사항 by 박권익
+	 * @param page
+	 * @param keyword
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/notice.do")
-	public ModelAndView selectNoti(@RequestParam(value = "page", defaultValue = "1") int page, String keyword,
+	public ModelAndView notice(@RequestParam(value = "page", defaultValue = "1") int page, String keyword,
 			HttpSession session) {
 		ModelAndView mav = new ModelAndView("/user/board/notice");
 		if ((keyword == null) && session.getAttribute("keyword") != null) {
@@ -82,8 +89,16 @@ public class BoardController {
 		return mav;
 	}
 
+	/**
+	 * 도움말 by 박권익
+	 * @param page
+	 * @param keyword
+	 * @param category
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/faq.do")
-	public ModelAndView selectFaq(@RequestParam(value = "page", defaultValue = "1") int page, String keyword,
+	public ModelAndView faq(@RequestParam(value = "page", defaultValue = "1") int page, String keyword,
 			String category, HttpSession session) {
 		ModelAndView mav = new ModelAndView("/user/board/faq");
 		
@@ -113,6 +128,29 @@ public class BoardController {
 		mav.addObject("totalPage", totalPage);
 		session.setAttribute("keyword", keyword);
 		session.setAttribute("category", category);
+		return mav;
+	}
+	
+	/**
+	 * 기획전 목록 by 박권익
+	 * @return
+	 */
+	@RequestMapping("/theme.do")
+	public ModelAndView theme() {
+		ModelAndView mav = new ModelAndView("/user/board/theme");
+		mav.addObject("list", dao.selectAllTheme());
+		return mav;
+	}
+	
+	/**
+	 * 기획전에 등록된 장소 목록 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
+	@RequestMapping("/themePlace.do")
+	public ModelAndView themePlace(int theme_num) {
+		ModelAndView mav = new ModelAndView("/user/board/themePlace");
+		mav.addObject("list", dao.selectThemePlace(theme_num));
 		return mav;
 	}
 }

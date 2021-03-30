@@ -77,7 +77,7 @@ public class AdminController {
 //		mav.setViewName("redirect:/admin/notice.do");
 //		return mav;
 //	}
-	
+
 	/**
 	 * localhost/adminNoti.do -> admin/noti.jsp 관리자 공지사항관리 페이지 by 박권익
 	 * 
