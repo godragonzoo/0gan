@@ -183,7 +183,7 @@
         </div>
 
         <div id="wrapper">
-            <div id="loading"></div>
+            
             <div id="calendar"></div>
         </div>
 
