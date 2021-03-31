@@ -759,7 +759,7 @@ public class AdminController {
 	 * 관리자 유저목록
 	 * by 신용주
 	 */
-	@RequestMapping("/userList.do")
+	@RequestMapping("/admin/userList.do")
 	public ModelAndView admUserList() {
 		ModelAndView mav = new ModelAndView("/admin/mgt/userList");
 		mav.addObject("uList", dao.selectAllUser());
@@ -770,7 +770,7 @@ public class AdminController {
 	 * 관리자 유저 상세정보
 	 * by 신용주
 	 */
-	@RequestMapping("/userListDetail.do")
+	@RequestMapping("/admin/userListDetail.do")
 	public ModelAndView admUserListDetail(int user_num) {
 		ModelAndView mav = new ModelAndView("/admin/mgt/userListDetail");
 		HashMap map = new HashMap();
@@ -787,7 +787,7 @@ public class AdminController {
 	 * 관리자 유저 상세정보 수정
 	 * by 신용주
 	 */
-	@RequestMapping(value = "/userListUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/userListUpdate.do", method = RequestMethod.GET)
 	public ModelAndView updateAdmUserList(int user_num) {
 		ModelAndView mav = new ModelAndView("/admin/mgt/userListUpdate");
 		HashMap map = new HashMap();
@@ -800,7 +800,7 @@ public class AdminController {
 		return mav;
 	} 
 
-	@RequestMapping(value = "/userListUpdate.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/userListUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateUserGrade(UserVo uVo) {
 		ModelAndView mav = new ModelAndView();
 		int re = dao.updateUserGrade(uVo);
@@ -817,7 +817,7 @@ public class AdminController {
 	 * 관리자 공간목록
 	 * by 신용주
 	 */
-	@RequestMapping("/placeList.do")
+	@RequestMapping("/admin/placeList.do")
 	public ModelAndView admPlaceList(@RequestParam(value = "place_num", defaultValue = "0")  int place_num) {
 		ModelAndView mav = new ModelAndView("/admin/mgt/placeList");
 		HashMap map = new HashMap();
@@ -832,7 +832,7 @@ public class AdminController {
 	 * 관리자 예약내역
 	 * by 신용주
 	 */
-	@RequestMapping("/rsvtList.do")
+	@RequestMapping("/admin/rsvtList.do")
 	public ModelAndView admRsvtList(@RequestParam(value = "user_num", defaultValue = "0")  int user_num) {
 		ModelAndView mav = new ModelAndView("/admin/mgt/rsvtList");
 		HashMap map = new HashMap();
@@ -847,7 +847,7 @@ public class AdminController {
 	 * 관리자 전체매출
 	 * by 신용주
 	 */
-	@RequestMapping("/totalSales.do")
+	@RequestMapping("/admin/totalSales.do")
 	public ModelAndView admTotalSales() {
 		ModelAndView mav = new ModelAndView("/admin/sales/totalSales");
 		HashMap map = new HashMap();
@@ -859,7 +859,7 @@ public class AdminController {
 	 * 관리자 공간별 매출
 	 * by 신용주
 	 */
-	@RequestMapping("/placeSales.do")
+	@RequestMapping("/admin/placeSales.do")
 	public ModelAndView admPlaceSales(@RequestParam(value = "place_num", defaultValue = "0")  int place_num) {
 		ModelAndView mav = new ModelAndView("/admin/sales/placeSales");
 		HashMap map = new HashMap();
@@ -874,7 +874,7 @@ public class AdminController {
 	 * 관리자 공간별 상세매출
 	 * by 신용주
 	 */
-	@RequestMapping("/placeSalesDetail.do")
+	@RequestMapping("/admin/placeSalesDetail.do")
 	public ModelAndView admPlaceSalesDetail(@RequestParam(value = "place_num", defaultValue = "0") int place_num) {
 		ModelAndView mav = new ModelAndView("/admin/sales/placeSalesDetail");
 		HashMap map = new HashMap();
@@ -889,7 +889,7 @@ public class AdminController {
 	 * 관리자 호스트별 매출
 	 * by 신용주
 	 */
-	@RequestMapping("/hostSales.do")
+	@RequestMapping("/admin/hostSales.do")
 	public ModelAndView admHostSales(@RequestParam(value = "host_user_num", defaultValue = "0")  int host_user_num) {
 		ModelAndView mav = new ModelAndView("/admin/sales/hostSales");
 		HashMap map = new HashMap();
@@ -904,7 +904,7 @@ public class AdminController {
 	 * 관리자 호스트별 보유 공간
 	 * by 신용주
 	 */
-	@RequestMapping("/hostSalesPlace.do")
+	@RequestMapping("/admin/hostSalesPlace.do")
 	public ModelAndView admHostSalesPlace(int host_user_num) {
 		ModelAndView mav = new ModelAndView("/admin/sales/hostSalesPlace");
 		HashMap map = new HashMap();
@@ -919,7 +919,7 @@ public class AdminController {
 	 * 관리자 호스트별 공간매출
 	 * by 신용주
 	 */
-	@RequestMapping("/hostSalesDetail.do")
+	@RequestMapping("/admin/hostSalesDetail.do")
 	public ModelAndView admHostSalesDetail(int place_num) {
 		ModelAndView mav = new ModelAndView("/admin/sales/hostSalesDetail");
 		HashMap map = new HashMap();
