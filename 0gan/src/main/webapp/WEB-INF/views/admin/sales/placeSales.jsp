@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -51,13 +52,13 @@
 
             <!-- Nav Item - Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 회원 정보 관리 </span></a>
+                <a class="nav-link" href="userList.do"><span> 회원 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 공간 정보 관리 </span></a>
+                <a class="nav-link" href="placeList.do"><span> 공간 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 예약 정보 관리 </span></a>
+                <a class="nav-link" href="rsvtList.do"><span> 예약 정보 관리 </span></a>
             </li>
 
 
@@ -70,9 +71,9 @@
             </a>
             <div id="collapseAdmSales" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#"> 전체 매출 </a>
-                    <a class="collapse-item active" href="#"> 공간별 매출 </a>
-                    <a class="collapse-item" href="#"> 호스트별 매출 </a>
+                    <a class="collapse-item" href="totalSales.do"> 전체 매출 </a>
+                    <a class="collapse-item active" href="placeSales.do"> 공간별 매출 </a>
+                    <a class="collapse-item" href="hostSales.do"> 호스트별 매출 </a>
                 </div>
             </div>
         </li>
@@ -175,22 +176,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>제주도가고싶다</td>
-                        <td>yjshin4817@gmail.com</td>
-                        <td>신용주</td>
-                        <td>파티룸</td>
-                        <td>인천시</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>강원도가고싶다</td>
-                        <td>yjshin4817@gmail.com</td>
-                        <td>신용주</td>
-                        <td>파티룸</td>
-                        <td>인천시</td>
-                     </tr>
+                    <c:forEach var="pList" items="${pList}">
+							<tr onclick="window.location='placeSalesDetail.do?place_num=${pList.PLACE_NUM}';">
+								<td>${pList.PLACE_NUM}</td>
+								<td>${pList.PLACE_NAME}</td>
+								<td>${pList.USER_EMAIL}</td>
+								<td>${pList.USER_NAME}</td>
+								<td>${pList.PLACE_CATEGORY}</td>
+								<td>${pList.PLACE_ADDR}</td>
+							</tr>
+						</c:forEach>
                 </tbody>
             </table>
         </div>

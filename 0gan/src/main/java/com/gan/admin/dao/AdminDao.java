@@ -1,5 +1,6 @@
 package com.gan.admin.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import com.gan.admin.vo.AdmVo;
 import com.gan.admin.vo.FaqVo;
 import com.gan.admin.vo.NotiVo;
 import com.gan.admin.vo.ThemeVo;
+import com.gan.admin.vo.UserVo;
 
 @Repository
 public class AdminDao {
@@ -264,5 +266,81 @@ public class AdminDao {
 	public int insertAdmin(AdmVo adm) {
 		return DBManager.insertAdmin(adm);
 	}
+	
+	/**
+	 * 회원 정보 조회 by 신용주
+	 */
+	public List<UserVo> selectAllUser(){
+		return DBManager.selectAllUser();
+	}
+	
+	/**
+	 * 회원 상세 정보 by 신용주
+	 */
+	public UserVo selectOneUser(int user_num){
+		return DBManager.selectOneUser(user_num);
+	}
+	
+	/**
+	 * 회원 상세 정보 조회 by 신용주
+	 */
+	public Map selectOneUserInfo(HashMap map){
+		return DBManager.selectOneUserInfo(map);
+	}
 
+	/**
+	 * 회원 예약 상세 정보 조회 by 신용주
+	 */
+	public Map selectOneUserRsvt(HashMap map){
+		return DBManager.selectOneUserRsvt(map);
+	}
+	
+	/**
+	 * 회원 등급 수정 by 신용주
+	 */
+	public int updateUserGrade(UserVo uVo){
+		return DBManager.updateUserGrade(uVo);
+	}
+	
+	/**
+	 * 공간 목록 조회 by 신용주
+	 */
+	public List<Map> selectAllPlace(HashMap map){
+		return DBManager.selectAllPlace(map);
+	}
+	
+	/**
+	 * 전체 매출 조회 by 신용주
+	 */
+	public List<Map> selectTotalSales(HashMap map){
+		return DBManager.selectTotalSales(map);
+	}
+	
+	/**
+	 * 공간별 매출 조회 by 신용주
+	 */
+	public List<Map> selectPlaceSalesDetail(HashMap map){
+		return DBManager.selectPlaceSalesDetail(map);
+	}
+	
+	/**
+	 * 예약 목록 조회 by 신용주
+	 */
+	public List<Map> selectAllRsvt(HashMap map){
+		return DBManager.selectAllRsvt(map);
+	}
+
+	/**
+	 * 호스트별 매출 조회 by 신용주
+	 */
+	public List<Map> selectHostSales(HashMap map){
+		return DBManager.selectHostSales(map);
+	}
+
+	/**
+	 * 호스트 보유 공간 조회 by 신용주
+	 */
+	public List<Map> selectHostPlace(HashMap map){
+		return DBManager.selectHostPlace(map);
+	}
 }

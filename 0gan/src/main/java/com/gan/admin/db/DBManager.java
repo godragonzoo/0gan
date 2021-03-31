@@ -17,6 +17,7 @@ import com.gan.admin.vo.AdmVo;
 import com.gan.admin.vo.FaqVo;
 import com.gan.admin.vo.NotiVo;
 import com.gan.admin.vo.ThemeVo;
+import com.gan.admin.vo.UserVo;
 
 public class DBManager {
 	private static SqlSessionFactory factory;
@@ -387,6 +388,142 @@ public class DBManager {
 		session.commit();
 		session.close();
 		return re;
+	}
+	
+	/**
+	 * 회원 정보 조회 by 신용주
+	 */
+	public static List<UserVo> selectAllUser() {
+		SqlSession session = factory.openSession();
+		List<UserVo> ulist = session.selectList("admin.selectAllUser");
+		session.close();
+		return ulist;
+	}
+	
+	/**
+	 * 회원 상세 정보 by 신용주
+	 */
+	public static UserVo selectOneUser(int user_num) { 
+		SqlSession session = factory.openSession(); 
+		UserVo uVo = session.selectOne("admin.selectOneUser", user_num); 
+		//System.out.println(uVo);
+		session.close(); 
+		return uVo;
+	  }
+	
+	/**
+	 * 회원 상세 정보 조회 by 신용주
+	 */
+	public static Map selectOneUserInfo(HashMap map) {
+		//System.out.println("map:"+map);
+		SqlSession session = factory.openSession(); 
+		Map login = session.selectOne("admin.selectOneUserInfo", map); 
+		//System.out.println(list);
+		session.close(); 
+		return login;
+	}
+
+	/**
+	 * 회원 예약 상세 정보 조회 by 신용주
+	 */
+	public static Map selectOneUserRsvt(HashMap map) {
+		//System.out.println(map);
+		SqlSession session = factory.openSession(); 
+		Map rsvt = session.selectOne("admin.selectOneUserRsvt", map); 
+		//System.out.println(rsvt);
+		session.close(); 
+		return rsvt;
+	}
+	
+	/**
+	 * 회원 등급 수정 by 신용주
+	 */
+	public static int updateUserGrade(UserVo uVo) {
+		SqlSession session = factory.openSession();
+		int re = session.update("admin.updateUserGrade", uVo);
+		//System.out.println(uVo);
+		session.commit();
+		session.close();
+		return re;
+	}
+
+	/**
+	 * 공간 목록 조회 by 신용주
+	 */
+	public static List<Map> selectAllPlace(HashMap map) {
+		SqlSession session = factory.openSession();
+		List<Map> pList = session.selectList("admin.selectAllPlace", map);
+		//System.out.println(pList);
+		session.close();
+		return pList;
+	} 
+
+	/**
+	 * 예약 목록 조회 by 신용주
+	 */
+	public static List<Map> selectAllRsvt(HashMap map) {
+		SqlSession session = factory.openSession();
+		List<Map> rList = session.selectList("admin.selectAllRsvt", map);
+		//System.out.println(rList);
+		session.close();
+		return rList;
+	} 
+	
+	/**
+	 * 전체 매출 조회 by 신용주
+	 */
+	public static List<Map> selectTotalSales(HashMap map) {	
+		SqlSession session = factory.openSession();
+		List<Map> tSales = session.selectList("admin.selectTotalSales", map);
+		System.out.println(tSales);
+		session.close();
+		return tSales;
+	}
+	
+	/**
+	 * 공간별 매출 조회 by 신용주
+	 */
+	public static List<Map> selectPlaceSalesDetail(HashMap map) {	
+		SqlSession session = factory.openSession();
+		List<Map> pSales = session.selectList("admin.selectPlaceSalesDetail", map);
+		//System.out.println(pSales);
+		session.close();
+		return pSales;
+	}
+	
+	/**
+	 * 호스트별 매출 조회 by 신용주
+	 */
+	public static List<Map> selectHostSales(HashMap map) {
+		SqlSession session = factory.openSession();
+		List<Map> hList = session.selectList("admin.selectHostSales", map);
+		//System.out.println(hList);
+		session.close();
+		return hList;
+	}
+	
+	/**
+	 * 호스트 보유 공간 조회 by 신용주
+	 */
+	public static List<Map> selectHostPlace(HashMap map) {	
+		SqlSession session = factory.openSession();
+		List<Map> hPlaceList = session.selectList("admin.selectHostPlace", map);
+		System.out.println(hPlaceList);
+		session.close();
+		return hPlaceList;
+	}
+	
+	/**
+	 * 호스트별 공간매출 조회 by 신용주
+	 */
+	public static List<Map> selectHostSalesDetail(HashMap map) {	
+		
+		//System.out.println("매개변수 잘 오나요?" + map);
+		SqlSession session = factory.openSession();
+		List<Map> hPlaceList = session.selectList("admin.selectHostSalesDetail", map);
+		System.out.println(hPlaceList);
+		session.close();
+		return hPlaceList;
 	}
 	
 }// class

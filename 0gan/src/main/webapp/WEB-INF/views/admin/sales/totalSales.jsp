@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -26,8 +27,17 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Custom Calendar for this page -->
-    <link href='../resources/vendor/fullcalendar/main.min.css' rel='stylesheet'>
     <link href='../resources/vendor/fullcalendar/adm-sales.css' rel='stylesheet'>
+	<link href="../resources/vendor/fullcalendar/vendor/css/fullcalendar.min.css" rel="stylesheet"/>
+    <link href="../resources/vendor/fullcalendar/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href='../resources/vendor/fullcalendar/vendor/css/select2.min.css' rel="stylesheet"/>
+    <link href='../resources/vendor/fullcalendar/vendor/css/bootstrap-datetimepicker.min.css' rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link href="../resources/vendor/fullcalendar/css/main.css" rel="stylesheet">
+
 
 
 
@@ -51,13 +61,13 @@
 
             <!-- Nav Item - Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 회원 정보 관리 </span></a>
+                <a class="nav-link" href="userList.do"><span> 회원 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 공간 정보 관리 </span></a>
+                <a class="nav-link" href="placeList.do"><span> 공간 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 예약 정보 관리 </span></a>
+                <a class="nav-link" href="rsvtList.do"><span> 예약 정보 관리 </span></a>
             </li>
 
 
@@ -70,9 +80,9 @@
             </a>
             <div id="collapseAdmSales" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item active" href="#"> 전체 매출 </a>
-                    <a class="collapse-item" href="#"> 공간별 매출 </a>
-                    <a class="collapse-item" href="#"> 호스트별 매출 </a>
+                    <a class="collapse-item active" href="totalSales.do"> 전체 매출 </a>
+                    <a class="collapse-item" href="placeSales.do"> 공간별 매출 </a>
+                    <a class="collapse-item" href="hostSales.do"> 호스트별 매출 </a>
                 </div>
             </div>
         </li>
@@ -157,7 +167,111 @@
 </nav>
 
 <!-- Calendar  -->
-<div id="calendar"></div>
+<div class="container">
+
+        <!-- 일자 클릭시 메뉴오픈 -->
+        <div id="contextMenu" class="dropdown clearfix">
+            <ul class="dropdown-menu dropNewEvent" role="menu" aria-labelledby="dropdownMenu"
+                style="display:block;position:static;margin-bottom:5px;">
+                <li><a tabindex="-1" href="#">카테고리1</a></li>
+                <li><a tabindex="-1" href="#">카테고리2</a></li>
+                <li><a tabindex="-1" href="#">카테고리3</a></li>
+                <li><a tabindex="-1" href="#">카테고리4</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#" data-role="close">Close</a></li>
+            </ul>
+        </div>
+
+        <div id="wrapper">
+            <div id="loading"></div>
+            <div id="calendar"></div>
+        </div>
+
+
+        <!-- 일정 추가 MODAL -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-allDay">하루종일</label>
+                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox"></label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-title">일정명</label>
+                                <input class="inputModal" type="text" name="edit-title" id="edit-title"
+                                    required="required" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-start">시작</label>
+                                <input class="inputModal" type="text" name="edit-start" id="edit-start" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-end">끝</label>
+                                <input class="inputModal" type="text" name="edit-end" id="edit-end" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-type">구분</label>
+                                <select class="inputModal" type="text" name="edit-type" id="edit-type">
+                                    <option value="카테고리1">카테고리1</option>
+                                    <option value="카테고리2">카테고리2</option>
+                                    <option value="카테고리3">카테고리3</option>
+                                    <option value="카테고리4">카테고리4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-color">색상</label>
+                                <select class="inputModal" name="color" id="edit-color">
+                                    <option value="#D25565" style="color:#D25565;">빨간색</option>
+                                    <option value="#9775fa" style="color:#9775fa;">보라색</option>
+                                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
+                                    <option value="#74c0fc" style="color:#74c0fc;">파란색</option>
+                                    <option value="#f06595" style="color:#f06595;">핑크색</option>
+                                    <option value="#63e6be" style="color:#63e6be;">연두색</option>
+                                    <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
+                                    <option value="#4d638c" style="color:#4d638c;">남색</option>
+                                    <option value="#495057" style="color:#495057;">검정색</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-desc">설명</label>
+                                <textarea rows="4" cols="50" class="inputModal" name="edit-desc"
+                                    id="edit-desc"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer modalBtnContainer-addEvent">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-primary" id="save-event">저장</button>
+                    </div>
+                    <div class="modal-footer modalBtnContainer-modifyEvent">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                        <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
+                        <button type="button" class="btn btn-primary" id="updateEvent">저장</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
 <!-- DataTales Example -->
 <div class="card shadow mt-4 mb-4">
@@ -178,14 +292,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2021.03.01-2021.03.31</td>
-                        <td>$50,000</td>
-                        <td>121</td>
-                        <td>$54,000</td>
-                        <td>15</td>
-                        <td>$4000</td>
-                    </tr>
+                    <c:forEach var="tSales" items="${tSales}">
+						<tr>
+							<td></td>
+							<td>${tSales.RSVT_TOT_SALES}</td>
+							<td>${tSales.RSVT_CNT}</td>
+							<td>${tSales.RSVT_SALES}</td>
+							<td>${tSales.RSVT_CANCLE_CNT}</td>
+							<td>${tSales.RSVT_CANCLE}</td>
+						</tr>
+					</c:forEach>
                 </tbody>
             </table>
         </div>
@@ -258,8 +374,17 @@ aria-hidden="true">
 <script src="../resources/js/demo/datatables-demo.js"></script>
 
 <!-- Custom scripts for Calendars-->
-<script src="../resources/vendor/fullcalendar/main.min.js"></script>
-<script src="../resources/vendor/fullcalendar/adm-sales.js"></script>
+<script src="../resources/vendor/fullcalendar/vendor/js/jquery.min.js"></script>
+<script src="../resources/vendor/fullcalendar/vendor/js/bootstrap.min.js"></script>
+<script src="../resources/vendor/fullcalendar/vendor/js/moment.min.js"></script>
+<script src="../resources/vendor/fullcalendar/vendor/js/fullcalendar.min.js"></script>
+<script src="../resources/vendor/fullcalendar/vendor/js/ko.js"></script>
+<script src="../resources/vendor/fullcalendar/vendor/js/select2.min.js"></script>
+<script src="../resources/vendor/fullcalendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../resources/vendor/fullcalendar/js/main.js"></script>
+<script src="../resources/vendor/fullcalendar/js/addEvent.js"></script>
+<script src="../resources/vendor/fullcalendar/js/editEvent.js"></script>
+<script src="../resources/vendor/fullcalendar/js/etcSetting.js"></script>
 
 </body>
 
