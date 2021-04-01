@@ -22,6 +22,6 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="com/gan/user/db/BoardMapper.xml"/>
+   <mapper resource="com/gan/user/db/BoardMapper.xml"/>
   </mappers>
 </configuration>

@@ -1,6 +1,5 @@
 package com.gan.user.db;
 
-import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
@@ -11,10 +10,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+
 import com.gan.vo.FaqVo;
 import com.gan.vo.NotiVo;
 import com.gan.vo.ThemePlaceVo;
 import com.gan.vo.ThemeVo;
+import com.gan.vo.UserSearchVo;
 
 public class DBManager {
 
@@ -25,18 +26,21 @@ public class DBManager {
 		try {
 			reader = Resources.getResourceAsReader("com/gan/user/db/mybatis-config.xml");
 			factory = new SqlSessionFactoryBuilder().build(reader);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (reader != null)
-					reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			reader.close();
+			System.out.println("sqlSesscionFactory 객체 생성됨!");
+		} catch (Exception e) {
+			System.out.println("예외:"+e.getMessage());
 		}
 	}// static
 
+	/* TEST */
+	public static List<UserSearchVo> findAll() {
+		SqlSession session =factory.openSession();
+		List<UserSearchVo> list = session.selectList("search.findAll");
+		session.close();
+		return list;
+	}
+	
 	/**
 	 * 검색 조건에 적합한 공지사항 목록 by 박권익
 	 * @param map
@@ -88,7 +92,6 @@ public class DBManager {
 		session.close();
 		return list;
 	}
-
 	/**
 	 * 기획전 목록 by 박권익
 	 * @return
@@ -111,5 +114,7 @@ public class DBManager {
 		session.close();
 		return list;
 	}
+
+
 
 }

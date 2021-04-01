@@ -176,7 +176,7 @@
 		</div>
 	</div><!-- 이벤트 배너 -->
 	
-<!-- 최고의 공간 -->
+<!-- 최고의 공간 이름/주소/평점/리뷰수/찜수-->
 		<div class="BestSlider "><h1 class="text-center title font-weight-bold text-primary">최고의 공간</h1> 
   			<ul class="best_panel">
     			<li class="row ">
@@ -188,10 +188,10 @@
 						<h4 class="card-title">
 							<a href="#">[서울역 파티룸] 서울각</a>
 		                </h4>
-		                <p class="card-text ">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 5.0</small>
+		                	<small class="text-muted text-right">♥ 12</small>
 						</div>
 		            </div>
 		            </div>
@@ -203,10 +203,10 @@
 						<h4 class="card-title">
 							<a href="#">[서울역 파티룸] 서울각</a>
 		                </h4>
-		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 5.0</small>
+		                	<small class="text-muted text-right">♥ 12</small>
 						</div>
 		            </div>
 		            </div>
@@ -218,10 +218,10 @@
 						<h4 class="card-title">
 							<a href="#">[서울역 파티룸] 서울각</a>
 		                </h4>
-		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 5.0</small>
+		                	<small class="text-muted text-right">♥ 12</small>
 						</div>
 		            </div>
 		            </div>
@@ -235,10 +235,10 @@
 						<h4 class="card-title">
 							<a href="#">공간4567</a>
 		                </h4>
-		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -250,10 +250,10 @@
 						<h4 class="card-title">
 							<a href="#">공간4567</a>
 		                </h4>
-		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -265,10 +265,10 @@
 						<h4 class="card-title">
 							<a href="#">공간4567</a>
 		                </h4>
-		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 					</div>
@@ -294,7 +294,8 @@
 		                <p class="card-text ">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -309,7 +310,8 @@
 		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -324,7 +326,8 @@
 		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -341,7 +344,8 @@
 		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -356,7 +360,8 @@
 		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -371,7 +376,8 @@
 		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 					</div>
@@ -394,10 +400,10 @@
 						<h4 class="card-title">
 							<a href="#">[서울역 파티룸] 서울각</a>
 		                </h4>
-		                <p class="card-text ">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -409,10 +415,10 @@
 						<h4 class="card-title">
 							<a href="#">[서울역 파티룸] 서울각</a>
 		                </h4>
-		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -424,10 +430,10 @@
 						<h4 class="card-title">
 							<a href="#">[서울역 파티룸] 서울각</a>
 		                </h4>
-		                <p class="card-text">가본 파티룸중에 최고였습니다!! 근처에 편의점도 있고 예쁘고 분위기 넘치는 디피까지...시설도 깨끗했고요 화장실도 바로 옆에 있고 스피커랑 빔프로젝터도 너무 잘 사용했습니다!! 무엇보다 호스트님이 안내도 잘해주시고 궁금한거 있을때마다 답장도 바로 바로 해주셔서 너무 편하게 이용했습니다:) 재방문 의사100프로!!</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -441,10 +447,10 @@
 						<h4 class="card-title">
 							<a href="#">공간4567</a>
 		                </h4>
-		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -456,10 +462,10 @@
 						<h4 class="card-title">
 							<a href="#">공간4567</a>
 		                </h4>
-		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 		            </div>
@@ -471,10 +477,10 @@
 						<h4 class="card-title">
 							<a href="#">공간4567</a>
 		                </h4>
-		                <p class="card-text">깔끔하고 여유있는 공간이 많아서 재미있는 공간연출이 가능합니다. 친절하고 적극적인 호스트님이 계셔서 이용이 편리합니다.</p>
 		              	</div>
 		              	<div class="card-footer">
-		                	<small class="text-muted">★ ★ ★ ★ ☆</small>
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
 		            </div>
 					</div>
@@ -486,11 +492,11 @@
         <hr class="border-bottom-primary endLine">
 <!-- 추천 공간 -->
 	
-	<div class="footer text-right">
+</div>
+<footer class="container">
 				<a href="#" class="bottomMenu">공지사항</a>
 				<a href="#" class="bottomMenu">도움말</a> 
 				<a href="#" class="bottomMenu">서비스정보</a>
-	</div>
-</div>
+</footer>
 
 </body></html>

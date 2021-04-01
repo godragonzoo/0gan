@@ -23,109 +23,15 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../resources/js/sb-admin-2.min.js"></script>
-    
+
+
+<script type="text/javascript" src="/resources/js/search.js"></script>
+<link href="/resources/css/search.css" rel="stylesheet">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 <style type="text/css">
-body{
-background-color: white; 
-}
-.row , .col{
-	width: 100%;
-}
-.header{ 
-border: solid 1px gray;
-margin: 0px auto; 
-position:relative; 
-width: 90%;   
-display: flex;
-
-background-color: white; 
-/* background-color: #F8F9FC; */ 
-}
-
-.logo{
-	height: 150px;
-}
-.menuIcon{
-position:absolute; right:0px;
-cursor: pointer;
-margin: 30px;
-}
-
-.container {
-    border: solid 1px gray;
-    margin: 50px auto;
-    width: 90%;
-}
-
-.btnWrap{
-border: solid 1px gray;
-	width: 90%;
-	height: 50px;
-	margin: auto;
-	display: flex;
-}
-.filter{
-	height:100%;
-}
-.btnMap, .dropdown-toggle{
-	width: 100px;
-	padding: 10px;
-	cursor: pointer;
-	border-radius: 10%;
-	margin-left: 20px;
-	margin-right: 20px;
-}
-.imgMap {
-    width: 90%;
-    height: 300px;
-    background-color: #ABCDEF;
-    margin: 50px;
-}
-
-/* ---------Best공간--------- */
-.searchResultList   {
-    width: 90%;
-    margin: 50px auto;
-    border: solid 1px;
-    display: block;
-}
-.best1 {
-    border: 2px solid #486DDA;
-    width: 450px;
-    height: 405px;
-    display: inline-table;
-}
-.card-row {
-    display: flex;
-    width: 100%;
-    height: 50%;
-}
-.card-col {
-    width: 80%;
-    height: 100%;
-    margin: 20px;
-}
-.img {
-    width: 180px;
-    height: 180px;
-}
-.card-body {
-    border: solid 1px gray;
-    width: 150px;
-    height: 50px;
-    margin-bottom: 20px;
-}
-
-.card-intro {
-    border: solid 1px gray;
-    margin: 20px;
-    bottom: 0px;
-    width: 350px;
-    height: 150px;
-}
 
 /* ---------Best공간--------- */
 </style>
