@@ -7,6 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gan.user.dao.SearchDao;
 
+
+
 @Controller
 public class SearchController {
 	@Autowired
@@ -27,7 +29,7 @@ public class SearchController {
 	@RequestMapping("/search.do")
 	public ModelAndView search() {
 		ModelAndView mav = new ModelAndView("/user/search/search");
-		mav.addObject("list",dao.findAll());
+		//mav.addObject("list",dao.findAll());//select * from 리뷰테이블
 		return mav;
 	}
 

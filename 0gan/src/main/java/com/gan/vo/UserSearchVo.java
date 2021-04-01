@@ -35,6 +35,20 @@ public class UserSearchVo {
 	private	Date	endDate	;//	-끝
 	private	int	peopleNum	;//	인원
 
+	private String PLACE_IMG;//card에 표시된 사진
+	private String PLACE_ADDR;//card에 표시된 지역
+	private String PLACE_NAME;//card에 표시된 title
+	private String PLACE_CONTENT;//card에 표시된 title
+	
+	private String REVW_NUM;//
+	private String PLACE_NUM;//
+	private String USER_NUM;//
+	private String REVW_CONTENT;//card에 표시된 content
+	private int REVW_SCORE;//card에 표시된 별점
+	
+
+	private int no;
+	private String name;
 }
 
 

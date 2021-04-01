@@ -169,4 +169,90 @@
 		delete theme_place_tb where theme_num = #{theme_num}
 		and place_num = #{place_num}
 	</delete>
+	
+	<!-- 회원 정보 조회 by 신용주 -->
+	<select id="selectAllUser" resultType="userVo">
+		select * from user_tb
+	</select>
+	<!-- 회원 상세 정보 조회 by 신용주 -->
+	<select id="selectOneUser" resultType="userVo">
+		select *
+		from  user_tb u
+		where user_num=#{user_num} 
+	</select>
+	<!-- 회원 상세 정보 by 신용주 -->
+	<select id="selectOneUserInfo" resultType="java.util.Map">
+		select l.login_state, l.login_date, sl.sns_login_num, sl.sns_ver, u.user_mk_date, u.user_mod_date, u.user_agree
+		from  user_tb u, login_tb l, sns_login_tb sl
+		where u.user_num = l.user_num and l.user_num = sl.user_num 	    
+	    and u.user_num=#{user_num}
+	</select>
+	<!-- 회원 예약 상세 정보 조회 by 신용주 -->
+	<select id="selectOneUserRsvt" resultType="java.util.Map">
+		select r.rsvt_num, (r.rsvt_checkin|| '~' || r.rsvt_checkout) as rsvt_time, p.place_name, p.place_category, p.place_addr, r.rsvt_state 
+		from  rsvt_tb r, place_tb p 
+		where r.user_num = p.host_user_num 
+		and r.user_num=#{user_num}
+	</select>
+	<!-- 회원 등급 수정 by 신용주 -->
+	<update id="updateUserGrade" parameterType="userVo">
+		update user_tb set user_grade=#{user_grade} where user_num=#{user_num}	
+	</update>	
+	<!-- 공간 목록 조회 by 신용주 -->
+	<select id="selectAllPlace" resultType="java.util.Map">
+		select p.place_num, p.place_name, u.user_email, u.user_name, p.place_category, p.place_addr 
+		from  user_tb u, place_tb p
+		where u.user_num = p.host_user_num 
+	    <if test="place_num != null">
+	       and place_num=#{place_num}
+	  	</if>
+	</select>
+	<!-- 예약 목록 조회 by 신용주 -->
+	<select id="selectAllRsvt" resultType="java.util.Map">
+		select r.rsvt_num, u.user_name, u.user_tel, u.user_email, r.rsvt_checkin, r.rsvt_state
+		from  user_tb u, rsvt_tb r
+		where u.user_num = r.user_num 
+	    <if test="user_num != null">
+	       and user_num=#{user_num}
+	  	</if>
+	</select>
+	<!-- 전체 매출 조회 by 신용주 -->
+	<select id="selectTotalSales" resultType="java.util.Map">
+		select distinct
+			((select sum(rsvt_total_price) from rsvt_tb)-(nvl((select sum(rsvt_total_price) from rsvt_tb where rsvt_state like '%취소%'), 0))) as rsvt_tot_sales,
+			(select count(rsvt_num) from rsvt_tb) as rsvt_cnt,
+			(select sum(rsvt_total_price) from rsvt_tb) as rsvt_sales,
+			(select count(rsvt_num) from rsvt_tb where rsvt_state like '%취소%') as rsvt_cancle_cnt,
+			nvl((select sum(rsvt_total_price) from rsvt_tb where rsvt_state like '%취소%'), 0) as rsvt_cancle
+		from  rsvt_tb
+	</select>
+	<!-- 공간별 매출 조회 by 신용주 -->
+	<select id="selectPlaceSalesDetail" resultType="java.util.Map">
+		select distinct(p.place_num), p.place_name,
+			((select sum(rsvt_total_price) from rsvt_tb where place_num = #{place_num})
+			-(nvl((select sum(rsvt_total_price) from rsvt_tb where rsvt_state like '%취소%' and place_num = #{place_num}), 0))) as rsvt_tot_sales, 
+			(select count(rsvt_num) from rsvt_tb where place_num = #{place_num}) as rsvt_cnt,
+			(select sum(rsvt_total_price) from rsvt_tb where place_num = #{place_num}) as rsvt_sales,
+			(select count(rsvt_num) from rsvt_tb where rsvt_state like '%취소%' and place_num = #{place_num}) as rsvt_cancle_cnt,
+			nvl((select sum(rsvt_total_price) from rsvt_tb where rsvt_state like '%취소%' and place_num = #{place_num}), 0) as rsvt_cancle
+		from  rsvt_tb r, place_tb p
+		where r.place_num = p.place_num 
+		and r.place_num=#{place_num}
+	</select>
+	<!-- 호스트별 매출 조회 by 신용주 -->
+	<select id="selectHostSales" resultType="java.util.Map">
+		select h.host_user_num, u.user_email, u.user_name, u.user_tel, h.host_biz_name  
+		from  user_tb u, host_tb h
+		where u.user_num = h.host_user_num
+	    <if test="host_user_num != null">
+	       and h.host_user_num=#{host_user_num}
+	  	</if>
+	</select>
+	<!-- 호스트 보유 공간 조회 by 신용주 -->
+	<select id="selectHostPlace" resultType="java.util.Map">
+		select p.place_num, p.place_name, p.place_price, p.place_price_pack, p.place_category, p.place_addr
+		from  user_tb u, place_tb p
+		where (u.user_num = p.host_user_num) 
+		and p.host_user_num=#{host_user_num}
+	</select>
 </mapper> 

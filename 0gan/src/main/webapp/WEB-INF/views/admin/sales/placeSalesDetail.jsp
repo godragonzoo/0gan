@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -51,13 +52,13 @@
 
             <!-- Nav Item - Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 회원 정보 관리 </span></a>
+                <a class="nav-link" href="userList.do"><span> 회원 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 공간 정보 관리 </span></a>
+                <a class="nav-link" href="placeList.do"><span> 공간 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 예약 정보 관리 </span></a>
+                <a class="nav-link" href="rsvtList.do"><span> 예약 정보 관리 </span></a>
             </li>
 
 
@@ -70,9 +71,9 @@
             </a>
             <div id="collapseAdmSales" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#"> 전체 매출 </a>
-                    <a class="collapse-item active" href="#"> 공간별 매출 </a>
-                    <a class="collapse-item" href="#"> 호스트별 매출 </a>
+                    <a class="collapse-item" href="totalSales.do"> 전체 매출 </a>
+                    <a class="collapse-item active" href="placeSales.do"> 공간별 매출 </a>
+                    <a class="collapse-item" href="hostSales.do"> 호스트별 매출 </a>
                 </div>
             </div>
         </li>
@@ -180,15 +181,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2021.03.01-2021.03.31</td>
-                        <td>제주도가고싶다</td>
-                        <td>$50,000</td>
-                        <td>121</td>
-                        <td>$54,000</td>
-                        <td>15</td>
-                        <td>$4000</td>
-                    </tr>
+                    <c:forEach var="pSales" items="${pSales}">
+						<tr>
+							<td>${pSales.PLACE_NUM}</td>
+							<td>${pSales.PLACE_NAME}</td>
+							<td>${pSales.RSVT_TOT_SALES}</td>
+							<td>${pSales.RSVT_CNT}</td>
+							<td>${pSales.RSVT_SALES}</td>
+							<td>${pSales.RSVT_CANCLE_CNT}</td>
+							<td>${pSales.RSVT_CANCLE}</td>
+						</tr>
+					</c:forEach>
                 </tbody>
             </table>
         </div>

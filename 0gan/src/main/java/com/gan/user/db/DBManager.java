@@ -52,12 +52,12 @@ public class DBManager {
 		session.close();
 		return list;
 	}
+
 	/**
 	 * 검색 조건에 적합한 공지사항 개수 by 박권익
 	 * @param keyword
 	 * @return
 	 */
-	
 	public static int countNoti(String keyword) {
 		SqlSession session = factory.openSession();
 		int re = session.selectOne("board.countNoti", keyword);
@@ -114,5 +114,7 @@ public class DBManager {
 		session.close();
 		return list;
 	}
+
+
 
 }

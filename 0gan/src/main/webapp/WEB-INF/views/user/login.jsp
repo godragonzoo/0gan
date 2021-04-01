@@ -26,7 +26,7 @@
     <script src="../resources/js/sb-admin-2.min.js"></script>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>login.jsp</title>
 <style type="text/css">
 
 body{
@@ -183,8 +183,8 @@ check.click(function(){
 		<img class="logo" src="" >이미지
 	</div>
 	<div  class="menuIcon" >
-		<i class="fas fa-user-cog fa-3x  "></i>
-		<i class="fas fa-bars fa-3x "></i>
+		<span style="color:#486DDA"><i class="far fa-user fa-2x"></i>
+		<i class="fas fa-bars fa-2x "></i></span>
 	</div>
 		
 		<!-- Modal -->

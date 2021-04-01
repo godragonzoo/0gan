@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -51,13 +52,13 @@
 
             <!-- Nav Item - Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 회원 정보 관리 </span></a>
+                <a class="nav-link" href="userList.do"><span> 회원 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 공간 정보 관리 </span></a>
+                <a class="nav-link" href="placeList.do"><span> 공간 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 예약 정보 관리 </span></a>
+                <a class="nav-link" href="rsvtList.do"><span> 예약 정보 관리 </span></a>
             </li>
 
 
@@ -70,9 +71,9 @@
             </a>
             <div id="collapseAdmSales" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#"> 전체 매출 </a>
-                    <a class="collapse-item" href="#"> 공간별 매출 </a>
-                    <a class="collapse-item active" href="#"> 호스트별 매출 </a>
+                    <a class="collapse-item" href="totalSales.do"> 전체 매출 </a>
+                    <a class="collapse-item" href="placeSales.do"> 공간별 매출 </a>
+                    <a class="collapse-item active" href="hostSales.do"> 호스트별 매출 </a>
                 </div>
             </div>
         </li>
@@ -170,24 +171,19 @@
                         <th>호스트ID</th>
                         <th>호스트명</th>
                         <th>연락처</th>
-                        <th>공간보유수</th>
+                        <th>사업자상호명</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>yjshin4817@gmail.com</td>
-                        <td>신용주</td>
-                        <td>01023826857</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>yjshin4817@gmail.com</td>
-                        <td>신용주</td>
-                        <td>01023826857</td>
-                        <td>15</td>
-                    </tr>
+                    <c:forEach var="hList" items="${hList}">
+							<tr onclick="window.location='hostSalesPlace.do?host_user_num=${hList.HOST_USER_NUM}';">
+								<td>${hList.HOST_USER_NUM}</td>
+								<td>${hList.USER_EMAIL}</td>
+								<td>${hList.USER_NAME}</td>
+								<td>${hList.USER_TEL}</td>
+								<td>${hList.HOST_BIZ_NAME}</td>
+							</tr>
+					</c:forEach>
                 </tbody>
             </table>
         </div>

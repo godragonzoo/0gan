@@ -1,15 +1,15 @@
-package com.gan.admin.service;
-
-import org.springframework.beans.factory.annotation.Autowired;
+//package com.gan.admin.service;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.User;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
-import com.gan.admin.dao.AdminDao;
-import com.gan.admin.vo.AdmVo;
-
+//import org.springframework.stereotype.Service;
+//
+//import com.gan.admin.dao.AdminDao;
+//import com.gan.admin.vo.AdmVo;
+//
 //@Service
 //public class AdminService implements UserDetailsService {
 //

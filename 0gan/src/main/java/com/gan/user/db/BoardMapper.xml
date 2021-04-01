@@ -61,4 +61,10 @@
 			))
 			where rank between #{start} and #{end}
 	</select>
+	<select id="selectAllTheme" resultType="themeVo">
+		select * from theme_tb
+	</select>
+	<select id="selectThemePlace" resultType="themePlaceVo">
+		select * from theme_place_tb where theme_num = #{theme_num}
+	</select>
 </mapper>

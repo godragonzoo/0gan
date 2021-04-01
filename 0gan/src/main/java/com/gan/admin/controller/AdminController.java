@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -21,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,6 +32,7 @@ import com.gan.admin.vo.AdmVo;
 import com.gan.admin.vo.FaqVo;
 import com.gan.admin.vo.NotiVo;
 import com.gan.admin.vo.ThemeVo;
+import com.gan.admin.vo.UserVo;
 import com.gan.util.RenameUtil;
 
 @Controller
@@ -77,7 +80,7 @@ public class AdminController {
 //		mav.setViewName("redirect:/admin/notice.do");
 //		return mav;
 //	}
-	
+
 	/**
 	 * localhost/adminNoti.do -> admin/noti.jsp 관리자 공지사항관리 페이지 by 박권익
 	 * 
@@ -751,4 +754,179 @@ public class AdminController {
 			}
 		}
 	}
+	
+	/**
+	 * 관리자 유저목록
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/userList.do")
+	public ModelAndView admUserList() {
+		ModelAndView mav = new ModelAndView("/admin/mgt/userList");
+		mav.addObject("uList", dao.selectAllUser());
+		return mav;
+	} 
+
+	/**
+	 * 관리자 유저 상세정보
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/userListDetail.do")
+	public ModelAndView admUserListDetail(int user_num) {
+		ModelAndView mav = new ModelAndView("/admin/mgt/userListDetail");
+		HashMap map = new HashMap();
+		if(user_num != 0) {
+			map.put("user_num", user_num);
+		}
+		mav.addObject("uVo", dao.selectOneUser(user_num));
+		mav.addObject("login", dao.selectOneUserInfo(map));
+		mav.addObject("rsvt", dao.selectOneUserRsvt(map));
+		return mav;
+	} 
+	
+	/**
+	 * 관리자 유저 상세정보 수정
+	 * by 신용주
+	 */
+	@RequestMapping(value = "/admin/userListUpdate.do", method = RequestMethod.GET)
+	public ModelAndView updateAdmUserList(int user_num) {
+		ModelAndView mav = new ModelAndView("/admin/mgt/userListUpdate");
+		HashMap map = new HashMap();
+		if(user_num != 0) {
+			map.put("user_num", user_num);
+		}
+		mav.addObject("uVo", dao.selectOneUser(user_num));
+		mav.addObject("login", dao.selectOneUserInfo(map));
+		mav.addObject("rsvt", dao.selectOneUserRsvt(map));
+		return mav;
+	} 
+
+	@RequestMapping(value = "/admin/userListUpdate.do", method = RequestMethod.POST)
+	public ModelAndView updateUserGrade(UserVo uVo) {
+		ModelAndView mav = new ModelAndView();
+		int re = dao.updateUserGrade(uVo);
+		if(re == 1) {
+			mav.setViewName("redirect:/userListDetail.do?user_num="+uVo.getUser_num());
+		}else {
+			mav.setViewName("redirect:/adminError.do");
+		}
+		
+		return mav;
+	} 
+	
+	/**
+	 * 관리자 공간목록
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/placeList.do")
+	public ModelAndView admPlaceList(@RequestParam(value = "place_num", defaultValue = "0")  int place_num) {
+		ModelAndView mav = new ModelAndView("/admin/mgt/placeList");
+		HashMap map = new HashMap();
+		if(place_num != 0) {
+			map.put("place_num", place_num);
+		}
+		mav.addObject("pList", dao.selectAllPlace(map));
+		return mav;
+	} 
+
+	/**
+	 * 관리자 예약내역
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/rsvtList.do")
+	public ModelAndView admRsvtList(@RequestParam(value = "user_num", defaultValue = "0")  int user_num) {
+		ModelAndView mav = new ModelAndView("/admin/mgt/rsvtList");
+		HashMap map = new HashMap();
+		if(user_num != 0) {
+			map.put("user_num", user_num);
+		}
+		mav.addObject("rList", dao.selectAllRsvt(map));
+		return mav;
+	} 
+	
+	/**
+	 * 관리자 전체매출
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/totalSales.do")
+	public ModelAndView admTotalSales() {
+		ModelAndView mav = new ModelAndView("/admin/sales/totalSales");
+		HashMap map = new HashMap();
+		mav.addObject("tSales", dao.selectTotalSales(map));
+		return mav;
+	} 
+	
+	/**
+	 * 관리자 공간별 매출
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/placeSales.do")
+	public ModelAndView admPlaceSales(@RequestParam(value = "place_num", defaultValue = "0")  int place_num) {
+		ModelAndView mav = new ModelAndView("/admin/sales/placeSales");
+		HashMap map = new HashMap();
+		if(place_num != 0) {
+			map.put("place_num", place_num);
+		}
+		mav.addObject("pList", dao.selectAllPlace(map));
+		return mav;
+	} 
+
+	/**
+	 * 관리자 공간별 상세매출
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/placeSalesDetail.do")
+	public ModelAndView admPlaceSalesDetail(@RequestParam(value = "place_num", defaultValue = "0") int place_num) {
+		ModelAndView mav = new ModelAndView("/admin/sales/placeSalesDetail");
+		HashMap map = new HashMap();
+		if(place_num != 0) {
+			map.put("place_num", place_num);
+		}
+		mav.addObject("pSales", dao.selectPlaceSalesDetail(map));
+		return mav;
+	} 
+	
+	/**
+	 * 관리자 호스트별 매출
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/hostSales.do")
+	public ModelAndView admHostSales(@RequestParam(value = "host_user_num", defaultValue = "0")  int host_user_num) {
+		ModelAndView mav = new ModelAndView("/admin/sales/hostSales");
+		HashMap map = new HashMap();
+		if(host_user_num != 0) {
+			map.put("host_user_num", host_user_num);
+		}
+		mav.addObject("hList", dao.selectHostSales(map));
+		return mav;
+	} 
+	
+	/**
+	 * 관리자 호스트별 보유 공간
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/hostSalesPlace.do")
+	public ModelAndView admHostSalesPlace(int host_user_num) {
+		ModelAndView mav = new ModelAndView("/admin/sales/hostSalesPlace");
+		HashMap map = new HashMap();
+		if(host_user_num != 0) {
+			map.put("host_user_num", host_user_num);
+		}
+		mav.addObject("hPlaceList", dao.selectHostPlace(map));
+		return mav;
+	} 
+
+	/**
+	 * 관리자 호스트별 공간매출
+	 * by 신용주
+	 */
+	@RequestMapping("/admin/hostSalesDetail.do")
+	public ModelAndView admHostSalesDetail(int place_num) {
+		ModelAndView mav = new ModelAndView("/admin/sales/hostSalesDetail");
+		HashMap map = new HashMap();
+		if(place_num != 0) {
+			map.put("place_num", place_num);
+		}
+		mav.addObject("pSales", dao.selectPlaceSalesDetail(map));
+		return mav;
+	} 
 }
