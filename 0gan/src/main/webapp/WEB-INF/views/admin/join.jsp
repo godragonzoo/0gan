@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>회원가입</h2>
-	<form action="admin/join.do" method="post">
+	<form action="adminJoin.do" method="post">
 		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 		아이디 : <input type="text" name="adm_id"><br>
 		비밀번호 : <input type="password" name="adm_pwd"><br>

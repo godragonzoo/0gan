@@ -17,6 +17,7 @@ import com.gan.user.dao.UserBoardDao;
 public class BoardController {
 
 	private static final int PAGE_SIZE = 10;
+	private static final int PAGE_SCOPE = 5;
 
 	@Autowired
 	private UserBoardDao dao;
@@ -25,41 +26,10 @@ public class BoardController {
 		this.dao = dao;
 	}
 
-	/**
-	 * localhost/admQue.do -> user/board/admQue.jsp 사용자 1:1문의 by 함혜림
-	 * 
-	 * @return mav
-	 */
-	@RequestMapping("/admQue.do")
-	public ModelAndView admQue() {
-		ModelAndView mav = new ModelAndView("/user/board/admQue");
-		return mav;
-	}
-
-	/**
-	 * localhost/hostQue.do -> user/board/hostQue.jsp 사용자 호스트문의 by 함혜림
-	 * 
-	 * @return mav
-	 */
-	@RequestMapping("/hostQue.do")
-	public ModelAndView hostQue() {
-		ModelAndView mav = new ModelAndView("/user/board/hostQue");
-		return mav;
-	}
-
-	/**
-	 * localhost/revw.do -> user/board/revw.jsp 사용자 revw by 함혜림
-	 * 
-	 * @return mav
-	 */
-	@RequestMapping("/revw.do")
-	public ModelAndView revw() {
-		ModelAndView mav = new ModelAndView("/user/board/revw");
-		return mav;
-	}
 
 	/**
 	 * 공지사항 by 박권익
+	 * 
 	 * @param page
 	 * @param keyword
 	 * @param session
@@ -77,6 +47,11 @@ public class BoardController {
 		if ((totalRecord % PAGE_SIZE) != 0) {
 			totalPage++;
 		}
+		int startPage = ((page - 1) / 5) * PAGE_SCOPE + 1;
+		int endPage = (startPage + 4) < totalPage ? startPage + 4 : totalPage;
+		int prevPage = endPage <= 10 ? 1 : startPage - 5;
+		int nextPage = endPage >= totalPage ? endPage : startPage + 5;
+
 		int start = PAGE_SIZE * (page - 1) + 1;
 		int end = PAGE_SIZE * page;
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -84,13 +59,17 @@ public class BoardController {
 		map.put("end", end);
 		map.put("keyword", keyword);
 		mav.addObject("list", dao.selectNoti(map));
-		mav.addObject("totalPage", totalPage);
+		mav.addObject("startPage", startPage);
+		mav.addObject("endPage", endPage);
+		mav.addObject("prevPage", prevPage);
+		mav.addObject("nextPage", nextPage);
 		session.setAttribute("keyword", keyword);
 		return mav;
 	}
 
 	/**
 	 * 도움말 by 박권익
+	 * 
 	 * @param page
 	 * @param keyword
 	 * @param category
@@ -98,13 +77,10 @@ public class BoardController {
 	 * @return
 	 */
 	@RequestMapping("/faq.do")
-	public ModelAndView faq(@RequestParam(value = "page", defaultValue = "1") int page, String keyword,
-			String category, HttpSession session) {
+	public ModelAndView faq(@RequestParam(value = "page", defaultValue = "1") int page, String keyword, String category,
+			HttpSession session) {
 		ModelAndView mav = new ModelAndView("/user/board/faq");
-		
-		System.out.println("keyword:"+keyword);
-		System.out.println("category:"+category);
-		
+
 		if (keyword == null && session.getAttribute("keyword") != null) {
 			keyword = (String) session.getAttribute("keyword");
 		}
@@ -119,20 +95,30 @@ public class BoardController {
 		int start = PAGE_SIZE * (page - 1) + 1;
 		int end = PAGE_SIZE * page;
 		Map<String, Object> map = new HashMap<String, Object>();
-
 		map.put("keyword", keyword);
 		map.put("category", category);
 		map.put("start", start);
 		map.put("end", end);
+
+		int startPage = ((page - 1) / 5) * PAGE_SCOPE + 1;
+		int endPage = (startPage + 4) < totalPage ? startPage + 4 : totalPage;
+		int prevPage = endPage <= 10 ? 1 : startPage - 5;
+		int nextPage = endPage >= totalPage ? endPage : startPage + 5;
+		
 		mav.addObject("list", dao.selectFaq(map));
-		mav.addObject("totalPage", totalPage);
+		mav.addObject("page", page);
+		mav.addObject("startPage", startPage);
+		mav.addObject("endPage", endPage);
+		mav.addObject("prevPage", prevPage);
+		mav.addObject("nextPage", nextPage);
 		session.setAttribute("keyword", keyword);
 		session.setAttribute("category", category);
 		return mav;
 	}
-	
+
 	/**
 	 * 기획전 목록 by 박권익
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/theme.do")
@@ -141,9 +127,10 @@ public class BoardController {
 		mav.addObject("list", dao.selectAllTheme());
 		return mav;
 	}
-	
+
 	/**
 	 * 기획전에 등록된 장소 목록 by 박권익
+	 * 
 	 * @param theme_num
 	 * @return
 	 */
@@ -153,4 +140,12 @@ public class BoardController {
 		mav.addObject("list", dao.selectThemePlace(theme_num));
 		return mav;
 	}
+	
+	@RequestMapping("/hostQue.do")
+	public ModelAndView hostQue() {
+		ModelAndView mav = new ModelAndView("/user/board/hostQue");
+		
+		return mav;
+	}
+
 }

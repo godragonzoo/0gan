@@ -167,6 +167,7 @@
         <div class="card-body">
             <div class="card container-fluid w-75 mb-5">
 	            <form action="answerUpdate.do" method="post" enctype="multipart/form-data">
+	            <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 	                <div class="col-md-12">
 	                <input type="hidden" name="adm_ans_num" value="${answer.adm_ans_num }">
 	                <input type="hidden" name="user_num" value="${answer.user_num }">
@@ -231,15 +232,15 @@ aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">로그아웃 하시겠습니까?</div>
         <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+            <a class="btn btn-primary" href="../logout">로그아웃</a>
         </div>
     </div>
 </div>

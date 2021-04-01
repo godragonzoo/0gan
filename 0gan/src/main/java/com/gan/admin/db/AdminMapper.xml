@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
 	<insert id="insertAdmin">
-		insert into adm_tb values(seq_admin.nextval, #{adm_id}, #{adm_pwd}, 'admin')
+		insert into adm_tb values(seq_admin.nextval, #{adm_id}, #{adm_pwd})
 	</insert>
 	<select id="selectAdmin" resultType="adminVo">
 		select * from adm_tb where adm_id = #{username}

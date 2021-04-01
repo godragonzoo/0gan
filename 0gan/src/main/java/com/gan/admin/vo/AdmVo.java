@@ -12,5 +12,4 @@ public class AdmVo {
 	private int adm_num;
 	private String adm_id;
 	private String adm_pwd;
-	private String adm_role;
 }

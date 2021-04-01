@@ -40,7 +40,6 @@ public class DBManager {
 	public static AdmVo selectAdmin(String username) {
 		SqlSession session = factory.openSession();
 		AdmVo adm = session.selectOne("admin.selectAdmin", username);
-		System.out.println("회원정보:" + adm);
 		session.close();
 		return adm;
 	}

@@ -157,7 +157,8 @@
                 <thead>
                     <tr>
                         <th style="width: 10%;" id="th_num" >번호</th>
-                        <th style="width: 45%;">제목</th>
+                        <th style="width: 40%;">제목</th>
+                        <th style="width: 20%">첨부파일</th>
                         <th>작성일</th>
                         <th style="width: 18%;">기능</th>
                     </tr>
@@ -167,6 +168,12 @@
 					<tr>
 						<td>${list.theme_num }</td>
 						<td>${list.theme_title }</td>
+						<c:if test="${not empty list.theme_file }">
+							<td><a href="../file/filedownload?filename=${list.theme_file }">${list.theme_file }</a></td>
+						</c:if>
+						<c:if test="${empty list.theme_file }">
+							<td>${list.theme_file }</td>
+						</c:if>
 						<td>${list.theme_date }</td>
 						<td><a href="themeUpdate.do?theme_num=${list.theme_num }" class="btn btn-success btn-icon-split">
                             <span class="text">관리</span>
@@ -215,15 +222,15 @@ aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">로그아웃 하시겠습니까?</div>
         <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="adminLogin.do">Logout</a>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+            <a class="btn btn-primary" href="../logout">로그아웃</a>
         </div>
     </div>
 </div>

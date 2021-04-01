@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +22,6 @@
 </head>
 
 <body class="bg-gradient-primary">
-<%-- <sec:authorize access="isAuthenticated()"/> --%>
     <div class="container">
 
         <!-- Outer Row -->
@@ -41,7 +39,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
                                     </div>
-                                    <form action="admin/login.do" method="post" class="user">
+                                    <form action="adminLogin.do" method="post" class="user">
                                     <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
