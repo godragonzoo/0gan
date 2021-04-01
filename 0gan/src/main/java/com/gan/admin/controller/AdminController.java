@@ -77,7 +77,6 @@ public class AdminController {
 		String id = user.getUsername();
 		AdmVo admin = dao.selectAdmin(id);
 		session.setAttribute("admin", admin);
-		System.out.println(admin);
 		mav.setViewName("redirect:/admin/notice.do");
 		return mav;
 	}

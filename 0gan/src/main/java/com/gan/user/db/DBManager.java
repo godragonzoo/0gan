@@ -1,5 +1,6 @@
 package com.gan.user.db;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +10,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
 
 import com.gan.vo.FaqVo;
 import com.gan.vo.NotiVo;
@@ -27,22 +27,30 @@ public class DBManager {
 			reader = Resources.getResourceAsReader("com/gan/user/db/mybatis-config.xml");
 			factory = new SqlSessionFactoryBuilder().build(reader);
 			reader.close();
-			System.out.println("sqlSesscionFactory 객체 생성됨!");
 		} catch (Exception e) {
-			System.out.println("예외:"+e.getMessage());
+			System.out.println("예외:" + e.getMessage());
+		} finally {
+			try {
+				if (reader != null)
+					reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 		}
 	}// static
 
 	/* TEST */
 	public static List<UserSearchVo> findAll() {
-		SqlSession session =factory.openSession();
+		SqlSession session = factory.openSession();
 		List<UserSearchVo> list = session.selectList("search.findAll");
 		session.close();
 		return list;
 	}
-	
+
 	/**
 	 * 검색 조건에 적합한 공지사항 목록 by 박권익
+	 * 
 	 * @param map
 	 * @return
 	 */
@@ -55,6 +63,7 @@ public class DBManager {
 
 	/**
 	 * 검색 조건에 적합한 공지사항 개수 by 박권익
+	 * 
 	 * @param keyword
 	 * @return
 	 */
@@ -67,6 +76,7 @@ public class DBManager {
 
 	/**
 	 * 검색 조건에 적합한 도움말 개수 by 박권익
+	 * 
 	 * @param keyword
 	 * @param category
 	 * @return
@@ -83,6 +93,7 @@ public class DBManager {
 
 	/**
 	 * 검색 조건에 적합한 도움말 목록 by 박권익
+	 * 
 	 * @param map
 	 * @return
 	 */
@@ -92,8 +103,10 @@ public class DBManager {
 		session.close();
 		return list;
 	}
+
 	/**
 	 * 기획전 목록 by 박권익
+	 * 
 	 * @return
 	 */
 	public static List<ThemeVo> selectAllTheme() {
@@ -105,6 +118,7 @@ public class DBManager {
 
 	/**
 	 * 기획전에 등록된 장소 목록 by 박권익
+	 * 
 	 * @param theme_num
 	 * @return
 	 */
@@ -114,7 +128,5 @@ public class DBManager {
 		session.close();
 		return list;
 	}
-
-
 
 }

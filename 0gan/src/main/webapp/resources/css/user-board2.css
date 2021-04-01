@@ -1,0 +1,210 @@
+	.content_wraper {
+		position: relative;
+		background-color: #f6f6f6;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		margin: 0;
+		padding: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: middle;
+	}
+	
+	.main-wraper {
+		position: relative;
+		width: 70%;
+		padding-left: 15%;
+	}
+	
+	.main_title {
+		text-align: center;
+		padding-top: 120px;
+		padding-bottom: 20px;
+		width: 127%;
+		font-size: 34px;
+		letter-spacing: -.5px;
+		line-height: 1.2;
+		color: #000;
+		font-size: 34px;
+	}
+	
+	.search_box {
+		background-color: white;
+		border: 2px solid #5a5c69;
+		width: 127%;
+		padding-left: 8%;
+		padding-right: 8%;
+		padding-top: 35px;
+		padding-bottom: 35px;
+		vertical-align: middle;
+		padding-left: 8%;
+	}
+	
+	.textbox_notice {
+		position: relative;
+		vertical-align: middle;
+		top: 15px;
+	}
+	.textbox_faq {
+		position: relative;
+		vertical-align: middle;
+		top: 15px;
+	}
+	
+	.search_button_notice {
+		position: relative;
+		vertical-align: middle;
+		margin-left: 96%;
+		top: -21px;
+		border: 0;
+		outline: 0;
+		cursor: pointer;
+		background-color: white;
+	}
+	.search_button_faq {
+	    position: relative;
+	    vertical-align: middle;
+	    padding-left: 0px;
+	    margin-left: 100%;
+	    top: -21px;
+	    border: 0;
+	    outline: 0;
+	    cursor: pointer;
+	    background-color: white;
+	}
+	
+	.category{
+		position: relative;
+	    vertical-align: middle;
+	    text-align: center;
+	    top: 15px;
+	}
+	
+	.textbox_notice input[type="text"] {
+		position: relative;
+		vertical-align: middle;;
+		width: 85%; /* 원하는 너비 설정 */
+		height: auto; /* 높이값 초기화 */
+		line-height: normal; /* line-height 초기화 */
+		padding: .8em 1.5em; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */
+		font-family: inherit; /* 폰트 상속 */
+		border: 1px solid #999;
+		border-radius: 0; /* iSO 둥근모서리 제거 */
+		outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */
+		-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */
+		-moz-appearance: none;
+		appearance: none;
+	}
+	
+	.textbox_faq input[type="text"] {
+	    position: relative;
+	    vertical-align: middle;
+	    width: 65%;
+	    height: auto;
+	    margin-left: 3%;
+	    margin-right: auto;
+	    line-height: normal;
+	    padding: .8em 1.5em;
+	    font-family: inherit;
+	    border: 1px solid #999;
+	    border-radius: 0;
+	    outline-style: none;
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+	    appearance: none;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	a:link {
+		text-decoration: none;
+		color: #495057;
+	}
+	
+	a:visited {
+		text-decoration: none;
+		color: #495057;
+	}
+	
+	a:active {
+		text-decoration: none;
+		color: #495057;
+	}
+	
+	a:hover {
+		text-decoration: underline;
+		color: #495057;
+	}
+	
+	.main_table {
+		width: 70%;
+		margin-left: 15%;
+		margin-top: 50px;
+		border-top: 3px solid #e0e0e0;
+	}
+	
+	.paging {
+		position: relative;
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	.answer {
+		display: none;
+		padding-bottom: 30px;
+		padding-top: 30px;
+		padding-left: 30px;
+		font-size: 15px;
+	}
+	
+	.question {
+		font-size: 19px;
+		padding: 30px;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		background: none;
+		width: 100%;
+		text-align: left;
+	}
+	
+	.question:hover {
+		color: #2962ff;
+	}
+	
+	[id$="-toggle"] {
+		margin-right: 15px;
+	}
+	
+	table {
+		width: 80%;
+		border-top: 1px solid #e0e0e0;
+		border-collapse: collapse;
+	}
+	
+	.tr-question td {
+		border-bottom: 1px solid #e0e0e0;
+		padding: 10px;
+	}
+
+	select {
+		width: 200px; /* 원하는 너비설정 */
+		padding: .8em .5em; /* 여백으로 높이 설정 */
+		font-family: inherit; /* 폰트 상속 */
+		background:
+			url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
+			no-repeat 95% 50%; /* 네이티브 화살표 대체 */
+		border: 1px solid #999;
+		border-radius: 0px; /* iOS 둥근모서리 제거 */
+		-webkit-appearance: none; /* 네이티브 외형 감추기 */
+		-moz-appearance: none;
+		appearance: none;
+	}
+	
+	select::-ms-expand {
+		display: none;
+	}

@@ -8,10 +8,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gan.user.dao.UserBoardDao;
+import com.gan.vo.UserVo;
 
 @Controller
 public class BoardController {
@@ -25,7 +27,6 @@ public class BoardController {
 	public void setDao(UserBoardDao dao) {
 		this.dao = dao;
 	}
-
 
 	/**
 	 * 공지사항 by 박권익
@@ -104,7 +105,7 @@ public class BoardController {
 		int endPage = (startPage + 4) < totalPage ? startPage + 4 : totalPage;
 		int prevPage = endPage <= 10 ? 1 : startPage - 5;
 		int nextPage = endPage >= totalPage ? endPage : startPage + 5;
-		
+
 		mav.addObject("list", dao.selectFaq(map));
 		mav.addObject("page", page);
 		mav.addObject("startPage", startPage);
@@ -140,11 +141,30 @@ public class BoardController {
 		mav.addObject("list", dao.selectThemePlace(theme_num));
 		return mav;
 	}
+
+	@RequestMapping(value = "/hostQueInsert.do", method = RequestMethod.GET)
+	public ModelAndView hostQueInsertForm(HttpSession session) {
+		ModelAndView mav = new ModelAndView("/user/board/hostQueInsert");
+		UserVo user = (UserVo) session.getAttribute("user");
+		// 스프링 시큐리티 구현 후 작성, TEST가 필요함
+		return mav;
+	}
+
+	@RequestMapping(value = "/hostQueUpdate.do", method = RequestMethod.GET)
+	public ModelAndView hostQueUpdateForm(HttpSession session) {
+		ModelAndView mav = new ModelAndView("/user/board/hostQueUpdate");
+		return mav;
+	}
 	
-	@RequestMapping("/hostQue.do")
-	public ModelAndView hostQue() {
-		ModelAndView mav = new ModelAndView("/user/board/hostQue");
-		
+	@RequestMapping(value="/admQueInsert.do", method=RequestMethod.GET)
+	public ModelAndView admQueInsertForm(HttpSession session) {
+		ModelAndView mav = new ModelAndView("/user/board/admQueInsert");
+		return mav;
+	}
+	
+	@RequestMapping(value="/admQueUpdate.do", method = RequestMethod.GET)
+	public ModelAndView admQueUpdateForm(HttpSession session) {
+		ModelAndView mav = new ModelAndView("/user/board/admQueUpdate");
 		return mav;
 	}
 
