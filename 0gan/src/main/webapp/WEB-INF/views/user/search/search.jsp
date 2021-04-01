@@ -29,11 +29,10 @@
 <link href="/resources/css/search.css" rel="stylesheet">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>search</title>
 
 <style type="text/css">
 
-/* ---------Best공간--------- */
 </style>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
@@ -49,16 +48,7 @@ $(function() {
     }
   });
 });
-$(function() {
-  $('.dropdown-toggle').click( function() {
-    if( $('.dropdown-toggle').css("aria-expanded","false") ) {
-      $('.dropdown-toggle').css("aria-expanded","true");
-    }
-    else {
-      $('.dropdown-toggle').css("aria-expanded","false");
-    }
-  });
-});
+
 </script>
 </head>
 <body>

@@ -493,10 +493,7 @@
 <!-- 추천 공간 -->
 	
 </div>
-<footer class="container">
-				<a href="#" class="bottomMenu">공지사항</a>
-				<a href="#" class="bottomMenu">도움말</a> 
-				<a href="#" class="bottomMenu">서비스정보</a>
-</footer>
+
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body></html>
