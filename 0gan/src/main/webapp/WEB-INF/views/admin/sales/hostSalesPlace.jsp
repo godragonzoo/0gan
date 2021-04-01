@@ -26,11 +26,6 @@
     <!-- Custom styles for this page -->
     <link href="../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <!-- Custom Calendar for this page -->
-    <link href='../resources/vendor/fullcalendar/main.min.css' rel='stylesheet'>
-    <link href='../resources/vendor/fullcalendar/adm-sales.css' rel='stylesheet'>
-
-
 
 </head>
 
@@ -148,41 +143,44 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-3 text-gray-800">호스트별 매출</h1>
+    <h1 class="h3 mb-3 text-gray-800">호스트별 상세 매출</h1>
 
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">매출관리</a></li>
-        <li class="breadcrumb-item active" aria-current="page">호스트별 매출</li>
+        <li class="breadcrumb-item"><a href="hostSales.do">호스트별 매출</a></li>
+        <li class="breadcrumb-item active" aria-current="page">호스트별 보유공간</li>
     </ol>
 </nav>
 
 <!-- DataTales Example -->
 <div class="card shadow mt-4 mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">호스트별 매출</h6>
+        <h6 class="m-0 font-weight-bold text-primary">호스트별 보유공간</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>호스트번호</th>
-                        <th>호스트ID</th>
-                        <th>호스트명</th>
-                        <th>연락처</th>
-                        <th>사업자상호명</th>
+                        <th>공간번호</th>
+                        <th>공간이름</th>
+                        <th>시간당가격</th>
+                        <th>패키지당가격</th>
+                        <th>공간유형</th>
+                        <th>공간주소</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="hList" items="${hList}">
-							<tr onclick="window.location='hostSalesPlace.do?host_user_num=${hList.HOST_USER_NUM}';">
-								<td>${hList.HOST_USER_NUM}</td>
-								<td>${hList.USER_EMAIL}</td>
-								<td>${hList.USER_NAME}</td>
-								<td>${hList.USER_TEL}</td>
-								<td>${hList.HOST_BIZ_NAME}</td>
-							</tr>
+                      <c:forEach var="hPlaceList" items="${hPlaceList}">
+						<tr onclick="window.location='hostSalesDetail.do?place_num=${hPlaceList.PLACE_NUM}';">
+							<td>${hPlaceList.PLACE_NUM}</td>
+							<td>${hPlaceList.PLACE_NAME}</td>
+							<td>${hPlaceList.PLACE_PRICE}</td>
+							<td>${hPlaceList.PLACE_PRICE_PACK}</td>
+							<td>${hPlaceList.PLACE_CATEGORY}</td>
+							<td>${hPlaceList.PLACE_ADDR}</td>
+						</tr>
 					</c:forEach>
                 </tbody>
             </table>
@@ -254,10 +252,6 @@ aria-hidden="true">
 
 <!-- Page level custom scripts -->
 <script src="../resources/js/demo/datatables-demo.js"></script>
-
-<!-- Custom scripts for Calendars-->
-<script src="../resources/vendor/fullcalendar/main.min.js"></script>
-<script src="../resources/vendor/fullcalendar/adm-sales.js"></script>
 
 </body>
 

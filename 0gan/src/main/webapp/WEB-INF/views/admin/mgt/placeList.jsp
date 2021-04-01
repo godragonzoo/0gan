@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -46,13 +47,13 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 회원 정보 관리 </span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#"><span> 공간 정보 관리 </span></a>
+               <a class="nav-link" href="userList.do"><span> 회원 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 예약 정보 관리 </span></a>
+                <a class="nav-link" href="placeList.do"><span> 공간 정보 관리 </span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="rsvtList.do"><span> 예약 정보 관리 </span></a>
             </li>
 
 
@@ -65,9 +66,9 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#"> 전체 매출 </a>
-                    <a class="collapse-item" href="#"> 공간별 매출 </a>
-                    <a class="collapse-item" href="#"> 호스트별 매출 </a>
+                    <a class="collapse-item" href="totalSales.do"> 전체 매출 </a>
+                    <a class="collapse-item" href="placeSales.do"> 공간별 매출 </a>
+                    <a class="collapse-item" href="hostSales.do"> 호스트별 매출 </a>
                 </div>
             </div>
         </li>
@@ -164,206 +165,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>14</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>15</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>16</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>17</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>18</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>19</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>20</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>21</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>22</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>23</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>24</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>25</td>
-                            <td>신용주</td>
-                            <td>yjshin4817@gmail.com</td>
-                            <td>01023826857</td>
-                            <td>A</td>
-                            <td>N</td>
-                        </tr>
+                        <c:forEach var="pList" items="${pList}">
+							<tr onclick="window.location='searchDetail.do?place_num=${pList.PLACE_NUM}';">
+								<td>${pList.PLACE_NUM}</td>
+								<td>${pList.PLACE_NAME}</td>
+								<td>${pList.USER_EMAIL}</td>
+								<td>${pList.USER_NAME}</td>
+								<td>${pList.PLACE_CATEGORY}</td>
+								<td>${pList.PLACE_ADDR}</td>
+							</tr>
+						</c:forEach>
                     </tbody>
                 </table>
             </div>

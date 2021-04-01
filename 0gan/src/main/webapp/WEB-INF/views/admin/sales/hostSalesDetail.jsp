@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -51,13 +52,13 @@
 
             <!-- Nav Item - Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 회원 정보 관리 </span></a>
+                <a class="nav-link" href="userList.do"><span> 회원 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 공간 정보 관리 </span></a>
+                <a class="nav-link" href="placeList.do"><span> 공간 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 예약 정보 관리 </span></a>
+                <a class="nav-link" href="rsvtList.do"><span> 예약 정보 관리 </span></a>
             </li>
 
 
@@ -70,9 +71,9 @@
             </a>
             <div id="collapseAdmSales" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#"> 전체 매출 </a>
-                    <a class="collapse-item" href="#"> 공간별 매출 </a>
-                    <a class="collapse-item active" href="#"> 호스트별 매출 </a>
+                    <a class="collapse-item" href="totalSales.do"> 전체 매출 </a>
+                    <a class="collapse-item" href="placeSales.do"> 공간별 매출 </a>
+                    <a class="collapse-item active" href="hostSales.do"> 호스트별 매출 </a>
                 </div>
             </div>
         </li>
@@ -152,8 +153,9 @@
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">매출관리</a></li>
-        <li class="breadcrumb-item"><a href="#">호스트별 매출</a></li>
-        <li class="breadcrumb-item active" aria-current="page">호스트별 상세 매출</li>
+        <li class="breadcrumb-item"><a href="hostSales.do">호스트별 매출</a></li>
+        <li class="breadcrumb-item active"><a href="hostSalesPlace.do?">호스트별 보유공간</a></li>
+        <li class="breadcrumb-item active" aria-current="page">호스트별 공간매출</li>
     </ol>
 </nav>
 
@@ -163,7 +165,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mt-4 mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">호스트별 상세 매출</h6>
+        <h6 class="m-0 font-weight-bold text-primary">호스트별 공간매출</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -180,24 +182,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>2021.03.01-2021.03.31</td>
-                        <td>제주도가고싶다</td>
-                        <td>$50,000</td>
-                        <td>121</td>
-                        <td>$54,000</td>
-                        <td>15</td>
-                        <td>$4000</td>
-                    </tr>
-                    <tr>
-                        <td>2021.04.01-2021.04.31</td>
-                        <td>강원도가고싶다</td>
-                        <td>$50,000</td>
-                        <td>121</td>
-                        <td>$54,000</td>
-                        <td>15</td>
-                        <td>$4000</td>
-                    </tr>
+                    <c:forEach var="pSales" items="${pSales}">
+						<tr>
+							<td>${pSales.PLACE_NUM}</td>
+							<td>${pSales.PLACE_NAME}</td>
+							<td>${pSales.RSVT_TOT_SALES}</td>
+							<td>${pSales.RSVT_CNT}</td>
+							<td>${pSales.RSVT_SALES}</td>
+							<td>${pSales.RSVT_CANCLE_CNT}</td>
+							<td>${pSales.RSVT_CANCLE}</td>
+						</tr>
+					</c:forEach>
                 </tbody>
             </table>
         </div>

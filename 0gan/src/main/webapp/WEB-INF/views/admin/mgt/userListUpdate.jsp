@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -46,13 +47,13 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#"><span> 회원 정보 관리 </span></a>
+                <a class="nav-link" href="userList.do"><span> 회원 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 공간 정보 관리 </span></a>
+                <a class="nav-link" href="placeList.do"><span> 공간 정보 관리 </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><span> 예약 정보 관리 </span></a>
+                <a class="nav-link" href="rsvtList.do"><span> 예약 정보 관리 </span></a>
             </li>
 
 
@@ -65,9 +66,9 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#"> 전체 매출 </a>
-                    <a class="collapse-item" href="#"> 공간별 매출 </a>
-                    <a class="collapse-item" href="#"> 호스트별 매출 </a>
+                    <a class="collapse-item" href="totalSales.do"> 전체 매출 </a>
+                    <a class="collapse-item" href="placeSales.do"> 공간별 매출 </a>
+                    <a class="collapse-item" href="hostSales.do"> 호스트별 매출 </a>
                 </div>
             </div>
         </li>
@@ -146,8 +147,8 @@
 
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#"> 회원 정보 관리 </a></li>
-        <li class="breadcrumb-item active" aria-current="page"> 회원 상세 정보 </li>
+        <li class="breadcrumb-item"><a href="userList.do"> 회원 정보 관리 </a></li>
+        <li class="breadcrumb-item"><a href="userListDetail.do?user_num=${uVo.user_num}"> 회원 상세 정보 </a></li>
         <li class="breadcrumb-item active" aria-current="page"> 회원 정보 수정</li>
     </ol>
 </nav>
@@ -159,50 +160,62 @@
         <h6 class="m-0 font-weight-bold text-primary">회원 상세 정보</h6>
     </div>
     <div class="card-body">
+      <form method="post" action="userListUpdate.do?user_num=${uVo.user_num}" id="userGrade" name="userGrade">
         <div class="table-responsive">
             <table class="table table-bordered" width="100%" cellspacing="0">
                 <thead>
-                    <tr>
-                        <th>회원번호</th>
-                        <th>이름</th>
-                        <th>이메일</th>
-                        <th>연락처</th>
-                        <th>권한</th>
-                        <th>회원가입일자</th>
-                        <th>회원정보수정일자</th>
-                        <th>마켓팅수신동의여부</th>
-                        <th>소설로그인번호</th>
-                        <th>소설로그인종류</th>
-                        <th>로그인상태</th>
-                        <th>로그인일자</th>
-                        <th>탈퇴여부</th>
+                	<tr>
+                       <th>회원번호</th>
+                       <th>이름</th>
+                       <th>이메일</th>
+                       <th>연락처</th>
+                       <th>권한</th>
+                       <th>탈퇴여부</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>신용주</td>
-                        <td>yjshin4817@gmail.com</td>
-                        <td>01023826857</td>
-                        <td>
-                            <select class="form-select" aria-label="select user grade">
-                              <option value="user" selected>U</option>
-                              <option value="host">H</option>
-                              <option value="admin">A</option>
-                          </select>
-                      </td>
-                      <td>2020.08.29 00:00:00</td>
-                      <td>2021.01.01 00:00:00</td>
-                      <td>Y</td>
-                      <td>297</td>
-                      <td>Google</td>
-                      <td>S</td>
-                      <td>2021.03.22 00:00:00</td>
-                      <td>N</td>
-                  </tr>
-              </tbody>
-          </table>
-          <table class="table table-bordered" width="100%" cellspacing="0">
+                       <td><input type="hidden" name="user_num" value="${uVo.user_num}">${uVo.user_num}</td>
+                       <td>${uVo.user_name}</td>
+                       <td>${uVo.user_email}</td>
+                       <td>${uVo.user_tel}</td>
+                       <td>
+                           <select  class="form-select" id="updateGrade" aria-label="select user grade" name="user_grade">
+                             <option value="U" selected>U</option>
+                             <option value="H">H</option>
+                             <option value="A">A</option>
+                        	</select>
+                       </td>
+                       <td>${uVo.user_del}</td>
+                    </tr>
+                </tbody>
+            </table>
+       
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>로그인일자</th>
+                        <th>로그인상태</th>
+                        <th>소설로그인번호</th>
+                        <th>소설로그인종류</th>
+                        <th>회원가입일자</th>
+                        <th>회원정보수정일자</th>
+                        <th>마켓팅수신동의여부</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${login.LOGIN_STATE}</td>
+                        <td>${login.LOGIN_DATE}</td>
+                        <td>${login.SNS_LOGIN_NUM}</td>
+                        <td>${login.SNS_VER}</td>
+                        <td>${login.USER_MK_DATE}</td>
+                        <td>${login.USER_MODE_DATE}</td>
+                        <td>${login.USER_AGREE}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered" width="100%" cellspacing="0">
              <thead>
                 <tr>
                     <th>예약번호</th>
@@ -211,33 +224,25 @@
                     <th>공간유형</th>
                     <th>공간주소</th>
                     <th>예약상태</th>
-                    <th>후기작성</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>16878</td>
-                    <td width="20%">2021.04.11 00:00:00 - 2021.04.12 00:00:00</td>
-                    <td>인천 파티룸 A</td>
-                    <td>파티룸</td>
-                    <td>인천시 계양구</td>
-                    <td>예약완료</td>
-                    <td>N</td>
-                </tr><tr>
-                    <td>147</td>
-                    <td width="20%">2021.01.11 00:00:00 - 2021.01.12 00:00:00</td>
-                    <td>인천 파티룸 A</td>
-                    <td>파티룸</td>
-                    <td>인천시 계양구</td>
-                    <td>이용완료</td>
-                    <td>Y</td>
+                    <td>${rsvt.RSVT_NUM}</td>
+                    <td>${rsvt.RSVT_TIME}</td>
+                    <td>${rsvt.PLACE_NAME}</td>
+                    <td>${rsvt.PLACE_CATEGORY}</td>
+                    <td>${rsvt.PLACE_ADDR}</td>
+                    <td>${rsvt.RSVT_STATE}</td>
                 </tr>
             </tbody>
         </table>
-    </div>
     <span class="form-row float-right">
-        <button class="btn btn-circle pull-right" id="update"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-circle pull-right" id="update"><i class="fa fa-edit" id="btnSubmit" 
+        onclick="location.href='userListDetail.do?user_num=${uVo.user_num}'"></i></button>
     </span>
+  </div>
+  </form>
 </div>
 </div>
 
