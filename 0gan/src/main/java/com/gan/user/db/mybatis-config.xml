@@ -5,6 +5,7 @@
 <configuration>
 <properties resource="com/gan/properties/db.properties"/>
 <typeAliases>
+	<typeAlias type="com.gan.vo.UserVo" alias="notiVo"/>
 	<typeAlias type="com.gan.vo.NotiVo" alias="notiVo"/>
 	<typeAlias type="com.gan.vo.FaqVo" alias="faqVo"/>
 	<typeAlias type="com.gan.vo.ThemeVo" alias="themeVo"/>
@@ -23,5 +24,6 @@
   </environments>
   <mappers>
    <mapper resource="com/gan/user/db/BoardMapper.xml"/>
+    <mapper resource="com/gan/user/db/UserInfoMapper.xml"/>
   </mappers>
 </configuration>

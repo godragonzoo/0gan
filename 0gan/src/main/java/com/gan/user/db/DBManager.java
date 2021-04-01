@@ -16,6 +16,7 @@ import com.gan.vo.NotiVo;
 import com.gan.vo.ThemePlaceVo;
 import com.gan.vo.ThemeVo;
 import com.gan.vo.UserSearchVo;
+import com.gan.vo.UserVo;
 
 public class DBManager {
 
@@ -114,7 +115,26 @@ public class DBManager {
 		session.close();
 		return list;
 	}
+	
+	/**
+	 * by 김은비
+	 * @param user
+	 * @return
+	 */
+	public static int insertUser(UserVo user) {
+		SqlSession session = factory.openSession();
+		int re = session.insert("info.insertUser", user);
+		session.commit();
+		session.close();
+		return re;
+	}
 
+	public static UserVo selectUser(int user_num) {
+		SqlSession session = factory.openSession();
+		UserVo user = session.selectOne("info.selectUser", user_num);
+		session.close();
+		return user;
+	}
 
 
 }

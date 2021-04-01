@@ -28,18 +28,16 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="#">프로필</a>
-
-							
+							<a class="nav-link" href="userInfo.do">프로필</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">예약내역</a>
+							<a class="nav-link" href="userRsvtList.do">예약내역</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">관심목록</a>
+							<a class="nav-link" href="userWishlist.do">관심목록</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">문의내역</a>
+							<a class="nav-link" href="userQueList.do">문의내역</a>
 						</li>
 					</ul>
 				</div>
@@ -51,28 +49,30 @@
 
 		<div class="container">
 			<div class="col-lg-7 center-block" style="float:none; margin:0 auto" >
-				<h4 class="text-center"> (user_name) 님</h4>
+				<c:forEach var="user" items="${user }">
+				<h4 class="text-center"> ${user.user_name } 님</h4>
 				<table class="table" align="center" width="700">
 					<tr>
 						<td align="center"><b>이름</b></td>
-						<td width="400">이름</td>
+						<td width="400">${user.user_name }</td>
 					</tr>
 
 					<tr>
 						<td align="center"><b>이메일</b></td>
-						<td>이메일</td>
+						<td>${user.user_email }</td>
 					</tr>
 
 					<tr>
 						<td align="center"><b>연락처</b></td>
-						<td>연락처</td>
+						<td>${user.user_tel }</td>
 					</tr>
-
+					
 					<tr>
 						<td align="center"><b>마케팅 수신 동의</b></td>
 						<td>마케팅 수신 동의</td>
 					</tr>
 				</table>
+				</c:forEach>
 			</div>
 		</div>
 		<hr>
