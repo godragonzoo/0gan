@@ -25,6 +25,12 @@ body{
     width: 180px;
     height: 180px;
 }
+.imgMap{
+	background-color:aqua; 
+	width: 90%; 
+	height: 250px; 
+	margin: 20px auto;
+}
 .place-card{
 	border: solid 1px gray; 
 	width: 100%;
@@ -40,11 +46,6 @@ body{
 	margin: 30px auto;	
 }
 
-.btn-primary{
-	margin: 20px auto;
-	width: 80%;
-	height: 30px;
-}
 
 .sideBar{
 	background:  #F8F9FC;
@@ -59,4 +60,22 @@ body{
 	height: 200px;
 	padding: 20px;
 	margin: 30px 0;
+}
+
+.searchWord{
+	height: 50px;
+	width: 180px;
+	margin: 0 20px;
+	padding: 10px;
+	
+}
+.rightWrap{
+	float: right;
+	display: flex;
+}
+.btnMap{
+	height: 40px;
+	width: 80px;
+	margin: 0 20px;
+	padding: 10px;
 }

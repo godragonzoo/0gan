@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
-
 header{ 
 	margin: 0px auto; 
 	position:relative; 
@@ -14,7 +13,6 @@ header{
 	background-color: #F8F9FC;
 	display: block;
 }
-
 .logo {
 	top: 0px;
     width: 250px;
@@ -29,7 +27,6 @@ header{
     top: 30px;
     left: -120px;
 }
-
 .dropdown-divider {
     height: 0;
     margin: 0.5rem 0;
@@ -37,14 +34,14 @@ header{
     border-top: 1px solid #EAECF4;
 }
 #submenu{
-display: none; 
-position: absolute; 
-left: -160px; 
-top:60px;
+	display: none; 
+	position: absolute; 
+	left: -160px; 
+	top:60px;
 }
 .search{
     width: 60%;
-    margin: 0 auto;
+    margin: 20px auto;
     display: block;
 }
 .searchInput{
@@ -52,8 +49,9 @@ top:60px;
     height: 50px;
     border: none;
 }
-.btn{
-	width: 70px;
+.btnSearch{
+	top: 5px;
+	width: 60px;
 	height: 50px;
 	font-size: 30px;
 }
@@ -135,9 +133,9 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
-<div class="search border-bottom-primary">
-           	<input type="text" class="searchInput" placeholder="Search">
-        	<button type="submit" class="btn btn-primary" >
+<div class="search">
+           	<input type="text" class="searchInput  border-bottom-primary" placeholder="Search">
+        	<button type="submit" class="btnSearch btn-primary" >
         		<span style="color: white;"><i class="fas fa-search"></i></span>
         	</button>
 </div>		

@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- Bootstrap core CSS -->
 <link href="../resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
@@ -30,10 +33,6 @@
 
 <meta charset="UTF-8">
 <title>search</title>
-
-<style type="text/css">
-
-</style>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
@@ -49,46 +48,43 @@ $(function() {
   });
 });
 
+$(document).ready(function(){
+	var menu = document.getElementById("dorpdownMenu");
+	menu.style.display='none';
+	$("#dropdownMenuButton").click(function() {
+		if($("#dorpdownMenu").css('display')=='none'){
+			menu.style.display='block';
+		} else {
+			menu.style.display='none';
+		}
+	});
+	
+	      let search = document.getElementById("searchWord").value; 
+});
 </script>
 </head>
 <body>
 
-<div class="header">
-	<div >
-		<img  class="logo "src="resources/img/logo2.png" >
-	</div>
-	<div  class="menuIcon" >
-		<i class="fas fa-user-cog fa-3x  "></i>
-		<i class="fas fa-bars fa-3x "></i>
-	</div>
-		
-		<!-- Modal -->
-      
-</div>
+<jsp:include page="../header.jsp"></jsp:include>
 
 <div class="container ">
-	<div class="title row border-bottom-primary" style="font-size: 30px; margin: 20px 0;">검색 결과</div>
+	<h1 class="title row border-bottom-primary  font-weight-bold text-primary" >검색 결과</h1>
 	<div class="btnWrap row justify-content-between" >
-		<!-- filter 버튼  -->
-	<!-- 	<div class="filter col">
-			<select class="form-control custom-select nav" required="">
-			<option value="공간선택">공간선택</option><option value="공유오피스/코워킹스페이스/샵인샵">공유오피스/코워킹스페이스/샵인샵</option><option value="공유주방">공유주방</option><option value="연습실/합주실/녹음실">연습실/합주실/녹음실</option><option value="파티룸/모임공간/브라이덜샤워">파티룸/모임공간/브라이덜샤워</option><option value="회의실/강당/세미나실/비즈니스공간">회의실/강당/세미나실/비즈니스공간</option><option value="스터디룸/스터디카페">스터디룸/스터디카페</option><option value="공유하우스">공유하우스</option><option value="촬영스튜디오대여">촬영스튜디오대여</option>
-			</select>
-		</div> -->
-		<input type="text" class="searchWord filter " placeholder="필터 선택" >
-		<!-- filter 버튼  -->
+		<!-- filter   -->
+		<input type="text" class="searchWord filter " id="searchWord" placeholder="필터 선택" >
+		<!-- filter   -->
 		
-		<div class="rightWrap filter" style="display: flex; border: solid 1px lime;">
+		<div class="rightWrap filter" >
 			<!-- map 버튼  -->
-			<button  class="btnMap btn btn-primary btn-icon-split "  >지도 on</button>
+			<button  class="btnMap btn btn-primary"  >지도 on</button>
 			<!-- map 버튼  -->
 			
 			<!-- 정렬 버튼  -->
 			<div class="dropdown mb-4 show">
-            	<button class="btn bg-gradient-light  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            	<button class="btn bg-gradient-light  dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" >
                 정렬
                 </button>
-                <div class="dropdown-menu animated--fade-in show" aria-labelledby="dropdownMenuButton" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
+                <div class="dropdown-menu animated--fade-in show" id="dorpdownMenu" aria-labelledby="#dropdownMenuButton" >
                 	<a class="dropdown-item" href="#">가격순</a>
                     <a class="dropdown-item" href="#">추천순</a>
                     <a class="dropdown-item" href="#">평점순</a>
@@ -98,86 +94,86 @@ $(function() {
 			
 		</div>
 	</div>
+	
 	<!-- 지도 -->
-	<div class="imgMap">
-	<h1>지도입니다</h1>
+	<div class="imgMap" >
+		<div ><h1>지도입니다</h1></div>
 	</div>
 	<!-- 지도 -->
 	
 	<!-- 결과 목록 -->
-	<div class=" searchResultList justify-content-between">
-	
-						<div class="best1  bg-gradient-light" >
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img well" src="/resources/img/island.png" alt="" ></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body well">장소 이름</div>
-										<div class="card-body well">장소 위치</div>
-										<div class="card-body well">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro well">장소 이름</div>
-							</div>
+	<div class="row searchResultList">
+	<!-- 결과 list1 -->
+		<c:forEach var="c" items="${list }">
+	        		<div class="col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="${c.PLACE_IMG }" alt=""></a>
+						<div class="card-body content-overflow">
+		                <h5>${c.PLACE_ADDR }</h5>
+						<h4 class="card-title">
+							<a href="#">${c.PLACE_NAME }</a>
+		                </h4>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
-						
-						
-						<div class="best1  bg-gradient-light" >
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img well" src="/resources/img/island.png" alt="" ></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body well">장소 이름</div>
-										<div class="card-body well">장소 위치</div>
-										<div class="card-body well">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro well">장소 이름</div>
-							</div>
+		            </div>
+		            </div>
+		</c:forEach>
+	<!-- 결과 list2 -->
+	        		<div class="col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body content-overflow">
+		                <h5>서울특별시 asdf</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] asdf</a>
+		                </h4>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
-						
-						
-						<div class="best1  bg-gradient-light" >
-							<div class="card-row">
-								<div class="card-col">
-									<a href="#"><img class="img well" src="/resources/img/island.png" alt="" ></a>
-								</div>
-								
-								<div class="card-col">
-										<div class="card-body well">장소 이름</div>
-										<div class="card-body well">장소 위치</div>
-										<div class="card-body well">장소 평점</div>
-								</div>
-							</div>
-							<div class="card-row">
-									<div class="card-intro well">장소 이름</div>
-							</div>
+		            </div>
+		            </div>
+	<!-- 결과 list3 -->
+	        		<div class="col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body content-overflow">
+		                <h5>서울특별시 asdf</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] asdf</a>
+		                </h4>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
 						</div>
-		
-<!-- 		<div class="item">
-			<div class="mainImg">
-				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
-			</div>
-			<div class="infoList">
-				<ul class="meta-search">
-					<li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
-					<li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
-					<li><i class="glyphicon glyphicon-tags"></i> <span>People</span></li>
-					<h3>list3</h3>
-				</ul>
-			</div>
-		
-		</div> -->	
-	
+		            </div>
+		            </div>
+	<!-- 결과 list4 -->
+	        		<div class="col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<div class="card-body content-overflow">
+		                <h5>서울특별시 asdf</h5>
+						<h4 class="card-title">
+							<a href="#">[서울역 파티룸] asdf</a>
+		                </h4>
+		              	</div>
+		              	<div class="card-footer">
+		                	<small class="text-muted">★ 4.8</small>
+		                	<small class="text-muted text-right">♥ 32</small>
+						</div>
+		            </div>
+		            </div>
+
 	</div>
 	<!-- 결과 목록 -->
 	
 </div><!-- 컨테이너 -->
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

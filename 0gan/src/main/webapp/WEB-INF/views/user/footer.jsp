@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
 footer{
     margin: 0 auto;
     max-width: 1200px;
@@ -16,9 +15,9 @@ footer{
 </head>
 <body>
 <footer class="container">
-	<a href="#" class="bottomMenu">°øÁö»çÇ×</a>
-	<a href="#" class="bottomMenu">µµ¿ò¸»</a> 
-	<a href="#" class="bottomMenu">¼­ºñ½ºÁ¤º¸</a>
+	<a href="#" class="bottomMenu">ê³µì§€ì‚¬í•­</a>
+	<a href="#" class="bottomMenu">ë„ì›€ë§</a> 
+	<a href="#" class="bottomMenu">ì„œë¹„ìŠ¤ì •ë³´</a>
 </footer>
 </body>
 </html>
