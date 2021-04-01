@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="info">
+	<insert id="insertUser">
+		insert into user_tb
+			values (seq_user.nextval, #{user_email}, #{user_name}, #{user_pwd}, #{user_tel}, systimestamp, systimestamp, #{user_grade}, #{user_del}, #{user_agree})
+	</insert>
+	
+	<select id="selectUser">
+		selecct user_name, user_email, user_tel
+		from user_tb
+	</select>
+	
+	<update id="updateUserInfo">
+	
+	</update>
+	
+	<delete id="deleteUser">
+	
+	</delete>
+	
+</mapper>
