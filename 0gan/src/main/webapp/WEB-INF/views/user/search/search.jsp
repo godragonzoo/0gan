@@ -27,13 +27,10 @@
     <!-- Custom scripts for all pages-->
     <script src="../resources/js/sb-admin-2.min.js"></script>
 
-
-<script type="text/javascript" src="/resources/js/search.js"></script>
 <link href="/resources/css/search.css" rel="stylesheet">
 
 <meta charset="UTF-8">
 <title>search</title>
-<script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
   $('.btnMap').click( function() {
@@ -173,6 +170,22 @@ $(document).ready(function(){
 	</div>
 	<!-- 결과 목록 -->
 	
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>공간번호</th>
+                            <th>공간이름</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="pList" items="${list}">
+							<tr >
+								<td>${pList.PLACE_NUM}</td>
+								<td>${pList.PLACE_ADDR}</td>
+							</tr>
+						</c:forEach>
+                    </tbody>
+                </table>
 </div><!-- 컨테이너 -->
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
