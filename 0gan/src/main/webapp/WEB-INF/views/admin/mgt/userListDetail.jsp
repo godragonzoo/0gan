@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -195,8 +196,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>${login.LOGIN_STATE}</td>
                         <td>${login.LOGIN_DATE}</td>
+                        <td>${login.LOGIN_STATE}</td>
                         <td>${login.SNS_LOGIN_NUM}</td>
                         <td>${login.SNS_VER}</td>
                         <td>${login.USER_MK_DATE}</td>
@@ -217,14 +218,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>${rsvt.RSVT_NUM}</td>
-                    <td>${rsvt.RSVT_TIME}</td>
-                    <td>${rsvt.PLACE_NAME}</td>
-                    <td>${rsvt.PLACE_CATEGORY}</td>
-                    <td>${rsvt.PLACE_ADDR}</td>
-                    <td>${rsvt.RSVT_STATE}</td>
-                </tr>
+                <c:forEach var="rsvt" items="${rsvt}">
+                	<tr>
+	                    <td>${rsvt.RSVT_NUM}</td>
+	                    <td>${rsvt.RSVT_TIME}</td>
+	                    <td>${rsvt.PLACE_NAME}</td>
+	                    <td>${rsvt.PLACE_CATEGORY}</td>
+	                    <td>${rsvt.PLACE_ADDR}</td>
+	                    <td>${rsvt.RSVT_STATE}</td>
+                	</tr>
+                 </c:forEach>
             </tbody>
         </table>
     </div>

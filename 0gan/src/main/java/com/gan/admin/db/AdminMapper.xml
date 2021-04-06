@@ -188,7 +188,7 @@
 	    and u.user_num=#{user_num}
 	</select>
 	<!-- 회원 예약 상세 정보 조회 by 신용주 -->
-	<select id="selectOneUserRsvt" resultType="java.util.Map">
+	<select id="selectUserRsvt" resultType="java.util.Map">
 		select r.rsvt_num, (r.rsvt_checkin|| '~' || r.rsvt_checkout) as rsvt_time, p.place_name, p.place_category, p.place_addr, r.rsvt_state 
 		from  rsvt_tb r, place_tb p 
 		where r.user_num = p.host_user_num 

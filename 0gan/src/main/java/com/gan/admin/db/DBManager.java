@@ -425,10 +425,10 @@ public class DBManager {
 	/**
 	 * 회원 예약 상세 정보 조회 by 신용주
 	 */
-	public static Map selectOneUserRsvt(HashMap map) {
+	public static List<Map> selectUserRsvt(HashMap map) {
 		//System.out.println(map);
 		SqlSession session = factory.openSession(); 
-		Map rsvt = session.selectOne("admin.selectOneUserRsvt", map); 
+		List<Map> rsvt = session.selectList("admin.selectUserRsvt", map); 
 		//System.out.println(rsvt);
 		session.close(); 
 		return rsvt;

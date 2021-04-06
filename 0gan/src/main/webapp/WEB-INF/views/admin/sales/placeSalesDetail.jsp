@@ -26,9 +26,14 @@
     <!-- Custom styles for this page -->
     <link href="../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <!-- Custom Calendar for this page -->
-    <link href='../resources/vendor/fullcalendar/main.min.css' rel='stylesheet'>
-    <link href='../resources/vendor/fullcalendar/adm-sales.css' rel='stylesheet'>
+     <!-- Custom Calendar for this page -->
+    <link href='../resources/vendor/fullcalendar/core/main.css' rel='stylesheet' />
+	<link href='../resources/vendor/fullcalendar/daygrid/main.css' rel='stylesheet' />
+	<link href='../resources/vendor/fullcalendar/timegrid/main.css' rel='stylesheet' />
+	<link href='../resources/vendor/fullcalendar/list/main.css' rel='stylesheet' />
+	<link href='../resources/vendor/fullcalendar/bootstrap/main.css' rel='stylesheet' />
+	<link href='../resources/vendor/fullcalendar/interaction/main.css' rel='stylesheet' />
+	<link href='../resources/vendor/fullcalendar/adm-sales.css' rel='stylesheet' />
 
 
 
@@ -159,7 +164,11 @@
 </nav>
 
 <!-- Calendar  -->
-<div id="calendar"></div>
+<div class="card shadow mt-4 mb-4">
+    <div class="card-body">
+		<div id='calendar'></div>
+	</div>
+</div>
 
 <!-- DataTales Example -->
 <div class="card shadow mt-4 mb-4">
@@ -183,7 +192,7 @@
                 <tbody>
                     <c:forEach var="pSales" items="${pSales}">
 						<tr>
-							<td>${pSales.PLACE_NUM}</td>
+							<td>전체기간</td>
 							<td>${pSales.PLACE_NAME}</td>
 							<td>${pSales.RSVT_TOT_SALES}</td>
 							<td>${pSales.RSVT_CNT}</td>
@@ -264,8 +273,13 @@ aria-hidden="true">
 <script src="../resources/js/demo/datatables-demo.js"></script>
 
 <!-- Custom scripts for Calendars-->
-<script src="../resources/vendor/fullcalendar/main.min.js"></script>
-<script src="../resources/vendor/fullcalendar/adm-sales.js"></script>
+<script src='../resources/vendor/fullcalendar/core/main.js'></script>
+<script src='../resources/vendor/fullcalendar/daygrid/main.js'></script>
+<script src='../resources/vendor/fullcalendar/timegrid/main.js'></script>
+<script src='../resources/vendor/fullcalendar/list/main.js'></script>
+<script src='../resources/vendor/fullcalendar/bootstrap/main.js'></script>
+<script src='../resources/vendor/fullcalendar/interaction/main.js'></script>
+<script src='../resources/vendor/fullcalendar/adm-sales.js'></script>
 
 </body>
 

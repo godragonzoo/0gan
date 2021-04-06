@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>0gan È£½ºÆ® ÆäÀÌÁö</title>
+    <title>0gan í˜¸ìŠ¤íŠ¸ íŽ˜ì´ì§€</title>
 
     <!-- Custom fonts for this template-->
     <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -46,12 +46,12 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePlace"
                 aria-expanded="true" aria-controls="collapseOne">
-                <span> °ø°£ °ü¸® </span>
+                <span> ê³µê°„ ê´€ë¦¬ </span>
             </a>
             <div id="collapsePlace" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#"> °ø°£ ¸®½ºÆ® </a>
-                    <a class="collapse-item" href="#"> »õ·Î¿î °ø°£ µî·Ï </a>
+                    <a class="collapse-item" href="#"> ê³µê°„ ë¦¬ìŠ¤íŠ¸ </a>
+                    <a class="collapse-item" href="#"> ìƒˆë¡œìš´ ê³µê°„ ë“±ë¡ </a>
                 </div>
             </div>
 
@@ -60,13 +60,13 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRsvt"
             aria-expanded="true" aria-controls="collapseTwo">
-            <span> ¿¹¾à °ü¸® </span>
+            <span> ì˜ˆì•½ ê´€ë¦¬ </span>
         </a>
         <div id="collapseRsvt" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#"> ¿¹¾à ÇöÈ² Á¶È¸ </a>
-                <a class="collapse-item" href="#"> ¿¹¾à ÀÏÁ¤ °ü¸® </a>
-                <a class="collapse-item" href="#"> ¿¹¾à ½ÂÀÎ ´ë±â </a>
+                <a class="collapse-item" href="#"> ì˜ˆì•½ í˜„í™© ì¡°íšŒ </a>
+                <a class="collapse-item" href="#"> ì˜ˆì•½ ì¼ì • ê´€ë¦¬ </a>
+                <a class="collapse-item" href="#"> ì˜ˆì•½ ìŠ¹ì¸ ëŒ€ê¸° </a>
             </div>
         </div>
     </li>
@@ -74,13 +74,13 @@
     <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoard"
         aria-expanded="true" aria-controls="collapseTwo">
-        <span> °Ô½Ã±Û °ü¸®</span>
+        <span> ê²Œì‹œê¸€ ê´€ë¦¬</span>
     </a>
     <div id="collapseBoard" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item active" href="hostQna.do"> ¹®ÀÇ °Ô½Ã±Û °ü¸® <span class="badge rounded-pill bg-warning text-dark ml-4">10
+            <a class="collapse-item active" href="hostQna.do"> ë¬¸ì˜ ê²Œì‹œê¸€ ê´€ë¦¬ <span class="badge rounded-pill bg-warning text-dark ml-4">10
             </span></a>
-            <a class="collapse-item" href="hostRevw.do"> ÈÄ±â °Ô½Ã±Û °ü¸® <span class="badge rounded-pill bg-warning text-dark ml-4">23</span>
+            <a class="collapse-item" href="hostRevw.do"> í›„ê¸° ê²Œì‹œê¸€ ê´€ë¦¬ <span class="badge rounded-pill bg-warning text-dark ml-4">23</span>
             </a>
         </div>
     </div>
@@ -88,7 +88,7 @@
 
 <!-- Nav Item - Pages Menu -->
 <li class="nav-item">
-    <a class="nav-link sales" href="#"><span> ¸ÅÃâ °ü¸® </span></a>
+    <a class="nav-link sales" href="#"><span> ë§¤ì¶œ ê´€ë¦¬ </span></a>
 </li>
 
 </ul>
@@ -117,7 +117,7 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {°ü¸®ÀÚ} </span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {ê´€ë¦¬ìž} </span>
                     <img class="img-profile rounded-circle"
                     src="../resources/img/undraw_profile.svg">
                 </a>
@@ -127,7 +127,7 @@
 
 
                 <a class="dropdown-item" href="#">
-                    ·Î±×¾Æ¿ô
+                    ë¡œê·¸ì•„ì›ƒ
                 </a>
             </div>
         </li>
@@ -137,18 +137,18 @@
 </nav>
 <!-- End of Topbar -->
 
-<!-- À§ÀÇ ÄÚµå´Â °íÁ¤ÀÌ°í ¹Ø¿¡ ÄÚµå´Â ÁÂÃø ¸Þ´º Å¬¸¯½Ã Ãâ·ÂµÇ´Â ÆäÀÌÁö ³»¿ëÀ» Ã¤¿ö°¡½Ã¸é µÇ°Ú½À´Ï´Ù. -->
+<!-- ìœ„ì˜ ì½”ë“œëŠ” ê³ ì •ì´ê³  ë°‘ì— ì½”ë“œëŠ” ì¢Œì¸¡ ë©”ë‰´ í´ë¦­ì‹œ ì¶œë ¥ë˜ëŠ” íŽ˜ì´ì§€ ë‚´ìš©ì„ ì±„ì›Œê°€ì‹œë©´ ë˜ê² ìŠµë‹ˆë‹¤. -->
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800"> °Ô½Ã±Û °ü¸® </h1>
+    <h1 class="h3 mb-2 text-gray-800"> ê²Œì‹œê¸€ ê´€ë¦¬ </h1>
 
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#"> °Ô½Ã±Û °ü¸® </a></li>
-        <li class="breadcrumb-item active" aria-current="page"> ¹®ÀÇ °Ô½Ã±Û °ü¸® </li>
+        <li class="breadcrumb-item"><a href="#"> ê²Œì‹œê¸€ ê´€ë¦¬ </a></li>
+        <li class="breadcrumb-item active" aria-current="page"> ë¬¸ì˜ ê²Œì‹œê¸€ ê´€ë¦¬ </li>
     </ol>
 </nav>
 
@@ -156,63 +156,63 @@
 <!-- Host Detail -->
 <div class="card container-fluid w-75 shadow mt-4 mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"> È£½ºÆ® ¹®ÀÇ </h6>
+        <h6 class="m-0 font-weight-bold text-primary"> í˜¸ìŠ¤íŠ¸ ë‹µë³€ ë“±ë¡ </h6>
     </div>
     <div>
         <div class="card-body">
             <div class="card container-fluid w-75">
                 <div class="col-md-12">
                     <i class="fa fa-lock"></i>
-                    <label class="mt-4">Á¦¸ñ ${q.host_que_title} </label>
+                    <label class="mt-4">ì œëª© ${qVo.host_que_title} </label>
                 </div>
                 <hr>
                 <div>
-                    <label class="col-md-4">ÀÛ¼ºÀÚ ${q.host_que_writer}</label>
-                    <label class="col-md-4">ÀÛ¼ºÀÏ ${q.host_que_date}</label>
-                    <label class="col-md-3">Á¶È¸¼ö ${q.host_que_view}</label>
+                    <label class="col-md-4">ìž‘ì„±ìž ${qVo.host_que_writer}</label>
+                    <label class="col-md-4">ìž‘ì„±ì¼ ${qVo.host_que_date}</label>
+                    <label class="col-md-3">ì¡°íšŒìˆ˜ ${qVo.host_que_view}</label>
                 </div>
                 <hr>
-                <label class="col-md-12 mb-3">³»¿ë</label>
-                <textarea class="form-control" rows="7" style="resize: none;" readonly>${q.host_que_content}</textarea>
+                <label class="col-md-12 mb-3">ë‚´ìš©</label>
+                <textarea class="form-control" rows="7" style="resize: none;" readonly>${qVo.host_que_content}</textarea>
                 <div class="col-md-12 mt-4">
-                    <label for="formFileMultiple" class="form-label">Ã·ºÎÆÄÀÏ${q.host_que_file}</label>
+                    <label for="formFileMultiple" class="form-label">ì²¨ë¶€íŒŒì¼&nbsp;${qVo.host_que_file}</label>
                 </div>
                 <hr>
                 <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-                    <button class="btn btn-primary me-md-2 mr-2" type="button">°Ô½Ã±Û·Î ÀÌµ¿</button>
+                    <button class="btn btn-primary me-md-2 mr-2" type="button">ê²Œì‹œê¸€ë¡œ ì´ë™</button>
                 </div>
             </div>
         </div>
         <hr style="width: 75%;">
         <div class="card-body">
             <div class="card container-fluid w-75 mb-5">
-                <div class="col-md-12">
-                    <label class="mt-4">Á¦¸ñ</label>
-                    <input type="text" class="col-md-12 ml-2" style="width:400px;" name="title" id="">
-                </div>
-                <hr>
-                <label class="col-md-12 mb-3">³»¿ë</label>
-                <textarea class="form-control" rows="7" style="resize: none;"></textarea>
-                <div class="col-md-12 mt-3 filebox">
-                    <lable>Ã·ºÎÆÄÀÏ</lable>
-                    <label for="ex_filename"><i class="fas fa-folder-plus fa-2x mt-1"></i></label>
-                    <input class="upload-name" value="ÆÄÀÏ¼±ÅÃ" disabled="disabled">
-                    <input type="file" id="ex_filename" class="upload-hidden">
-                </div>
-                <hr>
-                <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
-                    <button class="btn btn-primary me-md-2" type="button">µî·Ï</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+					<form method="post" action="hostQnaInsert.do?host_que_num=${qVo.host_que_num}" id="ansInsert" name="ansInsert">
+	                <div class="col-md-12">
+	                    <label class="mt-4">ì œëª©</label>
+	                    <input type="hidden" name="host_que_num" value="${qVo.host_que_num}">
+	                    <input type="hidden" name="place_num" value="${qVo.place_num}">
+	                    <input type="text" name="host_ans_title" class="col-md-12 ml-2" style="width:400px;" name="title">
+	                </div>
+	                <hr>
+	                <label class="col-md-12 mb-3">ë‚´ìš©</label>
+	                <textarea class="form-control" name="host_ans_content" rows="7" style="resize: none;"></textarea>
+	                <hr>
+	                <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+	                    <button class="btn btn-outline-primary me-md-2" type="submit" id="btnSubmit"
+	                    	onclick="location.href='hostQnaDetail.do?host_que_num=${qVo.host_que_num}'">ë‹µë³€ë“±ë¡</button>
+	                </div>
+				</form>
+	        </div>
+	    </div>
+     </div>
+ </div>
+    
 </div>
 <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
+
 
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
@@ -243,7 +243,7 @@ aria-hidden="true">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">¡¿</span>
+                <span aria-hidden="true">Ã—</span>
             </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
