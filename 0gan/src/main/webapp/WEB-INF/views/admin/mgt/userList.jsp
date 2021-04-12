@@ -39,7 +39,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-text mx-3">0gan logo</div>
+                <div class="sidebar-brand-text mx-3">0gan</div>
             </a>
 
             <!-- Divider -->
@@ -117,9 +117,9 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {°ü¸®ÀÚ} </span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {adminS} </span>
                     <img class="img-profile rounded-circle"
-                    src="../resources/img/undraw_profile.svg">
+                    src="../resources/img/smile.png">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

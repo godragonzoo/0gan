@@ -42,16 +42,5 @@ public class MainController {
 		return mav;
 	}
 	
-	/*테스트용 - 추후 삭제*/
-	@RequestMapping("/a")
-	public ModelAndView test() {
-		ModelAndView mav = new ModelAndView("/user/a");
-		return mav;
-	}
-	/*테스트용 - 추후 삭제*/
-	@RequestMapping("/test")
-	public ModelAndView testCopy() {
-		ModelAndView mav = new ModelAndView("/user/test");
-		return mav;
-	}
+	
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+  <select id="selectAllQue" resultType="hostQueVo">
+	select * from host_que_tb
+  </select>
+  
+  <select id="selectOneQue" resultType="hostQueVo">
+  	select * from host_que_tb where host_que_num=#{host_que_num}
+  </select>
+
+  <select id="selectOneAns" resultType="hostAnsVo">
+  	select * from host_ans_tb where host_que_num=#{host_que_num}
+  </select>
+  
+  <select id="selectAnsExist" resultType="java.lang.Integer">
+  	select nvl2(host_ans_num,1,0) from host_ans_tb
+  	where host_que_num= #{host_que_num}
+  </select>
+  
+  <insert id="insertAns">
+  	insert into host_ans_tb 
+  	values( seq_hostAns.nextval, #{host_que_num}, #{place_num} ,#{host_ans_title}, #{host_ans_content}, systimestamp)
+  </insert>
+ 
+  <update id="updateAns" parameterType="hostAnsVo">
+  	update host_ans_tb set host_ans_title = #{host_ans_title}, host_ans_content = #{host_ans_content} where host_que_num = #{host_que_num}
+  </update>
+  
+  <select id="selectAllRevw" resultType="RevwVo">
+	select * from revw_tb
+  </select>
+  
+  <!-- <select id="selectOneRevw" resultType="RevwVo">
+  	select	* 
+  	from   revw_tb
+  	where  revw_num=#{revw_num}
+  </select> -->
+  
+  <select id="selectRsvt">
+  	select rsvt_num, place_num, rsvt_checkin, rsvt_checkout from rsvt_tb
+  </select>
+  
+</mapper>

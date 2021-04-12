@@ -291,8 +291,8 @@ public class AdminDao {
 	/**
 	 * 회원 예약 상세 정보 조회 by 신용주
 	 */
-	public Map selectOneUserRsvt(HashMap map){
-		return DBManager.selectOneUserRsvt(map);
+	public List<Map> selectUserRsvt(HashMap map){
+		return DBManager.selectUserRsvt(map);
 	}
 	
 	/**

@@ -27,8 +27,7 @@ public class DBManager {
 		try {
 			reader = Resources.getResourceAsReader("com/gan/user/db/mybatis-config.xml");
 			factory = new SqlSessionFactoryBuilder().build(reader);
-			reader.close();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			System.out.println("예외:" + e.getMessage());
 		} finally {
 			try {

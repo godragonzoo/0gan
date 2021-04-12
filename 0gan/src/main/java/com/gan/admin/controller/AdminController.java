@@ -779,7 +779,7 @@ public class AdminController {
 		}
 		mav.addObject("uVo", dao.selectOneUser(user_num));
 		mav.addObject("login", dao.selectOneUserInfo(map));
-		mav.addObject("rsvt", dao.selectOneUserRsvt(map));
+		mav.addObject("rsvt", dao.selectUserRsvt(map));
 		return mav;
 	} 
 	
@@ -796,7 +796,7 @@ public class AdminController {
 		}
 		mav.addObject("uVo", dao.selectOneUser(user_num));
 		mav.addObject("login", dao.selectOneUserInfo(map));
-		mav.addObject("rsvt", dao.selectOneUserRsvt(map));
+		mav.addObject("rsvt", dao.selectUserRsvt(map));
 		return mav;
 	} 
 

@@ -59,12 +59,6 @@
 <meta name="author" content="">
 
 <title>main.jsp</title>
-<style type="text/css">
-</style>
-<script type="text/javascript">
-
-</script>
-
 </head>
 <body>
 <header>

@@ -6,6 +6,8 @@
   <properties resource="com/gan/properties/db.properties"/>
   <typeAliases>
   	<typeAlias type="com.gan.host.vo.HostQueVo" alias="hostQueVo"/>
+  	<typeAlias type="com.gan.host.vo.HostAnsVo" alias="hostAnsVo"/>
+  	<typeAlias type="com.gan.host.vo.RevwVo" alias="revwVo"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -19,6 +21,6 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="com/gan/host/db/hostMapper.xml"/>
+    <mapper resource="com/gan/host/db/BoardMapper.xml"/>
   </mappers>
 </configuration>

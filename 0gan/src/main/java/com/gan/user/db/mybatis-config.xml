@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+<!-- <properties resource="com/gan/user/db/db.properties"/> -->
 <properties resource="com/gan/properties/db.properties"/>
 <typeAliases>
 	<typeAlias type="com.gan.vo.UserVo" alias="userVo"/>
@@ -11,6 +12,7 @@
 	<typeAlias type="com.gan.vo.ThemeVo" alias="themeVo"/>
 	<typeAlias type="com.gan.vo.ThemePlaceVo" alias="themePlaceVo"/>
 	<typeAlias type="com.gan.vo.PlaceVo" alias="placeVo"/>
+	<typeAlias type="com.gan.vo.UserSearchVo" alias="userSearchVo"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -26,5 +28,6 @@
   <mappers>
    <mapper resource="com/gan/user/db/BoardMapper.xml"/>
     <mapper resource="com/gan/user/db/UserInfoMapper.xml"/>
+    <mapper resource="com/gan/user/db/UserSearchMaapper.xml"/>
   </mappers>
 </configuration>

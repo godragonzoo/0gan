@@ -172,17 +172,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                   <c:forEach var="list" items="${list }">
-					<tr>
-						<td>${list.host_que_num}</td>
-						<td>${list.place_num}</td>
-						<td>
-							<a href="hostQnaInsert.do?no=${list.host_que_num }">
-							${list.host_que_title}
-							</a>
-						</td>
-						<td>${list.host_que_writer}</td>
-						<td>${list.host_que_date}</td>
+                   <c:forEach var="qList" items="${qList }">
+					<tr id="ansURL"  onclick="window.location='hostQnaDetail.do?host_que_num=${qList.host_que_num }';">
+						<td>${qList.host_que_num}</td>
+						<td>${qList.place_num}</td>
+						<td>${qList.host_que_title}</td>
+						<td>${qList.host_que_writer}</td>
+						<td>${qList.host_que_date}</td>
 					</tr>
 					</c:forEach>
                 </tbody>
