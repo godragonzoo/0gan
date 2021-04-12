@@ -1,8 +1,17 @@
 package com.gan.user.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.gan.admin.vo.AdmVo;
+import com.gan.user.dao.UserInfoDao;
+import com.gan.vo.UserVo;
 
 @Controller
 public class MainController {
@@ -32,7 +41,6 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("/user/login");
 		return mav;
 	}
-
 	
 	/*테스트용 - 추후 삭제*/
 	@RequestMapping("/a")

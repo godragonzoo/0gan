@@ -1,4 +1,4 @@
-package com.gan.admin.service;
+package com.gan.service;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

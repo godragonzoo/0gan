@@ -1,4 +1,4 @@
-package com.gan.admin.service;
+package com.gan.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;

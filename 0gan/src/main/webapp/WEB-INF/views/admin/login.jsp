@@ -25,7 +25,7 @@
 						<input placeholder="Password" type="password" name="password"></input>
 					</div>
 					<div class="login-button-wrap">
-						<button type="submit">Sign in</button>
+						<button type="submit">로그인</button>
 					</div>
 				</form>
 			</section>

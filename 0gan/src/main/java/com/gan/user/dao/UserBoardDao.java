@@ -59,7 +59,21 @@ public class UserBoardDao {
 		return DBManager.selectAllTheme();
 	}
 	
+	/**
+	 * 기획전에 등록된 장소 목록 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
 	public List<ThemePlaceVo> selectThemePlace(int theme_num){
 		return DBManager.selectThemePlace(theme_num);
+	}
+	
+	/**
+	 * 선택된 기획전 정보 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
+	public ThemeVo selectTheme(int theme_num) {
+		return DBManager.selectTheme(theme_num);
 	}
 }

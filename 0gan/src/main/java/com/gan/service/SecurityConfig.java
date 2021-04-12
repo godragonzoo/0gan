@@ -1,4 +1,4 @@
-package com.gan.admin.service;
+package com.gan.service;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,9 +27,9 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-		.mvcMatchers("/**", "/adminLogin.do", "/adminJoin.do", "/adminError.do").permitAll()
+		.mvcMatchers("/notice.do","/faq.do","/theme.do","/themePlace.do", "/file/**","/adminLogin.do", "/adminJoin.do", "/adminError.do").permitAll()
 		.mvcMatchers("/admin/**").hasRole("admin")
-		.anyRequest().permitAll();
+		.anyRequest().authenticated();
 		
 		http.formLogin().loginPage("/adminLogin.do").permitAll()
 		.defaultSuccessUrl("/adminLoginOK.do");

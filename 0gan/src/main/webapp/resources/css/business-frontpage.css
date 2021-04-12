@@ -6,3 +6,20 @@
 body {
   padding-top: 56px;
 }
+
+.jb-wrap {
+	margin: 10px auto;
+	position: relative;
+}
+.jb-wrap img {
+	width: 100%;
+	vertical-align: middle;
+}
+.jb-text {
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+}

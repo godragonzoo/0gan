@@ -21,4 +21,8 @@ public class UserInfoDao {
 	public UserVo selectUser(int user_num) {
 		return DBManager.selectUser(user_num);
 	}
+	
+	public UserVo getUser(String user_email) {
+		return DBManager.getUser(user_email);
+	}
 }

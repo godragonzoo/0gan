@@ -5,13 +5,21 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gan.user.dao.UserInfoDao;
+import com.gan.vo.UserVo;
 
+/**
+ * @author User
+ *
+ */
 @Controller
 public class UserInfoController {
 	
@@ -149,6 +157,24 @@ public class UserInfoController {
 	@RequestMapping("/userPayment.do")
 	public ModelAndView userPayment() {
 		ModelAndView mav = new ModelAndView("/user/info/userPayment");
+		return mav;
+	}
+	
+	
+	/**
+	 * Spring Security 로그인처리, User 정보 session에 저장 by 박권익
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/loginOK.do")
+	public ModelAndView loginOK(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
+		String id = user.getUsername();
+		UserVo userVo = dao.getUser(id);
+		session.setAttribute("user", userVo);
+		mav.setViewName("redirect:/main.do");
 		return mav;
 	}
 	

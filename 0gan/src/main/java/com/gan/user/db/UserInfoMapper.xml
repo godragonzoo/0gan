@@ -21,4 +21,8 @@
 	
 	</delete>
 	
+	<!-- by 박권익 -->
+	<select id="getUser" resultType="userVo">
+		select * from user_tb wehre user_email = #{user_email}
+	</select>
 </mapper>

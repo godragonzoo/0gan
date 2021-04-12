@@ -110,7 +110,7 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{관리자}</span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                     <img class="img-profile rounded-circle"
                     src="../resources/img/undraw_profile.svg">
                 </a>
@@ -187,11 +187,11 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>공간번호</th>
+                        <th  style="width: 34px;">번호</th>
                         <th>공간이름</th>
                         <th>공간유형</th>
                         <th>공간주소</th>
-                        <th>기능</th>
+                        <th style="width: 40px;">기능</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -221,11 +221,11 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>공간번호</th>
+                        <th  style="width: 58px;">번호</th>
                         <th>공간이름</th>
                         <th>공간유형</th>
                         <th>공간주소</th>
-                        <th>기능</th>
+                        <th style="width: 85px;">기능</th>
                     </tr>
                 </thead>
 

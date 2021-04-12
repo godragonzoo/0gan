@@ -64,7 +64,14 @@
 	<select id="selectAllTheme" resultType="themeVo">
 		select * from theme_tb
 	</select>
-	<select id="selectThemePlace" resultType="themePlaceVo">
-		select * from theme_place_tb where theme_num = #{theme_num}
+	<select id="selectTheme" resultType="themeVo">
+		select * from theme_tb where theme_num = #{theme_num}
+	</select>
+	<select id="selectThemePlace" resultType="placeVo">
+		select * 
+		from place_tb 
+		where place_num in ( select place_num 
+							from theme_place_tb 
+							where theme_num = #{theme_num} )
 	</select>
 </mapper>

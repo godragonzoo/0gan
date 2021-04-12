@@ -138,10 +138,11 @@ public class BoardController {
 	@RequestMapping("/themePlace.do")
 	public ModelAndView themePlace(int theme_num) {
 		ModelAndView mav = new ModelAndView("/user/board/themePlace");
+		mav.addObject("theme", dao.selectTheme(theme_num));
 		mav.addObject("list", dao.selectThemePlace(theme_num));
 		return mav;
 	}
-
+	
 	@RequestMapping(value = "/hostQueInsert.do", method = RequestMethod.GET)
 	public ModelAndView hostQueInsertForm(HttpSession session) {
 		ModelAndView mav = new ModelAndView("/user/board/hostQueInsert");

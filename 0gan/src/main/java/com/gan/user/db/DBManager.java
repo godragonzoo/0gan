@@ -131,6 +131,25 @@ public class DBManager {
 	}
 	
 	/**
+	 * 기획전 정보 by 박권익
+	 * @param theme_num
+	 * @return
+	 */
+	public static ThemeVo selectTheme(int theme_num) {
+		SqlSession session = factory.openSession();
+		ThemeVo theme = session.selectOne("board.selectTheme", theme_num);
+		session.close();
+		return theme;
+	}
+	
+	public static UserVo getUser(String user_email) {
+		SqlSession session = factory.openSession();
+		UserVo user = session.selectOne("info.getUser", user_email);
+		session.close();
+		return user;
+	}
+	
+	/**
 	 * by 김은비
 	 * @param user
 	 * @return
