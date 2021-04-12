@@ -82,7 +82,7 @@ public class AdminController {
 	}
 
 	/**
-	 * localhost/adminNoti.do -> admin/noti.jsp 관리자 공지사항관리 페이지 by 박권익
+	 * 관리자 공지사항관리 페이지 by 박권익
 	 * 
 	 * @return
 	 */
@@ -111,7 +111,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/noticeInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminNoti(NotiVo noti, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		MultipartFile uploadFile = noti.getUploadFile();
 		String noti_file = uploadFile.getOriginalFilename();
 		if (uploadFile != null && !"".equals(noti_file)) {
@@ -156,7 +156,7 @@ public class AdminController {
 	public ModelAndView updateAdminNoti(NotiVo noti, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		String oldNotiFile = noti.getNoti_file();
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 
 		MultipartFile uploadFile = noti.getUploadFile();
 		String noti_file = uploadFile.getOriginalFilename();
@@ -200,7 +200,7 @@ public class AdminController {
 	@RequestMapping("/admin/noticeDelete.do")
 	public ModelAndView deleteAdminNoti(int noti_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/noticeDelete");
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		String noti_file = dao.selectNoti(noti_num).getNoti_file();
 		int re = dao.deleteNoti(noti_num);
 		mav.setViewName("redirect:/adminError.do");
@@ -256,7 +256,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/faqInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminFaq(FaqVo faq, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqInsert");
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		MultipartFile uploadFile = faq.getUploadFile();
 		String faq_file = uploadFile.getOriginalFilename();
 		if (uploadFile != null && !"".equals(faq_file)) {
@@ -305,7 +305,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/faqUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateAdminFaq(FaqVo faq, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqUpdate");
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		String oldFileNmae = faq.getFaq_file();
 
 		MultipartFile uploadFile = faq.getUploadFile();
@@ -350,7 +350,7 @@ public class AdminController {
 	@RequestMapping("/admin/faqDelete.do")
 	public ModelAndView deletesAdminFaq(int faq_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/faqDelete");
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		String faq_file = dao.selectFaq(faq_num).getFaq_file();
 		int re = dao.deleteFaq(faq_num);
 		mav.setViewName("redirect:/adminError.do");
@@ -423,7 +423,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/answerInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminAns(AdmAnsVo admAns, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/admAnsInsert");
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		MultipartFile uploadFile = admAns.getUploadFile();
 		String adm_ans_file = uploadFile.getOriginalFilename();
 		if (uploadFile != null && !"".equals(adm_ans_file)) {
@@ -479,7 +479,7 @@ public class AdminController {
 	public ModelAndView updateAdminAns(AdmAnsVo admAns, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		String oldFileName = admAns.getAdm_ans_file();
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		MultipartFile uploadFile = admAns.getUploadFile();
 		String adm_ans_file = uploadFile.getOriginalFilename();
 		if (!"".equals(adm_ans_file)) {
@@ -541,7 +541,7 @@ public class AdminController {
 	@RequestMapping(value = "admin/themeInsert.do", method = RequestMethod.POST)
 	public ModelAndView insertAdminTheme(ThemeVo theme, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/themeInsert");
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		MultipartFile uploadFile = theme.getUploadFile();
 		String theme_file = uploadFile.getOriginalFilename();
 		if (uploadFile != null && !"".equals(theme_file)) {
@@ -579,7 +579,7 @@ public class AdminController {
 	@RequestMapping("/admin/themeDelete.do")
 	public ModelAndView deleteAdminTheme(int theme_num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/themeDelete");
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		String theme_file = dao.selectTheme(theme_num).getTheme_file();
 		int re = dao.deleteTheme(theme_num);
 		mav.setViewName("redirect:/adminError.do");
@@ -616,7 +616,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/themeUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateAdminTheme(ThemeVo theme, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("/admin/board/themeUpdate");
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		String oldFilename = theme.getTheme_file();
 		MultipartFile uploadFile = theme.getUploadFile();
 		String theme_file = uploadFile.getOriginalFilename();
@@ -709,7 +709,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/file/filedownload")
 	public void fileDownload(HttpServletRequest request, HttpServletResponse response) {
-		String path = request.getSession().getServletContext().getRealPath("/upload");
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload");
 		String fname = request.getParameter("filename"); // QueryString으로 다운로드 파일이름 받아오기
 		File file = new File(path + "/" + fname);
 		FileInputStream fis = null; // 파일 읽어오기
